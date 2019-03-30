@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{037F5631-1BA5-420E-BC09-6A69FD571CDA}</ProjectGuid>
+    <ProjectGuid>{29EF0687-046A-4E72-8FFE-16BA1C10F6C6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Budget_Application</RootNamespace>
-    <AssemblyName>Budget Application</AssemblyName>
+    <RootNamespace>Budgeting_Application</RootNamespace>
+    <AssemblyName>Budgeting Application</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="Child.cs" />
+    <Compile Include="Parent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public abstract class User
+namespace Budgeting_Application
 {
-	public User()
-	{
-
-	}
+    class Child : User
+    {
+    }
 }
