@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Budgeting_Application
 {
-    public abstract class User
+    class Transaction
     {
-        protected string userName;
-        protected int userID;
-        protected int accountBalance;
+        string type;
+        float amount;
+        int userID;
+        DateTime date;
     }
 }
