@@ -8,10 +8,7 @@ using System.Data;
 
 namespace Budgeting_Application
 {
-    class Program
+    class DbConnection
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
