@@ -8,5 +8,14 @@ namespace Budgeting_Application
 {
     class Parent : User
     {
+        public void addTransaction()
+        {
+
+        }
+
+        public void viewReport(string name)
+        {
+
+        }
     }
 }

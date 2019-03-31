@@ -11,5 +11,10 @@ namespace Budgeting_Application
         protected string userName;
         protected int userID;
         protected int accountBalance;
+
+        public void createReport()
+        {
+
+        }
     }
 }

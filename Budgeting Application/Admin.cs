@@ -8,5 +8,44 @@ namespace Budgeting_Application
 {
     class Admin : User
     {
+        public void addTransaction()
+        {
+
+        }
+
+        public void changeTransaction()
+        {
+
+        }
+
+        public void deleteTransaction()
+        {
+
+        }
+
+        public void viewReport(string name)
+        {
+
+        }
+
+        public void addUser()
+        {
+
+        }
+
+        public void deleteUser()
+        {
+
+        }
+
+        public void changeUser()
+        {
+
+        }
+
+        public void setUserLvl(string name)
+        {
+
+        }
     }
 }

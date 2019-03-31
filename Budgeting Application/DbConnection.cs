@@ -10,5 +10,6 @@ namespace Budgeting_Application
 {
     class DbConnection
     {
+
     }
 }
