@@ -11,6 +11,7 @@ namespace Budgeting_Application
         protected string userName;
         protected int userID;
         protected int accountBalance;
+        protected string userLvl;
 
         public void createReport()
         {

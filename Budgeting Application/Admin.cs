@@ -8,6 +8,10 @@ namespace Budgeting_Application
 {
     class Admin : User
     {
+        public Admin()
+        {
+            userLvl = "admin";
+        }
         public void addTransaction()
         {
 
