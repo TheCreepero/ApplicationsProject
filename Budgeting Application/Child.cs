@@ -10,7 +10,7 @@ namespace Budgeting_Application
     {
         public Child()
         {
-            userLvl = "child";
+            UserLvl = "child";
         }
         public void addTransaction()
         {

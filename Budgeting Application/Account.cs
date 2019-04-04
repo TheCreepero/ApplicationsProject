@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace Budgeting_Application
 {
-    class Transaction
+    class Account
     {
-        float Amount;
         int AccountID;
-        int PayerID;
-        int OwnerID;
-        DateTime Date;
-        string Receiver;
-        string ProductName;
-        string Description;
+        string AccountName;
+        string AccountType;
     }
 }

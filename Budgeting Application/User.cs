@@ -8,11 +8,11 @@ namespace Budgeting_Application
 {
     public abstract class User
     {
-        protected string userName;
-        protected int userID;
-        protected int accountBalance;
-        protected string userLvl;
-
+        protected int UserID;
+        protected string UserName;  
+        protected string UserLvl;
+        protected float BankAccountBalance;
+        
         public void createReport()
         {
 
