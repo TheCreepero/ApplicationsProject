@@ -5,11 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.OleDb;
 using System.Data;
+using System.Configuration;
 
 namespace Budgeting_Application
 {
-    class DbConnection
+    public static class DbConnection
     {
-
+        public static string CnnVal(string name)
+        {
+            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
+        }
     }
 }
