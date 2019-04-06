@@ -9,11 +9,12 @@ using System.Configuration;
 
 namespace Budgeting_Application
 {
-    public static class DbConnection
+    public class DbConnection
     {
         public static string CnnVal(string name)
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
-    }
+
+        
 }

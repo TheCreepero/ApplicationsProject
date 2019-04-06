@@ -10,6 +10,9 @@ namespace Budgeting_Application
 {
     class Program
     {
+        OleDbConnection myConnection = new OleDbConnection();
+        
+
         static void Main(string[] args)
         {
             OleDbCommand listUsers = new OleDbCommand();
