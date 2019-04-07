@@ -82,6 +82,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ApplicationData\personalaccountdb\account.frm" />
+    <None Include="ApplicationData\personalaccountdb\account.ibd" />
+    <None Include="ApplicationData\personalaccountdb\db.opt" />
+    <None Include="ApplicationData\personalaccountdb\transaction.frm" />
+    <None Include="ApplicationData\personalaccountdb\transaction.ibd" />
+    <None Include="ApplicationData\personalaccountdb\user.frm" />
+    <None Include="ApplicationData\personalaccountdb\user.ibd" />
     <None Include="MainDBDataSet.xsc">
       <DependentUpon>MainDBDataSet.xsd</DependentUpon>
     </None>
