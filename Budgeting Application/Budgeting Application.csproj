@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -63,6 +63,12 @@
     <Compile Include="Admin.cs" />
     <Compile Include="Child.cs" />
     <Compile Include="DbConnection.cs" />
+    <Compile Include="ApplicationData\MainDBDataSet.Designer.cs" />
+    <Compile Include="ApplicationData\MainDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Parent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +90,17 @@
     <None Include="ApplicationData\personalaccountdb\transaction.ibd" />
     <None Include="ApplicationData\personalaccountdb\user.frm" />
     <None Include="ApplicationData\personalaccountdb\user.ibd" />
+    <None Include="ApplicationData\MainDBDataSet.xsc">
+      <DependentUpon>MainDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ApplicationData\MainDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MainDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ApplicationData\MainDBDataSet.xss">
+      <DependentUpon>MainDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,6 +108,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Helpful tips I found on the internet.txt" />
+    <Content Include="ApplicationData\MainDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ApplicationData\MainDB_log.ldf">
+      <DependentUpon>MainDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

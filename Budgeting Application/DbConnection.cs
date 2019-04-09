@@ -16,5 +16,5 @@ namespace Budgeting_Application
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
 
-        
+    }    
 }

@@ -9,14 +9,20 @@ using System.Data;
 namespace Budgeting_Application
 {
     class Program
-    {
-        OleDbConnection myConnection = new OleDbConnection();
-        
-
+    {                
         static void Main(string[] args)
         {
+            String connstr;
+            String projectPath = @"H:\Tiedostot\GitHub Repos\ApplicationsProject\Budgeting Application";
+            connstr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=MyData.accdb; " + @"Data Source = " + projectPath + @"\ApplicationData\MainDB.mdf";
+
+            OleDbConnection myConnection = new OleDbConnection();
+            myConnection.ConnectionString = connstr;
+            myConnection.Open();
+
             OleDbCommand listUsers = new OleDbCommand();
-            listUsers.CommandText = "SELECT UserID, UserName FROM User";
+            listUsers.Connection = myConnection;
+            listUsers.CommandText = "SELECT UserName FROM User";
             listUsers.CommandType = CommandType.Text;
 
             OleDbDataReader userReader;
@@ -25,15 +31,14 @@ namespace Budgeting_Application
             bool notEoF;
             notEoF = userReader.Read();
 
-            List<string> userList = new List<string>();
-          
+            Console.WriteLine("Please select an user:");
+
             while (notEoF)
             {
-                userList.Add(userReader["UserName"].ToString());
+                Console.WriteLine(userReader["UserName"].ToString());
                 notEoF = userReader.Read();
             }
 
-            userList.ForEach(Console.WriteLine);
         }
     }
 }
