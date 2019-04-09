@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Budgeting_Application
 {

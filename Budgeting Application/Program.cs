@@ -5,13 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace Budgeting_Application
 {
-    class Program
-    {                
-        static void Main(string[] args)
+    class Program:System.Windows.Forms.Form
+    {
+        Program()
         {
+            InitializeComponent();
+        }
+
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Program());
+            /*
             DbConnection startup = new DbConnection();
             startup.OpenConnection();
 
@@ -21,10 +31,22 @@ namespace Budgeting_Application
 
             DataTable users = new DataTable();
 
-            users = startup.ShowDataInGridView(listUsers);
-            Console.ReadLine();
+            startup.ShowDataInGridView(listUsers);
 
             startup.CloseConnection();
+            */
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Program
+            // 
+            this.ClientSize = new System.Drawing.Size(335, 444);
+            this.Name = "Program";
+            this.ResumeLayout(false);
+
         }
     }
 }
