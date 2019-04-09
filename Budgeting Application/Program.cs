@@ -15,17 +15,16 @@ namespace Budgeting_Application
             DbConnection startup = new DbConnection();
             startup.OpenConnection();
 
+            string listUsers = "SELECT UserName, UserID FROM [User]";
 
-            SqlCommand listUsers = new SqlCommand("SELECT UserName from [User];");
-            SqlDataReader reader = startup.DataReader(listUsers.ToString());
+            startup.DataReader(listUsers);
 
-            while(reader.Read())
-            {
-                Console.WriteLine(reader.ToString());
-            }
-            reader.Close();
+            DataTable users = new DataTable();
 
+            users = startup.ShowDataInGridView(listUsers);
             Console.ReadLine();
+
+            startup.CloseConnection();
         }
     }
 }

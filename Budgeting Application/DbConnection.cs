@@ -43,8 +43,10 @@ namespace Budgeting_Application
             SqlDataAdapter dr = new SqlDataAdapter(Query_, connectionString);
             DataSet ds = new DataSet();
             dr.Fill(ds);
+            
             object dataum = ds.Tables[0];
             return dataum;
+            
         }
     }    
 }
