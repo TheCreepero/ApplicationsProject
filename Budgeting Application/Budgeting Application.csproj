@@ -74,6 +74,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MainDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="mainmenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainmenu.Designer.cs">
+      <DependentUpon>mainmenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Parent.cs" />
     <Compile Include="Program.cs">
       <SubType>Form</SubType>
@@ -136,6 +142,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="mainmenu.resx">
+      <DependentUpon>mainmenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Program.resx">
       <DependentUpon>Program.cs</DependentUpon>
     </EmbeddedResource>
