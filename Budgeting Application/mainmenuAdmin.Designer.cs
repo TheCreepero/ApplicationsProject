@@ -1,6 +1,6 @@
 ﻿namespace Budgeting_Application
 {
-    partial class mainmenu
+    partial class mainmenuAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,47 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.welcomeLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // welcomeLabel
-            // 
-            this.welcomeLabel.AutoSize = true;
-            this.welcomeLabel.Location = new System.Drawing.Point(13, 13);
-            this.welcomeLabel.Name = "welcomeLabel";
-            this.welcomeLabel.Size = new System.Drawing.Size(253, 13);
-            this.welcomeLabel.TabIndex = 0;
-            this.welcomeLabel.Text = "string label = \"Hello, \" + Program.selectedUser + \".\";";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 122);
+            this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.label1.Size = new System.Drawing.Size(120, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Welcome, administrator!\r\n";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // mainmenu
+            // mainmenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1168, 623);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.welcomeLabel);
-            this.Name = "mainmenu";
-            this.Text = "mainapp";
+            this.Name = "mainmenuAdmin";
+            this.Text = "Budgeting Application - Administrator";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
-        private System.Windows.Forms.Label welcomeLabel;
-        private System.Windows.Forms.Label label1;
-
         #endregion
 
-        //private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label1;
     }
 }

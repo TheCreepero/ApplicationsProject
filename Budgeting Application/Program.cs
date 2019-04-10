@@ -12,17 +12,30 @@ namespace Budgeting_Application
 {
     class Program:System.Windows.Forms.Form
     {
-        private ListBox userList;
         private Button button1;
         private Button exit;
         private Label label1;
         private Button getUserList;
 
-        public static string selectedUser;
+        const string admin = "admin";
+        const string parent = "parent";
+        const string child = "child";
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn userNameColumn;
+        private DataGridViewTextBoxColumn UserLvlColumn;
+        private BindingSource mainDBDataSetBindingSource;
+        private System.ComponentModel.IContainer components;
+        private ApplicationData.MainDBDataSet mainDBDataSet;
+
 
         Program()
         {
             InitializeComponent();
+        }
+
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            e.PaintParts &= ~DataGridViewPaintParts.Focus;
         }
 
         static void Main()
@@ -34,72 +47,154 @@ namespace Budgeting_Application
 
         private void InitializeComponent()
         {
-            this.userList = new System.Windows.Forms.ListBox();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.getUserList = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.exit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.userNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserLvlColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mainDBDataSet = new Budgeting_Application.ApplicationData.MainDBDataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // userList
-            // 
-            this.userList.FormattingEnabled = true;
-            this.userList.Location = new System.Drawing.Point(12, 39);
-            this.userList.Name = "userList";
-            this.userList.Size = new System.Drawing.Size(160, 121);
-            this.userList.TabIndex = 0;
-            this.userList.SelectedIndexChanged += new System.EventHandler(this.userList_SelectedIndexChanged);
             // 
             // getUserList
             // 
-            this.getUserList.Location = new System.Drawing.Point(12, 166);
+            this.getUserList.BackColor = System.Drawing.Color.Lavender;
+            this.getUserList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.getUserList.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.getUserList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.getUserList.Location = new System.Drawing.Point(100, 166);
             this.getUserList.Name = "getUserList";
             this.getUserList.Size = new System.Drawing.Size(160, 27);
             this.getUserList.TabIndex = 1;
             this.getUserList.Text = "List Users";
-            this.getUserList.UseVisualStyleBackColor = true;
+            this.getUserList.UseVisualStyleBackColor = false;
             this.getUserList.Click += new System.EventHandler(this.selectUser_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 199);
+            this.button1.BackColor = System.Drawing.Color.Lavender;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(100, 199);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 27);
             this.button1.TabIndex = 2;
             this.button1.Text = "Open Application";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // exit
             // 
-            this.exit.Location = new System.Drawing.Point(12, 232);
+            this.exit.BackColor = System.Drawing.Color.Lavender;
+            this.exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exit.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exit.Location = new System.Drawing.Point(100, 232);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(160, 27);
             this.exit.TabIndex = 3;
             this.exit.Text = "Exit";
-            this.exit.UseVisualStyleBackColor = true;
+            this.exit.UseVisualStyleBackColor = false;
             this.exit.Click += new System.EventHandler(this.exit_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 9);
+            this.label1.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(78, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 13);
+            this.label1.Size = new System.Drawing.Size(200, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Select the user from the list:";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeight = 18;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.userNameColumn,
+            this.UserLvlColumn});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dataGridView1.Location = new System.Drawing.Point(64, 32);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(229, 121);
+            this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
+            // 
+            // userNameColumn
+            // 
+            this.userNameColumn.HeaderText = "Username";
+            this.userNameColumn.Name = "userNameColumn";
+            this.userNameColumn.ReadOnly = true;
+            // 
+            // UserLvlColumn
+            // 
+            this.UserLvlColumn.HeaderText = "User Level";
+            this.UserLvlColumn.Name = "UserLvlColumn";
+            this.UserLvlColumn.ReadOnly = true;
+            // 
+            // mainDBDataSetBindingSource
+            // 
+            this.mainDBDataSetBindingSource.DataSource = this.mainDBDataSet;
+            this.mainDBDataSetBindingSource.Position = 0;
+            // 
+            // mainDBDataSet
+            // 
+            this.mainDBDataSet.DataSetName = "MainDBDataSet";
+            this.mainDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // Program
             // 
-            this.ClientSize = new System.Drawing.Size(184, 269);
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(364, 269);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.getUserList);
-            this.Controls.Add(this.userList);
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Name = "Program";
+            this.Text = "Budgeting Application - User Selection";
             this.Load += new System.EventHandler(this.Program_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,8 +202,14 @@ namespace Budgeting_Application
 
         private void userList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedUser = userList.SelectedItem.ToString();
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                //selectedUserName = row.Cells[Convert.ToInt32(userNameColumn)].Value.ToString();
+                //selectedUserLevel = row.Cells[Convert.ToInt32(UserLvlColumn)].Value.ToString();
+            }
         }
+
+        SqlDataReader dr;
 
         private void selectUser_Click(object sender, EventArgs e)
         {
@@ -119,11 +220,13 @@ namespace Budgeting_Application
             {
                 listUsersButton.OpenConnection();
 
-                SqlDataReader dr = listUsersButton.DataReader(listUsers);
+                dr = listUsersButton.DataReader(listUsers);
 
                 while (dr.Read())
                 {
-                    userList.Items.Add(dr["UserName"].ToString());
+                    //userList.Items.Add(dr["UserName"].ToString());
+                    //userLvlList.Items.Add(dr["UserLvl"].ToString());
+                    dataGridView1.Rows.Add(dr["UserName"].ToString(), dr["UserLvl"].ToString());
                 }
 
             }
@@ -139,8 +242,43 @@ namespace Budgeting_Application
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form mainmenu = new Form();
-            mainmenu.Show();
+
+            
+            //DbConnection listUserLevels = new DbConnection();
+            //string listUserLvl = "SELECT UserName, UserLvl FROM [User]";
+
+            try
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    if (row.Cells[1].Value.ToString() == admin)
+                    {
+                        mainmenuAdmin mainmenuAdmin = new mainmenuAdmin();
+                        mainmenuAdmin.ShowDialog();
+                    }
+
+                    if (row.Cells[1].Value.ToString() == parent)
+                    {
+                        mainmenuParent mainmenuParent = new mainmenuParent();
+                        mainmenuParent.ShowDialog();
+                    }
+
+                    if (row.Cells[1].Value.ToString() == child)
+                    {
+                        mainmenuChild mainmenuChild = new mainmenuChild();
+                        mainmenuChild.ShowDialog();
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //listUserLevels.CloseConnection();
+            }
+            
         }
 
         private void exit_Click(object sender, EventArgs e)
@@ -149,6 +287,21 @@ namespace Budgeting_Application
         }
 
         private void Program_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void userLvlList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

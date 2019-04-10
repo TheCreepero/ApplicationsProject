@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Budgeting_Application
 {
-    public partial class mainmenu : Form
+    public partial class mainmenuParent : Form
     {
-        public mainmenu()
+        public mainmenuParent()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

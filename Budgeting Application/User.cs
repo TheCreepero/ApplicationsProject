@@ -20,30 +20,6 @@ namespace Budgeting_Application
         {
 
         }
-        /*
-        public User GetUsers()
-        {
-            OleDbCommand listUsers = new OleDbCommand();
-            listUsers.CommandText = "SELECT UserID, UserName, UserLvl, BankAccountBalance FROM User";
-            listUsers.CommandType = CommandType.Text;
-
-            OleDbDataReader userReader;
-            userReader = listUsers.ExecuteReader();
-
-            bool notEoF;
-            notEoF = userReader.Read();
-
-            List<User> users = new List<User>();
-            
-            int i = 0;
-
-            while (notEoF)
-            {
-                users.Add(new User())
-                i++;
-                notEoF = userReader.Read();
-            }
-        }
-        */
+        
     }
 }
