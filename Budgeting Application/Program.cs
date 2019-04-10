@@ -26,6 +26,8 @@ namespace Budgeting_Application
         private BindingSource mainDBDataSetBindingSource;
         private System.ComponentModel.IContainer components;
         private ApplicationData.MainDBDataSet mainDBDataSet;
+        private BindingSource mainDBDataSetBindingSource1;
+        public static object selectedUserName;
 
 
         Program()
@@ -59,9 +61,11 @@ namespace Budgeting_Application
             this.UserLvlColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainDBDataSet = new Budgeting_Application.ApplicationData.MainDBDataSet();
+            this.mainDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // getUserList
@@ -131,6 +135,7 @@ namespace Budgeting_Application
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 18;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.userNameColumn,
             this.UserLvlColumn});
@@ -178,6 +183,11 @@ namespace Budgeting_Application
             this.mainDBDataSet.DataSetName = "MainDBDataSet";
             this.mainDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // mainDBDataSetBindingSource1
+            // 
+            this.mainDBDataSetBindingSource1.DataSource = this.mainDBDataSet;
+            this.mainDBDataSetBindingSource1.Position = 0;
+            // 
             // Program
             // 
             this.BackColor = System.Drawing.Color.AliceBlue;
@@ -195,19 +205,12 @@ namespace Budgeting_Application
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
-        private void userList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                //selectedUserName = row.Cells[Convert.ToInt32(userNameColumn)].Value.ToString();
-                //selectedUserLevel = row.Cells[Convert.ToInt32(UserLvlColumn)].Value.ToString();
-            }
-        }
 
         SqlDataReader dr;
 
@@ -255,18 +258,21 @@ namespace Budgeting_Application
                     {
                         mainmenuAdmin mainmenuAdmin = new mainmenuAdmin();
                         mainmenuAdmin.ShowDialog();
+                        //selectedUserName = row.Cells[0].Value.ToString();
                     }
 
                     if (row.Cells[1].Value.ToString() == parent)
                     {
                         mainmenuParent mainmenuParent = new mainmenuParent();
                         mainmenuParent.ShowDialog();
+                        //selectedUserName = row.Cells[0].Value.ToString();
                     }
 
                     if (row.Cells[1].Value.ToString() == child)
                     {
                         mainmenuChild mainmenuChild = new mainmenuChild();
                         mainmenuChild.ShowDialog();
+                        //selectedUserName = row.Cells[0].Value.ToString();
                     }
                 }
             }
@@ -303,7 +309,10 @@ namespace Budgeting_Application
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                selectedUserName = row.Cells[0].Value;
+            }
         }
     }
 }

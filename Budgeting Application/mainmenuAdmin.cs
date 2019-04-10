@@ -12,9 +12,12 @@ namespace Budgeting_Application
 {
     public partial class mainmenuAdmin : Form
     {
+        string welcomeLabel = "Welcome, " + Convert.ToString(Program.selectedUserName) + "!";
+
         public mainmenuAdmin()
         {
             InitializeComponent();
+            label1.Text = welcomeLabel;
         }
 
         private void label1_Click(object sender, EventArgs e)

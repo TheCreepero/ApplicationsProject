@@ -12,9 +12,14 @@ namespace Budgeting_Application
 {
     public partial class mainmenuChild : Form
     {
+        private DataGridView transactionTable = new DataGridView();
+        string welcomeLabel = "Welcome, " + Convert.ToString(Program.selectedUserName) + "!";
+
         public mainmenuChild()
         {
             InitializeComponent();
+            label1.Text = welcomeLabel;
+            transactionTable.Dock = DockStyle.Fill;
         }
 
         private void label1_Click(object sender, EventArgs e)
