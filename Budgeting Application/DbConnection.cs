@@ -14,7 +14,7 @@ namespace Budgeting_Application
     public class DbConnection
     {
         SqlConnection cn;
-        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"H:\\Tiedostot\\GitHub Repos\\ApplicationsProject\\Budgeting Application\\ApplicationData\\MainDB.mdf\";Integrated Security = True; Connect Timeout = 30";
+        public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"H:\\Tiedostot\\GitHub Repos\\ApplicationsProject\\Budgeting Application\\ApplicationData\\MainDB.mdf\";Integrated Security = True; Connect Timeout = 30";
 
         public void OpenConnection()
         {

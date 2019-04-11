@@ -222,9 +222,7 @@ namespace Budgeting_Application
             try
             {
                 listUsersButton.OpenConnection();
-
                 dr = listUsersButton.DataReader(listUsers);
-
                 while (dr.Read())
                 {
                     dataGridView1.Rows.Add(dr["UserName"].ToString(), dr["UserLvl"].ToString());

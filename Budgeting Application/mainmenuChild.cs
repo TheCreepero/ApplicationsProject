@@ -14,6 +14,7 @@ namespace Budgeting_Application
     public partial class mainmenuChild : Form
     {
         SqlDataReader dr;
+        int oldRowCount;
         string welcomeLabel = "Welcome, " + Convert.ToString(Program.selectedUserName) + "!";
 
         public mainmenuChild()
@@ -51,12 +52,53 @@ namespace Budgeting_Application
             finally
             {
                 fetchTransactions.CloseConnection();
+                oldRowCount = dataGridView1.Rows.Count;
             }
         }
 
         private void exitbutton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void saveChanges_Click(object sender, EventArgs e) //UNFINISHED
+        {            
+            SqlConnection con = new System.Data.SqlClient.SqlConnection();
+            con.ConnectionString = DbConnection.connectionString;
+            SqlDataAdapter da = new SqlDataAdapter();
+            string insertChanges = "INSERT INTO [Transactions](Amount, AccountName, PayerName, OwnerName, Date, Receiver, ProductName, Description) VALUES (@Amount, @AccountName, @PayerName, @OwnerName, @Date, @Receiver, @ProductName, @Description)";
+
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(insertChanges, con);
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    //CONTINUE HERE
+
+                    da.InsertCommand = cmd;
+                    cmd.ExecuteNonQuery();
+                    oldRowCount++;
+                }                
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void addEvent_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

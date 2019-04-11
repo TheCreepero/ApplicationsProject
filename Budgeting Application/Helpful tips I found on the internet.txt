@@ -1,2 +1,10 @@
 ﻿Q: I have same problem but i couldn't figure out how to solve it. here what i did int App.config file <?xml version="1.0" encoding="utf-8" ?> <configuration> <ConnectionStrings> <add name ="ss" connectionString="Data Source=DESKTOP KQSUU7P\SQLEXPRESS;Initial Catalog=ss;Integrated Security=True"/> </ConnectionStrings> <startup> <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.1" /> </startup> </configuration> but it is still not working. the Error saying >>> System.Configuration.ConfigurationErrorsException: 'Configuration system failed to initialize'﻿
 A: you're missing the providerName="System.Data.SqlClient" in your connection string. Is the way c# knows what type of SQL engine it has to use.﻿
+					cmd.Parameters.AddWithValue("@Amount", dataGridView1.Rows[oldRowCount].Cells[0].Value);
+                    cmd.Parameters.AddWithValue("@AccountName", dataGridView1.Rows[oldRowCount].Cells[1].Value);
+                    cmd.Parameters.AddWithValue("@PayerName", dataGridView1.Rows[oldRowCount].Cells[2].Value);
+                    cmd.Parameters.AddWithValue("@OwnerName", dataGridView1.Rows[oldRowCount].Cells[3].Value);
+                    cmd.Parameters.AddWithValue("@Date", dataGridView1.Rows[oldRowCount].Cells[4].Value);
+                    cmd.Parameters.AddWithValue("@Receiver", dataGridView1.Rows[oldRowCount].Cells[5].Value);
+                    cmd.Parameters.AddWithValue("@ProductName", dataGridView1.Rows[oldRowCount].Cells[6].Value);
+                    cmd.Parameters.AddWithValue("@Description", dataGridView1.Rows[oldRowCount].Cells[7].Value);

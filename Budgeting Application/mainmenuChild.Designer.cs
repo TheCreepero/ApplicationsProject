@@ -43,6 +43,16 @@
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fetchTransactions = new System.Windows.Forms.Button();
             this.exitbutton = new System.Windows.Forms.Button();
+            this.saveChanges = new System.Windows.Forms.Button();
+            this.addEvent = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -84,7 +94,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(15, 35);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(882, 595);
+            this.dataGridView1.Size = new System.Drawing.Size(882, 367);
             this.dataGridView1.TabIndex = 1;
             // 
             // amount
@@ -129,7 +139,7 @@
             // 
             // fetchTransactions
             // 
-            this.fetchTransactions.Location = new System.Drawing.Point(927, 35);
+            this.fetchTransactions.Location = new System.Drawing.Point(927, 34);
             this.fetchTransactions.Name = "fetchTransactions";
             this.fetchTransactions.Size = new System.Drawing.Size(183, 34);
             this.fetchTransactions.TabIndex = 2;
@@ -147,11 +157,99 @@
             this.exitbutton.UseVisualStyleBackColor = true;
             this.exitbutton.Click += new System.EventHandler(this.exitbutton_Click);
             // 
+            // saveChanges
+            // 
+            this.saveChanges.Location = new System.Drawing.Point(927, 114);
+            this.saveChanges.Name = "saveChanges";
+            this.saveChanges.Size = new System.Drawing.Size(183, 34);
+            this.saveChanges.TabIndex = 4;
+            this.saveChanges.Text = "Save new events";
+            this.saveChanges.UseVisualStyleBackColor = true;
+            this.saveChanges.Click += new System.EventHandler(this.saveChanges_Click);
+            // 
+            // addEvent
+            // 
+            this.addEvent.Location = new System.Drawing.Point(927, 74);
+            this.addEvent.Name = "addEvent";
+            this.addEvent.Size = new System.Drawing.Size(183, 34);
+            this.addEvent.TabIndex = 5;
+            this.addEvent.Text = "Add Transaction";
+            this.addEvent.UseVisualStyleBackColor = true;
+            this.addEvent.Click += new System.EventHandler(this.addEvent_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(15, 433);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(110, 20);
+            this.textBox1.TabIndex = 6;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(461, 433);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(105, 20);
+            this.textBox5.TabIndex = 10;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(569, 433);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(105, 20);
+            this.textBox2.TabIndex = 11;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(678, 433);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(105, 20);
+            this.textBox3.TabIndex = 12;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(789, 433);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(105, 20);
+            this.textBox4.TabIndex = 13;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(131, 432);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(105, 21);
+            this.comboBox1.TabIndex = 14;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(242, 432);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(105, 21);
+            this.comboBox2.TabIndex = 15;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(352, 433);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(105, 20);
+            this.textBox6.TabIndex = 16;
+            // 
             // mainmenuChild
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1139, 642);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.addEvent);
+            this.Controls.Add(this.saveChanges);
             this.Controls.Add(this.exitbutton);
             this.Controls.Add(this.fetchTransactions);
             this.Controls.Add(this.dataGridView1);
@@ -182,5 +280,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
         private System.Windows.Forms.Button fetchTransactions;
         private System.Windows.Forms.Button exitbutton;
+        private System.Windows.Forms.Button saveChanges;
+        private System.Windows.Forms.Button addEvent;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }
