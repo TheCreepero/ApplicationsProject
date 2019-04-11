@@ -227,8 +227,6 @@ namespace Budgeting_Application
 
                 while (dr.Read())
                 {
-                    //userList.Items.Add(dr["UserName"].ToString());
-                    //userLvlList.Items.Add(dr["UserLvl"].ToString());
                     dataGridView1.Rows.Add(dr["UserName"].ToString(), dr["UserLvl"].ToString());
                 }
 
@@ -245,34 +243,31 @@ namespace Budgeting_Application
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            
-            //DbConnection listUserLevels = new DbConnection();
-            //string listUserLvl = "SELECT UserName, UserLvl FROM [User]";
-
             try
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
                     if (row.Cells[1].Value.ToString() == admin)
                     {
+                        //This makes sure the name of the user is transferred to the new form.
+                        selectedUserName = row.Cells[0].Value;
+                        //Opens the new form
                         mainmenuAdmin mainmenuAdmin = new mainmenuAdmin();
-                        mainmenuAdmin.ShowDialog();
-                        //selectedUserName = row.Cells[0].Value.ToString();
+                        mainmenuAdmin.ShowDialog(); 
                     }
 
                     if (row.Cells[1].Value.ToString() == parent)
                     {
+                        selectedUserName = row.Cells[0].Value;
                         mainmenuParent mainmenuParent = new mainmenuParent();
-                        mainmenuParent.ShowDialog();
-                        //selectedUserName = row.Cells[0].Value.ToString();
+                        mainmenuParent.ShowDialog();                       
                     }
 
                     if (row.Cells[1].Value.ToString() == child)
                     {
+                        selectedUserName = row.Cells[0].Value;
                         mainmenuChild mainmenuChild = new mainmenuChild();
-                        mainmenuChild.ShowDialog();
-                        //selectedUserName = row.Cells[0].Value.ToString();
+                        mainmenuChild.ShowDialog();                        
                     }
                 }
             }
@@ -282,9 +277,7 @@ namespace Budgeting_Application
             }
             finally
             {
-                //listUserLevels.CloseConnection();
-            }
-            
+            }           
         }
 
         private void exit_Click(object sender, EventArgs e)
