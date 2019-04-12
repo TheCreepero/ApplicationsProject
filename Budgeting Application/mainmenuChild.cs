@@ -83,6 +83,14 @@ namespace Budgeting_Application
                 fetchTransactions.CloseConnection();
                 oldRowCount = dataGridView1.Rows.Count;
             }
+
+            int sum = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
+            }
+
+            balanceLabel.Text = sum.ToString() + '€';
         }
 
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -95,7 +103,7 @@ namespace Budgeting_Application
             this.Close();
         }
 
-        private void saveChanges_Click(object sender, EventArgs e) //UNFINISHED
+        private void saveChanges_Click(object sender, EventArgs e) 
         {
 
         }
@@ -147,6 +155,11 @@ namespace Budgeting_Application
             eventTable.Columns.Add("Receiver", typeof(string));
             eventTable.Columns.Add("Product Name", typeof(string));
             eventTable.Columns.Add("Description", typeof(string));
+        }
+
+        private void balanceLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
