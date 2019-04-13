@@ -59,20 +59,23 @@ namespace Budgeting_Application
 
         private void fetchTransactions_Click(object sender, EventArgs e)
         {
+            //This clears any existing records from the DataGrid before new data is loaded in
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+
+            //This takes the transaction data from the DB and displays it in dataGridView1
             DbConnection fetchTransactions = new DbConnection();
-            string selectTransactions = "SELECT * FROM [Transaction] WHERE PayerName = '" + Program.selectedUserName.ToString() + "'";
+            string selectTransactions = "SELECT * FROM [Transaction] WHERE OwnerName = '" + Program.selectedUserName.ToString() + "'";
 
             try
             {
                 fetchTransactions.OpenConnection();
-
                 dr = fetchTransactions.DataReader(selectTransactions);
 
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString());
+                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());
                 }
-
             }
             catch (SqlException ex)
             {
@@ -84,12 +87,13 @@ namespace Budgeting_Application
                 oldRowCount = dataGridView1.Rows.Count;
             }
 
+            //This counts the sum of all transactions and shows it in a label below the DataGrid
             int sum = 0;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
             }
-
+         
             balanceLabel.Text = sum.ToString() + '€';
         }
 
@@ -127,7 +131,6 @@ namespace Budgeting_Application
             try
             {
                 insertToDb.OpenConnection();
-
                 insertToDb.ExcecuteQueries(insertChanges);
             }
             catch (System.Data.SqlClient.SqlException ex)
@@ -136,6 +139,7 @@ namespace Budgeting_Application
             }
             finally
             {
+                dataGridView1.Refresh();
                 insertToDb.CloseConnection();
             }
         }
@@ -160,6 +164,35 @@ namespace Budgeting_Application
         private void balanceLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {            
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                int rowIdToDelete = Convert.ToInt32(row.Cells["EventID"].Value);
+                string removeSelected = "DELETE FROM [Transaction] WHERE EventID = '" + rowIdToDelete + "'";
+
+                DbConnection deleteRow = new DbConnection();
+                try
+                {
+                    deleteRow.OpenConnection();
+                    deleteRow.ExcecuteQueries(removeSelected);
+                }
+                catch (System.Data.SqlClient.SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    dataGridView1.Refresh();
+                    deleteRow.CloseConnection();
+                }
+            }
+
+            int rowIndex = dataGridView1.CurrentRow.Index;
+            dataGridView1.Rows.RemoveAt(rowIndex);
+            
         }
     }
 }

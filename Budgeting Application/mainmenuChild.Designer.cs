@@ -33,14 +33,6 @@
             this.mainDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainDBDataSet = new Budgeting_Application.ApplicationData.MainDBDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payerid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.owner = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receiver = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fetchTransactions = new System.Windows.Forms.Button();
             this.exitbutton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -66,6 +58,16 @@
             this.mainDBDataSet1 = new Budgeting_Application.ApplicationData.MainDBDataSet();
             this.balanceTitle = new System.Windows.Forms.Label();
             this.balanceLabel = new System.Windows.Forms.Label();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payerid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.owner = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receiver = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EventID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -110,7 +112,8 @@
             this.date,
             this.receiver,
             this.product,
-            this.description});
+            this.description,
+            this.EventID});
             this.dataGridView1.Location = new System.Drawing.Point(15, 35);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -120,46 +123,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(882, 414);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
-            // 
-            // amount
-            // 
-            this.amount.HeaderText = "Amount";
-            this.amount.Name = "amount";
-            // 
-            // accountid
-            // 
-            this.accountid.HeaderText = "Category";
-            this.accountid.Name = "accountid";
-            // 
-            // payerid
-            // 
-            this.payerid.HeaderText = "Payer";
-            this.payerid.Name = "payerid";
-            // 
-            // owner
-            // 
-            this.owner.HeaderText = "Purchase Owner";
-            this.owner.Name = "owner";
-            // 
-            // date
-            // 
-            this.date.HeaderText = "Date";
-            this.date.Name = "date";
-            // 
-            // receiver
-            // 
-            this.receiver.HeaderText = "Receiver/Payer";
-            this.receiver.Name = "receiver";
-            // 
-            // product
-            // 
-            this.product.HeaderText = "Product";
-            this.product.Name = "product";
-            // 
-            // description
-            // 
-            this.description.HeaderText = "Description";
-            this.description.Name = "description";
             // 
             // fetchTransactions
             // 
@@ -279,12 +242,13 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "yyyymmdd";
+            this.dateTimePicker1.CustomFormat = "dd.mm.yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(955, 279);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(133, 20);
             this.dateTimePicker1.TabIndex = 23;
+            this.dateTimePicker1.Value = new System.DateTime(2019, 4, 1, 0, 0, 0, 0);
             // 
             // labelReceiver
             // 
@@ -367,11 +331,86 @@
             this.balanceLabel.Text = "Load your transactions first!";
             this.balanceLabel.Click += new System.EventHandler(this.balanceLabel_Click);
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(955, 455);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(133, 30);
+            this.deleteButton.TabIndex = 31;
+            this.deleteButton.Text = "Delete selected";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // amount
+            // 
+            this.amount.FillWeight = 51.76816F;
+            this.amount.HeaderText = "Amount";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            // 
+            // accountid
+            // 
+            this.accountid.FillWeight = 45.46315F;
+            this.accountid.HeaderText = "Category";
+            this.accountid.Name = "accountid";
+            this.accountid.ReadOnly = true;
+            // 
+            // payerid
+            // 
+            this.payerid.FillWeight = 45.46315F;
+            this.payerid.HeaderText = "Payer";
+            this.payerid.Name = "payerid";
+            this.payerid.ReadOnly = true;
+            // 
+            // owner
+            // 
+            this.owner.FillWeight = 45.46315F;
+            this.owner.HeaderText = "Purchase Owner";
+            this.owner.Name = "owner";
+            this.owner.ReadOnly = true;
+            // 
+            // date
+            // 
+            this.date.FillWeight = 45.46315F;
+            this.date.HeaderText = "Date";
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            // 
+            // receiver
+            // 
+            this.receiver.FillWeight = 45.46315F;
+            this.receiver.HeaderText = "Receiver/Payer";
+            this.receiver.Name = "receiver";
+            this.receiver.ReadOnly = true;
+            // 
+            // product
+            // 
+            this.product.FillWeight = 45.46315F;
+            this.product.HeaderText = "Product";
+            this.product.Name = "product";
+            this.product.ReadOnly = true;
+            // 
+            // description
+            // 
+            this.description.FillWeight = 45.46315F;
+            this.description.HeaderText = "Description";
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            // 
+            // EventID
+            // 
+            this.EventID.FillWeight = 10F;
+            this.EventID.HeaderText = "ID";
+            this.EventID.Name = "EventID";
+            this.EventID.ReadOnly = true;
+            this.EventID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // mainmenuChild
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1143, 580);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.balanceLabel);
             this.Controls.Add(this.balanceTitle);
             this.Controls.Add(this.label3);
@@ -416,14 +455,6 @@
         private System.Windows.Forms.BindingSource mainDBDataSetBindingSource;
         private ApplicationData.MainDBDataSet mainDBDataSet;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accountid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn payerid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn owner;
-        private System.Windows.Forms.DataGridViewTextBoxColumn date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn receiver;
-        private System.Windows.Forms.DataGridViewTextBoxColumn product;
-        private System.Windows.Forms.DataGridViewTextBoxColumn description;
         private System.Windows.Forms.Button fetchTransactions;
         private System.Windows.Forms.Button exitbutton;
         private System.Windows.Forms.TextBox textBox1;
@@ -438,7 +469,6 @@
         private System.Windows.Forms.Label labelPayer;
         private System.Windows.Forms.Label labelOwner;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label labelReceiver;
         private System.Windows.Forms.Label labelProduct;
         private System.Windows.Forms.Label labelDesc;
@@ -449,5 +479,16 @@
         private ApplicationData.MainDBDataSet mainDBDataSet1;
         private System.Windows.Forms.Label balanceTitle;
         private System.Windows.Forms.Label balanceLabel;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn payerid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn owner;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receiver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EventID;
+        public System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
