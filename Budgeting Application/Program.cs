@@ -224,6 +224,9 @@ namespace Budgeting_Application
 
             try
             {
+                dataGridView1.Rows.Clear();
+                dataGridView1.Refresh();
+
                 listUsersButton.OpenConnection();
                 dr = listUsersButton.DataReader(listUsers);
                 while (dr.Read())
@@ -246,6 +249,8 @@ namespace Budgeting_Application
         {
             try
             {
+                
+
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
                     if (row.Cells[1].Value.ToString() == admin)
