@@ -8,13 +8,16 @@ using System.Data;
 using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Budgeting_Application
 {
     public class DbConnection
     {
+        static string debugPath = Environment.CurrentDirectory;
+        static string path = Directory.GetParent(debugPath).Parent.FullName;
         SqlConnection cn;
-        public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"H:\\Tiedostot\\GitHub Repos\\ApplicationsProject\\Budgeting Application\\ApplicationData\\MainDB.mdf\";Integrated Security = True; Connect Timeout = 30";
+        public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + path + @"\ApplicationData\MainDB.mdf;Integrated Security = True; Connect Timeout = 30";
 
         public void OpenConnection()
         {

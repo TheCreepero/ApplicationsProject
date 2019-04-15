@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
 
 namespace Budgeting_Application
 {
@@ -27,6 +28,7 @@ namespace Budgeting_Application
         private System.ComponentModel.IContainer components;
         private ApplicationData.MainDBDataSet mainDBDataSet;
         private BindingSource mainDBDataSetBindingSource1;
+        private System.IO.Ports.SerialPort serialPort1;
         public static object selectedUserName;
 
 
@@ -62,6 +64,7 @@ namespace Budgeting_Application
             this.mainDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainDBDataSet = new Budgeting_Application.ApplicationData.MainDBDataSet();
             this.mainDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
@@ -114,7 +117,7 @@ namespace Budgeting_Application
             this.label1.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(78, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 13);
+            this.label1.Size = new System.Drawing.Size(225, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Select the user from the list:";
             // 
@@ -191,7 +194,7 @@ namespace Budgeting_Application
             // Program
             // 
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(364, 269);
+            this.ClientSize = new System.Drawing.Size(364, 306);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.exit);
