@@ -14,6 +14,7 @@ namespace Budgeting_Application
     public partial class mainmenuChild : Form
     {
         SqlDataReader dr;
+        SqlDataReader dr2;
         int oldRowCount;
         string welcomeLabel = "Welcome, " + Convert.ToString(Program.selectedUserName) + "!";
 
@@ -34,18 +35,29 @@ namespace Budgeting_Application
         public void BindData()
         {
             DbConnection comboBoxUsers = new DbConnection();
-            string listUsers = "SELECT AccountName FROM [Account]";
+            string listAccounts = "SELECT AccountName FROM [Account]";
+            string listUsers = "SELECT UserName FROM [User]";
 
             try
             {
                 comboBoxUsers.OpenConnection();
-                dr = comboBoxUsers.DataReader(listUsers);
+                dr = comboBoxUsers.DataReader(listAccounts);
                 while (dr.Read())
                 {
                     string text = dr["AccountName"].ToString();
                     this.comboBox1.Items.Add(text);
                 }
 
+                //This "resets" the connection
+                comboBoxUsers.CloseConnection();
+                comboBoxUsers.OpenConnection();
+
+                dr2 = comboBoxUsers.DataReader(listUsers);
+                while (dr2.Read())
+                {
+                    string text = dr2["UserName"].ToString();
+                    comboBox2.Items.Add(text);
+                }
             }
             catch (SqlException ex)
             {
@@ -65,7 +77,8 @@ namespace Budgeting_Application
 
             //This takes the transaction data from the DB and displays it in dataGridView1
             DbConnection fetchTransactions = new DbConnection();
-            string selectTransactions = "SELECT * FROM [Transaction] WHERE OwnerName = '" + Program.selectedUserName.ToString() + "'";
+            string selectTransactions = "SELECT * FROM [Transaction] WHERE PayerName = '" + Program.selectedUserName.ToString() + "'";
+
 
             try
             {
@@ -124,8 +137,8 @@ namespace Budgeting_Application
 
         private void buttonAddEvent_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, textBox7.Text, textBox6.Text, dateTimePicker1.Value, textBox2.Text, textBox3.Text, textBox4.Text);
-            string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + textBox7.Text + "', '" + textBox6.Text + "', '" + dateTimePicker1.Value + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
+            dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, Program.selectedUserName, comboBox2.Text, dateTimePicker1.Value, textBox2.Text, textBox3.Text, textBox4.Text);
+            string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + Program.selectedUserName + "', '" + comboBox2.Text + "', '" + dateTimePicker1.Value + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
             DbConnection insertToDb = new DbConnection();
 
             try
@@ -193,6 +206,34 @@ namespace Budgeting_Application
             int rowIndex = dataGridView1.CurrentRow.Index;
             dataGridView1.Rows.RemoveAt(rowIndex);
             
+        }
+
+        private void ownedTransactionsButton_Click(object sender, EventArgs e)
+        {
+            string selectTransactions = "SELECT * FROM [Transaction] WHERE OwnerName = '" + Program.selectedUserName.ToString() + "'";
+            DbConnection fetchOwnedTransactions = new DbConnection();
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+
+            try
+            {
+                fetchOwnedTransactions.OpenConnection();
+                dr = fetchOwnedTransactions.DataReader(selectTransactions);
+
+                while (dr.Read())
+                {
+                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                fetchOwnedTransactions.CloseConnection();
+                oldRowCount = dataGridView1.Rows.Count;
+            }
         }
     }
 }

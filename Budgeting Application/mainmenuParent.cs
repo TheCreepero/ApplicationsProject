@@ -15,6 +15,8 @@ namespace Budgeting_Application
     {
         SqlDataReader dr;
         SqlDataReader dr2;
+        SqlDataReader dr3;
+        SqlDataReader dr4;
         int oldRowCount;
         string welcomeLabel = "Welcome, " + Convert.ToString(Program.selectedUserName) + "!";
 
@@ -58,6 +60,26 @@ namespace Budgeting_Application
                     string users = dr2["UserName"].ToString();
                     this.comboBox2.Items.Add(users);
                 }
+
+                comboBoxUsers.CloseConnection();
+                comboBoxUsers.OpenConnection();
+
+                dr3 = comboBoxUsers.DataReader(listUsers);
+                while (dr3.Read())
+                {
+                    string users = dr3["UserName"].ToString();
+                    comboBox3.Items.Add(users);
+                }
+
+                comboBoxUsers.CloseConnection();
+                comboBoxUsers.OpenConnection();
+
+                dr4 = comboBoxUsers.DataReader(listUsers);
+                while (dr4.Read())
+                {
+                    string users = dr4["UserName"].ToString();
+                    comboBox4.Items.Add(users);
+                }
             }
             catch (SqlException ex)
             {
@@ -77,7 +99,7 @@ namespace Budgeting_Application
 
             //This takes the transaction data from the DB and displays it in dataGridView1
             DbConnection fetchTransactions = new DbConnection();
-            string selectTransactions = "SELECT * FROM [Transaction] WHERE OwnerName = '" + comboBox2.SelectedItem.ToString() + "'";
+            string selectTransactions = "SELECT * FROM [Transaction] WHERE PayerName = '" + comboBox2.SelectedItem.ToString() + "'";
 
             //This "if" structure is needed for the selection of all transactions
             string userSelection = comboBox2.SelectedItem.ToString();            
@@ -143,8 +165,8 @@ namespace Budgeting_Application
 
         private void buttonAddEvent_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, textBox7.Text, textBox6.Text, dateTimePicker1.Value, textBox2.Text, textBox3.Text, textBox4.Text);
-            string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + textBox7.Text + "', '" + textBox6.Text + "', '" + dateTimePicker1.Value + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
+            dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, comboBox3.Text, comboBox4.Text, dateTimePicker1.Value, textBox2.Text, textBox3.Text, textBox4.Text);
+            string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + comboBox3.Text + "', '" + comboBox4.Text + "', '" + dateTimePicker1.Value + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
             DbConnection insertToDb = new DbConnection();
 
             try
