@@ -14,6 +14,7 @@ namespace Budgeting_Application
     public partial class mainmenuAdmin : Form
     {
         SqlDataReader dr;
+        SqlDataReader dr2;
         int oldRowCount;
         string welcomeLabel = "Welcome, " + Convert.ToString(Program.selectedUserName) + "!";
 
@@ -22,6 +23,7 @@ namespace Budgeting_Application
             InitializeComponent();
             label1.Text = welcomeLabel;
             BindData();
+            comboBox2.Items.Add("All");
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -34,18 +36,28 @@ namespace Budgeting_Application
         public void BindData()
         {
             DbConnection comboBoxUsers = new DbConnection();
-            string listUsers = "SELECT AccountName FROM [Account]";
-
+            string listAccounts = "SELECT AccountName FROM [Account]";
+            string listUsers = "SELECT UserName FROM [User]";
             try
             {
                 comboBoxUsers.OpenConnection();
-                dr = comboBoxUsers.DataReader(listUsers);
+                dr = comboBoxUsers.DataReader(listAccounts);
                 while (dr.Read())
                 {
-                    string text = dr["AccountName"].ToString();
-                    this.comboBox1.Items.Add(text);
-                }
+                    string accounts = dr["AccountName"].ToString();
+                    this.comboBox1.Items.Add(accounts);
 
+                }
+                //"Resets" the connection
+                comboBoxUsers.CloseConnection();
+                comboBoxUsers.OpenConnection();
+
+                dr2 = comboBoxUsers.DataReader(listUsers);
+                while (dr2.Read())
+                {
+                    string users = dr2["UserName"].ToString();
+                    this.comboBox2.Items.Add(users);
+                }
             }
             catch (SqlException ex)
             {
@@ -65,7 +77,15 @@ namespace Budgeting_Application
 
             //This takes the transaction data from the DB and displays it in dataGridView1
             DbConnection fetchTransactions = new DbConnection();
-            string selectTransactions = "SELECT * FROM [Transaction] WHERE OwnerName = '" + Program.selectedUserName.ToString() + "'";
+
+            //This is needed for the selection of all transactions
+            string userSelection = comboBox2.SelectedItem.ToString();
+            string selectTransactions = "SELECT * FROM [Transaction] WHERE OwnerName = '" + comboBox2.SelectedItem.ToString() + "'";
+
+            if (userSelection == "All")
+            {
+                selectTransactions = "SELECT * FROM [Transaction]";
+            }
 
             try
             {
