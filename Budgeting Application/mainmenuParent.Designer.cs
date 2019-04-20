@@ -33,6 +33,15 @@
             this.mainDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainDBDataSet = new Budgeting_Application.ApplicationData.MainDBDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payerid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.owner = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receiver = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EventID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fetchTransactions = new System.Windows.Forms.Button();
             this.exitbutton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -58,23 +67,19 @@
             this.balanceLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payerid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.owner = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receiver = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EventID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.filterCategoryCB = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.filterButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -124,6 +129,70 @@
             this.dataGridView1.Size = new System.Drawing.Size(882, 414);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
+            // 
+            // amount
+            // 
+            this.amount.FillWeight = 51.76816F;
+            this.amount.HeaderText = "Amount";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            // 
+            // accountid
+            // 
+            this.accountid.FillWeight = 45.46315F;
+            this.accountid.HeaderText = "Category";
+            this.accountid.Name = "accountid";
+            this.accountid.ReadOnly = true;
+            // 
+            // payerid
+            // 
+            this.payerid.FillWeight = 45.46315F;
+            this.payerid.HeaderText = "User Account";
+            this.payerid.Name = "payerid";
+            this.payerid.ReadOnly = true;
+            // 
+            // owner
+            // 
+            this.owner.FillWeight = 45.46315F;
+            this.owner.HeaderText = "Owner";
+            this.owner.Name = "owner";
+            this.owner.ReadOnly = true;
+            // 
+            // date
+            // 
+            this.date.FillWeight = 45.46315F;
+            this.date.HeaderText = "Date";
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            // 
+            // receiver
+            // 
+            this.receiver.FillWeight = 45.46315F;
+            this.receiver.HeaderText = "Receiver";
+            this.receiver.Name = "receiver";
+            this.receiver.ReadOnly = true;
+            // 
+            // product
+            // 
+            this.product.FillWeight = 45.46315F;
+            this.product.HeaderText = "Product";
+            this.product.Name = "product";
+            this.product.ReadOnly = true;
+            // 
+            // description
+            // 
+            this.description.FillWeight = 45.46315F;
+            this.description.HeaderText = "Description";
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            // 
+            // EventID
+            // 
+            this.EventID.FillWeight = 10F;
+            this.EventID.HeaderText = "ID";
+            this.EventID.Name = "EventID";
+            this.EventID.ReadOnly = true;
+            this.EventID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // fetchTransactions
             // 
@@ -336,70 +405,6 @@
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 32;
             // 
-            // amount
-            // 
-            this.amount.FillWeight = 51.76816F;
-            this.amount.HeaderText = "Amount";
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
-            // 
-            // accountid
-            // 
-            this.accountid.FillWeight = 45.46315F;
-            this.accountid.HeaderText = "Category";
-            this.accountid.Name = "accountid";
-            this.accountid.ReadOnly = true;
-            // 
-            // payerid
-            // 
-            this.payerid.FillWeight = 45.46315F;
-            this.payerid.HeaderText = "User Account";
-            this.payerid.Name = "payerid";
-            this.payerid.ReadOnly = true;
-            // 
-            // owner
-            // 
-            this.owner.FillWeight = 45.46315F;
-            this.owner.HeaderText = "Owner";
-            this.owner.Name = "owner";
-            this.owner.ReadOnly = true;
-            // 
-            // date
-            // 
-            this.date.FillWeight = 45.46315F;
-            this.date.HeaderText = "Date";
-            this.date.Name = "date";
-            this.date.ReadOnly = true;
-            // 
-            // receiver
-            // 
-            this.receiver.FillWeight = 45.46315F;
-            this.receiver.HeaderText = "Receiver";
-            this.receiver.Name = "receiver";
-            this.receiver.ReadOnly = true;
-            // 
-            // product
-            // 
-            this.product.FillWeight = 45.46315F;
-            this.product.HeaderText = "Product";
-            this.product.Name = "product";
-            this.product.ReadOnly = true;
-            // 
-            // description
-            // 
-            this.description.FillWeight = 45.46315F;
-            this.description.HeaderText = "Description";
-            this.description.Name = "description";
-            this.description.ReadOnly = true;
-            // 
-            // EventID
-            // 
-            this.EventID.FillWeight = 10F;
-            this.EventID.HeaderText = "ID";
-            this.EventID.Name = "EventID";
-            this.EventID.ReadOnly = true;
-            this.EventID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
@@ -416,11 +421,50 @@
             this.comboBox4.Size = new System.Drawing.Size(134, 21);
             this.comboBox4.TabIndex = 34;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.filterButton);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.filterCategoryCB);
+            this.groupBox1.Location = new System.Drawing.Point(15, 496);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(792, 90);
+            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabStop = false;
+            // 
+            // filterCategoryCB
+            // 
+            this.filterCategoryCB.FormattingEnabled = true;
+            this.filterCategoryCB.Location = new System.Drawing.Point(6, 32);
+            this.filterCategoryCB.Name = "filterCategoryCB";
+            this.filterCategoryCB.Size = new System.Drawing.Size(121, 21);
+            this.filterCategoryCB.TabIndex = 37;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Category";
+            // 
+            // filterButton
+            // 
+            this.filterButton.Location = new System.Drawing.Point(728, 21);
+            this.filterButton.Name = "filterButton";
+            this.filterButton.Size = new System.Drawing.Size(58, 52);
+            this.filterButton.TabIndex = 38;
+            this.filterButton.Text = "Refresh";
+            this.filterButton.UseVisualStyleBackColor = true;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
+            // 
             // mainmenuParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 598);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
@@ -456,6 +500,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -503,5 +549,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EventID;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox filterCategoryCB;
+        private System.Windows.Forms.Button filterButton;
     }
 }

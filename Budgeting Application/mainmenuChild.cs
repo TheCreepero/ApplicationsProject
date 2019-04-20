@@ -16,7 +16,11 @@ namespace Budgeting_Application
         SqlDataReader dr;
         SqlDataReader dr2;
         int oldRowCount;
+
+        //Command strings are here so that they can be accessed by all the methods
         string welcomeLabel = "Welcome, " + Convert.ToString(Program.selectedUserName) + "!";
+        string listAccounts = "SELECT AccountName FROM [Account]";
+        string listUsers = "SELECT UserName FROM [User]";
 
         public mainmenuChild()
         {
@@ -35,8 +39,7 @@ namespace Budgeting_Application
         public void BindData()
         {
             DbConnection comboBoxUsers = new DbConnection();
-            string listAccounts = "SELECT AccountName FROM [Account]";
-            string listUsers = "SELECT UserName FROM [User]";
+            
 
             try
             {
@@ -101,6 +104,7 @@ namespace Budgeting_Application
             }
 
             //This counts the sum of all transactions and shows it in a label below the DataGrid
+            //THIS NEEDS TO BE REPLACED WITH A BETTER SYSTEM
             int sum = 0;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
@@ -210,6 +214,7 @@ namespace Budgeting_Application
 
         private void ownedTransactionsButton_Click(object sender, EventArgs e)
         {
+            //Child users aren't allowed to see other users' accounts, except for those that are purchased FOR the child user. This achieves that.
             string selectTransactions = "SELECT * FROM [Transaction] WHERE OwnerName = '" + Program.selectedUserName.ToString() + "'";
             DbConnection fetchOwnedTransactions = new DbConnection();
             dataGridView1.Rows.Clear();

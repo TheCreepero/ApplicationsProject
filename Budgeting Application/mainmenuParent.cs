@@ -48,6 +48,7 @@ namespace Budgeting_Application
                 {
                     string accounts = dr["AccountName"].ToString();
                     this.comboBox1.Items.Add(accounts);
+                    filterCategoryCB.Items.Add(accounts);
 
                 }
                 //"Resets" the connection
@@ -234,6 +235,43 @@ namespace Budgeting_Application
             int rowIndex = dataGridView1.CurrentRow.Index;
             dataGridView1.Rows.RemoveAt(rowIndex);
             
+        }
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+
+            //This structure needs to be changed for the child user so that not choosing any filters doesn't show ALL transactions.
+            string filterQuery = "SELECT * FROM [Transaction]";
+
+            if (filterCategoryCB != null)
+            {
+                filterQuery = "SELECT * FROM [Transaction] WHERE AccountName = '" + filterCategoryCB.Text + "' AND PayerName = '" + comboBox2.Text + "'";
+            }
+            if (filterCategoryCB == null)
+            {
+                MessageBox.Show("No filters selected. Showing all transactions.");
+            }
+
+            DbConnection filterConnection = new DbConnection();
+            try
+            {
+                filterConnection.OpenConnection();
+                dr = filterConnection.DataReader(filterQuery);
+
+                while (dr.Read())
+                {
+                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                filterConnection.CloseConnection();
+            }
         }
     }
 }
