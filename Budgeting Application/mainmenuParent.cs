@@ -150,11 +150,9 @@ namespace Budgeting_Application
 
         private void buttonAddEvent_Click(object sender, EventArgs e)
         {
-            DateTime selectedDate = Convert.ToDateTime(dateTimePicker1.Text);
-
             //The date function doesn't work!
-            dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, comboBox3.Text, comboBox4.Text, DateTime.Today, textBox2.Text, textBox3.Text, textBox4.Text);
-            string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + comboBox3.Text + "', '" + comboBox4.Text + "', '" + DateTime.Today + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
+            dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, comboBox3.Text, comboBox4.Text, dateTimePicker1.Value.ToString("MM.dd.yyyy"), textBox2.Text, textBox3.Text, textBox4.Text);
+            string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + comboBox3.Text + "', '" + comboBox4.Text + "', '" + dateTimePicker1.Value.ToString("MM.dd.yyyy") + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
             DbConnection insertToDb = new DbConnection();
 
             try
