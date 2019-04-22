@@ -70,9 +70,15 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.filterCategoryCB = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.filterButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.filterCategoryCB = new System.Windows.Forms.ComboBox();
+            this.filterOwnerCB = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -298,7 +304,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "dd.mm.yyyy";
+            this.dateTimePicker1.CustomFormat = "dd.MM.yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(903, 271);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -423,6 +429,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.dateTimePicker3);
+            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.filterOwnerCB);
             this.groupBox1.Controls.Add(this.filterButton);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.filterCategoryCB);
@@ -431,23 +443,7 @@
             this.groupBox1.Size = new System.Drawing.Size(792, 90);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
-            // 
-            // filterCategoryCB
-            // 
-            this.filterCategoryCB.FormattingEnabled = true;
-            this.filterCategoryCB.Location = new System.Drawing.Point(6, 32);
-            this.filterCategoryCB.Name = "filterCategoryCB";
-            this.filterCategoryCB.Size = new System.Drawing.Size(121, 21);
-            this.filterCategoryCB.TabIndex = 37;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "Category";
+            this.groupBox1.Text = "Filter";
             // 
             // filterButton
             // 
@@ -458,6 +454,74 @@
             this.filterButton.Text = "Refresh";
             this.filterButton.UseVisualStyleBackColor = true;
             this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Category";
+            // 
+            // filterCategoryCB
+            // 
+            this.filterCategoryCB.FormattingEnabled = true;
+            this.filterCategoryCB.Location = new System.Drawing.Point(6, 33);
+            this.filterCategoryCB.Name = "filterCategoryCB";
+            this.filterCategoryCB.Size = new System.Drawing.Size(105, 21);
+            this.filterCategoryCB.TabIndex = 37;
+            // 
+            // filterOwnerCB
+            // 
+            this.filterOwnerCB.FormattingEnabled = true;
+            this.filterOwnerCB.Location = new System.Drawing.Point(117, 33);
+            this.filterOwnerCB.Name = "filterOwnerCB";
+            this.filterOwnerCB.Size = new System.Drawing.Size(95, 21);
+            this.filterOwnerCB.TabIndex = 36;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(114, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 39;
+            this.label5.Text = "Owner";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(218, 34);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(127, 20);
+            this.dateTimePicker2.TabIndex = 40;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Location = new System.Drawing.Point(367, 34);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(125, 20);
+            this.dateTimePicker3.TabIndex = 41;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(351, 36);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(10, 13);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "-";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(341, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 43;
+            this.label7.Text = "Date";
             // 
             // mainmenuParent
             // 
@@ -493,7 +557,7 @@
             this.Controls.Add(this.label1);
             this.Name = "mainmenuParent";
             this.Text = "Budgeting Application - Parent User";
-            this.Load += new System.EventHandler(this.mainmenuChild_Load);
+            this.Load += new System.EventHandler(this.mainmenuParent_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -553,5 +617,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox filterCategoryCB;
         private System.Windows.Forms.Button filterButton;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox filterOwnerCB;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.Label label7;
     }
 }

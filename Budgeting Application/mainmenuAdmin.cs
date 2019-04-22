@@ -169,7 +169,7 @@ namespace Budgeting_Application
 
         }
 
-        private void mainmenuChild_Load(object sender, EventArgs e)
+        private void mainmenuAdmin_Load(object sender, EventArgs e)
         {
             eventTable.Columns.Add("Amount", typeof(float));
             eventTable.Columns.Add("Account Name", typeof(string));

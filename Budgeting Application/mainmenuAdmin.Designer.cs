@@ -447,7 +447,7 @@
             this.Controls.Add(this.label1);
             this.Name = "mainmenuParent";
             this.Text = "Budgeting Application - Parent User";
-            this.Load += new System.EventHandler(this.mainmenuChild_Load);
+            this.Load += new System.EventHandler(this.mainmenuAdmin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

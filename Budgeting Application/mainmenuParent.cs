@@ -17,6 +17,7 @@ namespace Budgeting_Application
         SqlDataReader dr2;
         SqlDataReader dr3;
         SqlDataReader dr4;
+        SqlDataReader dr5;
         int oldRowCount;
         string welcomeLabel = "Welcome, " + Convert.ToString(Program.selectedUserName) + "!";
 
@@ -60,27 +61,10 @@ namespace Budgeting_Application
                 {
                     string users = dr2["UserName"].ToString();
                     this.comboBox2.Items.Add(users);
-                }
-
-                comboBoxUsers.CloseConnection();
-                comboBoxUsers.OpenConnection();
-
-                dr3 = comboBoxUsers.DataReader(listUsers);
-                while (dr3.Read())
-                {
-                    string users = dr3["UserName"].ToString();
                     comboBox3.Items.Add(users);
-                }
-
-                comboBoxUsers.CloseConnection();
-                comboBoxUsers.OpenConnection();
-
-                dr4 = comboBoxUsers.DataReader(listUsers);
-                while (dr4.Read())
-                {
-                    string users = dr4["UserName"].ToString();
                     comboBox4.Items.Add(users);
-                }
+                    filterOwnerCB.Items.Add(users);
+                }               
             }
             catch (SqlException ex)
             {
@@ -166,8 +150,11 @@ namespace Budgeting_Application
 
         private void buttonAddEvent_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, comboBox3.Text, comboBox4.Text, dateTimePicker1.Value, textBox2.Text, textBox3.Text, textBox4.Text);
-            string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + comboBox3.Text + "', '" + comboBox4.Text + "', '" + dateTimePicker1.Value + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
+            DateTime selectedDate = Convert.ToDateTime(dateTimePicker1.Text);
+
+            //The date function doesn't work!
+            dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, comboBox3.Text, comboBox4.Text, DateTime.Today, textBox2.Text, textBox3.Text, textBox4.Text);
+            string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + comboBox3.Text + "', '" + comboBox4.Text + "', '" + DateTime.Today + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
             DbConnection insertToDb = new DbConnection();
 
             try
@@ -191,7 +178,7 @@ namespace Budgeting_Application
 
         }
 
-        private void mainmenuChild_Load(object sender, EventArgs e)
+        private void mainmenuParent_Load(object sender, EventArgs e)
         {
             eventTable.Columns.Add("Amount", typeof(float));
             eventTable.Columns.Add("Account Name", typeof(string));
@@ -201,6 +188,7 @@ namespace Budgeting_Application
             eventTable.Columns.Add("Receiver", typeof(string));
             eventTable.Columns.Add("Product Name", typeof(string));
             eventTable.Columns.Add("Description", typeof(string));
+            //filterCategoryCB.SelectedItem = null;
         }
 
         private void balanceLabel_Click(object sender, EventArgs e)
@@ -243,16 +231,33 @@ namespace Budgeting_Application
 
             //This structure needs to be changed for the child user so that not choosing any filters doesn't show ALL transactions.
             string filterQuery = "SELECT * FROM [Transaction]";
+            string activeUser = comboBox2.Text;
 
+            //This constructs a query based on the filter selections
             if (filterCategoryCB != null)
             {
                 filterQuery = "SELECT * FROM [Transaction] WHERE AccountName = '" + filterCategoryCB.Text + "' AND PayerName = '" + comboBox2.Text + "'";
+                if (activeUser == "All")
+                {
+                    filterQuery = "SELECT * FROM [Transaction] WHERE AccountName = '" + filterCategoryCB.Text + "'";
+                }
+                if (filterOwnerCB != null)
+                {
+                    filterQuery = "SELECT * FROM [Transaction] WHERE AccountName = '" + filterCategoryCB.Text + "' AND OwnerName = '" + filterOwnerCB.Text + "' AND PayerName = '" + comboBox2.Text + "'";
+                    if (activeUser == "All")
+                    {
+                        filterQuery = "SELECT * FROM [Transaction] WHERE AccountName = '" + filterCategoryCB.Text + "' AND OwnerName = '" + filterOwnerCB.Text + "'";
+                    }
+                }
             }
-            if (filterCategoryCB == null)
+            else if (filterOwnerCB != null)
             {
-                MessageBox.Show("No filters selected. Showing all transactions.");
+                filterQuery = "SELECT * FROM [Transaction] WHERE OwnerName = '" + filterOwnerCB.Text + "' AND PayerName = '" + comboBox2.Text + "'";
+                if (activeUser == "All")
+                {
+                    filterQuery = "SELECT * FROM [Transaction] WHERE OwnerName = '" + filterOwnerCB.Text + "'";
+                }
             }
-
             DbConnection filterConnection = new DbConnection();
             try
             {
@@ -272,6 +277,16 @@ namespace Budgeting_Application
             {
                 filterConnection.CloseConnection();
             }
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
