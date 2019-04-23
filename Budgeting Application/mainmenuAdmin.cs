@@ -15,9 +15,6 @@ namespace Budgeting_Application
     {
         SqlDataReader dr;
         SqlDataReader dr2;
-        SqlDataReader dr3;
-        SqlDataReader dr4;
-        SqlDataReader dr5;
         int oldRowCount;
         string welcomeLabel = "Welcome, " + Convert.ToString(Program.selectedUserName) + "!";
 
@@ -26,6 +23,7 @@ namespace Budgeting_Application
             InitializeComponent();
             label1.Text = welcomeLabel;
             BindData();
+            LoadAccountInfo();
             comboBox2.Items.Add("All");
             filterCategoryCB.Items.Add("Any");
             filterOwnerCB.Items.Add("Any");
@@ -78,6 +76,46 @@ namespace Budgeting_Application
             }
         }
 
+        public void LoadAccountInfo()
+        {
+            userNameLabel.Text = Program.selectedUserName.ToString();
+            string balanceQuery = "SELECT Amount from [Transaction] WHERE PayerName = '" + Program.selectedUserName.ToString() + "'";
+            DbConnection loadBalance = new DbConnection();
+            double sum = 0;
+            double incomeSum = 0;
+            double expenseSum = 0;
+            try
+            {
+                loadBalance.OpenConnection();
+                dr = loadBalance.DataReader(balanceQuery);
+                while (dr.Read())
+                {
+                    sum += Convert.ToDouble(dr["Amount"]);
+                    if (Convert.ToDouble(dr["Amount"]) > 0)
+                    {
+                        incomeSum += Convert.ToDouble(dr["Amount"]);
+                    }
+                    else if (Convert.ToDouble(dr["Amount"]) < 0)
+                    {
+                        expenseSum += Convert.ToDouble(dr["Amount"]);
+                    }
+                }
+                accBalLabel.Text = sum.ToString() + "€";
+                incomeLabel.Text = incomeSum.ToString() + "€";
+                expenseLabel.Text = expenseSum.ToString() + "€";
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                loadBalance.CloseConnection();
+            }
+            
+            
+        }
+
         private void fetchTransactions_Click(object sender, EventArgs e)
         {
             //This clears any existing records from the DataGrid before new data is loaded in
@@ -103,6 +141,7 @@ namespace Budgeting_Application
                 while (dr.Read())
                 {
                     dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());
+                    
                 }
             }
             catch (SqlException ex)
@@ -116,10 +155,10 @@ namespace Budgeting_Application
             }
 
             //This counts the sum of all transactions and shows it in a label below the DataGrid
-            int sum = 0;
+            double sum = 0;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
+                sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
             }
          
             balanceLabel.Text = sum.ToString() + '€';
@@ -170,6 +209,15 @@ namespace Budgeting_Application
             {
                 dataGridView1.Refresh();
                 insertToDb.CloseConnection();
+
+                double sum = 0;
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                }
+
+                balanceLabel.Text = sum.ToString() + '€';
+                LoadAccountInfo();
             }
         }
 
@@ -218,6 +266,14 @@ namespace Budgeting_Application
                 {
                     dataGridView1.Refresh();
                     deleteRow.CloseConnection();
+
+                    double sum = 0;
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                    }
+
+                    balanceLabel.Text = sum.ToString() + '€';
                 }
             }
 
@@ -287,6 +343,14 @@ namespace Budgeting_Application
             finally
             {
                 filterConnection.CloseConnection();
+
+                double sum = 0;
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                }
+
+                balanceLabel.Text = sum.ToString() + '€';
             }
         }
 
@@ -336,18 +400,8 @@ namespace Budgeting_Application
                     filterDateQuery = "SELECT * FROM [Transaction] WHERE OwnerName = '" + filterOwnerCB.Text + "' AND Date BETWEEN '" + dateTimePicker2.Value.ToString("MM.dd.yyyy") + "' AND '" + dateTimePicker3.Value.ToString("MM.dd.yyyy") + "'";
                 }
             }
-            /*
-            else
-            {
-                filterDateQuery = "SELECT * FROM [Transaction] WHERE Date BETWEEN '" + dateTimePicker2.Value.ToString("MM.dd.yyyy") + "' AND '" + dateTimePicker3.Value.ToString("MM.dd.yyyy") + "'";
-                if (comboBox2.Text == "All")
-                {
-                    filterDateQuery = "SELECT * FROM [Transaction]";
-                }
-            }
-            */
-            DbConnection filterDatesConn = new DbConnection();
 
+            DbConnection filterDatesConn = new DbConnection();
             try
             {
                 filterDatesConn.OpenConnection();
@@ -364,6 +418,14 @@ namespace Budgeting_Application
             finally
             {
                 filterDatesConn.CloseConnection();
+
+                double sum = 0;
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                }
+
+                balanceLabel.Text = sum.ToString() + '€';
             }
         }
     }
