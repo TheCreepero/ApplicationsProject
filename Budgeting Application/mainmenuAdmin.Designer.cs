@@ -90,6 +90,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.accBalLabel = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.optionsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -225,7 +226,7 @@
             // 
             // exitbutton
             // 
-            this.exitbutton.Location = new System.Drawing.Point(1094, 563);
+            this.exitbutton.Location = new System.Drawing.Point(1094, 559);
             this.exitbutton.Name = "exitbutton";
             this.exitbutton.Size = new System.Drawing.Size(75, 23);
             this.exitbutton.TabIndex = 3;
@@ -649,11 +650,22 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Balance:";
             // 
+            // optionsButton
+            // 
+            this.optionsButton.Location = new System.Drawing.Point(1094, 530);
+            this.optionsButton.Name = "optionsButton";
+            this.optionsButton.Size = new System.Drawing.Size(75, 23);
+            this.optionsButton.TabIndex = 46;
+            this.optionsButton.Text = "Options";
+            this.optionsButton.UseVisualStyleBackColor = true;
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
+            // 
             // mainmenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1181, 598);
+            this.ClientSize = new System.Drawing.Size(1181, 589);
+            this.Controls.Add(this.optionsButton);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -766,5 +778,6 @@
         private System.Windows.Forms.Label incomeLabel;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button optionsButton;
     }
 }

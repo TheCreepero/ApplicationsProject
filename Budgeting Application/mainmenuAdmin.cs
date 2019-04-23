@@ -191,7 +191,7 @@ namespace Budgeting_Application
 
         private void buttonAddEvent_Click(object sender, EventArgs e)
         {
-            //The date function doesn't work!
+            //The date function works only with American formatting (MM.dd.yyyy)
             dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, comboBox3.Text, comboBox4.Text, dateTimePicker1.Value.ToString("MM.dd.yyyy"), textBox2.Text, textBox3.Text, textBox4.Text);
             string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + comboBox3.Text + "', '" + comboBox4.Text + "', '" + dateTimePicker1.Value.ToString("MM.dd.yyyy") + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
             DbConnection insertToDb = new DbConnection();
@@ -427,6 +427,12 @@ namespace Budgeting_Application
 
                 balanceLabel.Text = sum.ToString() + '€';
             }
+        }
+
+        private void optionsButton_Click(object sender, EventArgs e)
+        {
+            Options options = new Options();
+            options.ShowDialog();
         }
     }
 }

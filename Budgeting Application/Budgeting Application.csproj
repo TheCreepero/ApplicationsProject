@@ -92,6 +92,12 @@
     <Compile Include="mainmenuParent.Designer.cs">
       <DependentUpon>mainmenuParent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Options.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Options.Designer.cs">
+      <DependentUpon>Options.cs</DependentUpon>
+    </Compile>
     <Compile Include="Parent.cs" />
     <Compile Include="Program.cs">
       <SubType>Form</SubType>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mainmenuParent.resx">
       <DependentUpon>mainmenuParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options.resx">
+      <DependentUpon>Options.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Program.resx">
       <DependentUpon>Program.cs</DependentUpon>
