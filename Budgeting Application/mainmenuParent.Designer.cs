@@ -70,17 +70,26 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.filterOwnerCB = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.filterCategoryCB = new System.Windows.Forms.ComboBox();
+            this.filterButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.filterOwnerCB = new System.Windows.Forms.ComboBox();
-            this.filterButton = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.filterCategoryCB = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.filterDatesButton = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.accBalLabel = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.userNameLabel = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.incomeLabel = new System.Windows.Forms.Label();
+            this.expenseLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -89,6 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -382,14 +392,14 @@
             this.balanceTitle.AutoSize = true;
             this.balanceTitle.Location = new System.Drawing.Point(12, 480);
             this.balanceTitle.Name = "balanceTitle";
-            this.balanceTitle.Size = new System.Drawing.Size(73, 13);
+            this.balanceTitle.Size = new System.Drawing.Size(130, 13);
             this.balanceTitle.TabIndex = 29;
-            this.balanceTitle.Text = "Your balance:";
+            this.balanceTitle.Text = "Balance of shown events:";
             // 
             // balanceLabel
             // 
             this.balanceLabel.AutoSize = true;
-            this.balanceLabel.Location = new System.Drawing.Point(91, 480);
+            this.balanceLabel.Location = new System.Drawing.Point(139, 480);
             this.balanceLabel.Name = "balanceLabel";
             this.balanceLabel.Size = new System.Drawing.Size(136, 13);
             this.balanceLabel.TabIndex = 30;
@@ -444,6 +454,50 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(114, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 39;
+            this.label5.Text = "Owner";
+            // 
+            // filterOwnerCB
+            // 
+            this.filterOwnerCB.FormattingEnabled = true;
+            this.filterOwnerCB.Location = new System.Drawing.Point(117, 33);
+            this.filterOwnerCB.Name = "filterOwnerCB";
+            this.filterOwnerCB.Size = new System.Drawing.Size(95, 21);
+            this.filterOwnerCB.TabIndex = 36;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Category";
+            // 
+            // filterCategoryCB
+            // 
+            this.filterCategoryCB.FormattingEnabled = true;
+            this.filterCategoryCB.Location = new System.Drawing.Point(6, 33);
+            this.filterCategoryCB.Name = "filterCategoryCB";
+            this.filterCategoryCB.Size = new System.Drawing.Size(105, 21);
+            this.filterCategoryCB.TabIndex = 37;
+            // 
+            // filterButton
+            // 
+            this.filterButton.Location = new System.Drawing.Point(225, 11);
+            this.filterButton.Name = "filterButton";
+            this.filterButton.Size = new System.Drawing.Size(58, 52);
+            this.filterButton.TabIndex = 38;
+            this.filterButton.Text = "Refresh";
+            this.filterButton.UseVisualStyleBackColor = true;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -482,50 +536,6 @@
             this.dateTimePicker2.TabIndex = 40;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(114, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
-            this.label5.TabIndex = 39;
-            this.label5.Text = "Owner";
-            // 
-            // filterOwnerCB
-            // 
-            this.filterOwnerCB.FormattingEnabled = true;
-            this.filterOwnerCB.Location = new System.Drawing.Point(117, 33);
-            this.filterOwnerCB.Name = "filterOwnerCB";
-            this.filterOwnerCB.Size = new System.Drawing.Size(95, 21);
-            this.filterOwnerCB.TabIndex = 36;
-            // 
-            // filterButton
-            // 
-            this.filterButton.Location = new System.Drawing.Point(225, 11);
-            this.filterButton.Name = "filterButton";
-            this.filterButton.Size = new System.Drawing.Size(58, 52);
-            this.filterButton.TabIndex = 38;
-            this.filterButton.Text = "Refresh";
-            this.filterButton.UseVisualStyleBackColor = true;
-            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "Category";
-            // 
-            // filterCategoryCB
-            // 
-            this.filterCategoryCB.FormattingEnabled = true;
-            this.filterCategoryCB.Location = new System.Drawing.Point(6, 33);
-            this.filterCategoryCB.Name = "filterCategoryCB";
-            this.filterCategoryCB.Size = new System.Drawing.Size(105, 21);
-            this.filterCategoryCB.TabIndex = 37;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.filterDatesButton);
@@ -549,11 +559,102 @@
             this.filterDatesButton.UseVisualStyleBackColor = true;
             this.filterDatesButton.Click += new System.EventHandler(this.filterDatesButton_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.expenseLabel);
+            this.groupBox3.Controls.Add(this.incomeLabel);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.userNameLabel);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.accBalLabel);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(676, 514);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(360, 68);
+            this.groupBox3.TabIndex = 45;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Account Information";
+            // 
+            // accBalLabel
+            // 
+            this.accBalLabel.AutoSize = true;
+            this.accBalLabel.Location = new System.Drawing.Point(61, 36);
+            this.accBalLabel.Name = "accBalLabel";
+            this.accBalLabel.Size = new System.Drawing.Size(10, 13);
+            this.accBalLabel.TabIndex = 1;
+            this.accBalLabel.Text = "-";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 36);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Balance:";
+            // 
+            // userNameLabel
+            // 
+            this.userNameLabel.AutoSize = true;
+            this.userNameLabel.Location = new System.Drawing.Point(87, 16);
+            this.userNameLabel.Name = "userNameLabel";
+            this.userNameLabel.Size = new System.Drawing.Size(10, 13);
+            this.userNameLabel.TabIndex = 3;
+            this.userNameLabel.Text = "-";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 16);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(75, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "User Account:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(164, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(50, 13);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Incomes:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(164, 36);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 13);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Expenses:";
+            // 
+            // incomeLabel
+            // 
+            this.incomeLabel.AutoSize = true;
+            this.incomeLabel.Location = new System.Drawing.Point(226, 16);
+            this.incomeLabel.Name = "incomeLabel";
+            this.incomeLabel.Size = new System.Drawing.Size(10, 13);
+            this.incomeLabel.TabIndex = 6;
+            this.incomeLabel.Text = "-";
+            // 
+            // expenseLabel
+            // 
+            this.expenseLabel.AutoSize = true;
+            this.expenseLabel.Location = new System.Drawing.Point(226, 36);
+            this.expenseLabel.Name = "expenseLabel";
+            this.expenseLabel.Size = new System.Drawing.Size(10, 13);
+            this.expenseLabel.TabIndex = 7;
+            this.expenseLabel.Text = "-";
+            // 
             // mainmenuParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 598);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBox4);
@@ -595,6 +696,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -654,5 +757,14 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button filterDatesButton;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label accBalLabel;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label userNameLabel;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label expenseLabel;
+        private System.Windows.Forms.Label incomeLabel;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
     }
 }
