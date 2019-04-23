@@ -243,7 +243,7 @@ namespace Budgeting_Application
                 {
                     filterQuery = "SELECT * FROM [Transaction] WHERE AccountName = '" + filterCategoryCB.Text + "'";
                 }
-                else if (filterOwnerCB.Text != "Any")
+                if (filterOwnerCB.Text != "Any")
                 {
                     filterQuery = "SELECT * FROM [Transaction] WHERE AccountName = '" + filterCategoryCB.Text + "' AND OwnerName = '" + filterOwnerCB.Text + "' AND PayerName = '" + comboBox2.Text + "'";
                     if (activeUser == "All")
@@ -319,7 +319,7 @@ namespace Budgeting_Application
                 {
                     filterDateQuery = "SELECT * FROM [Transaction] WHERE AccountName = '" + filterCategoryCB.Text + "' AND Date BETWEEN '" + dateTimePicker2.Value.ToString("MM.dd.yyyy") + "' AND '" + dateTimePicker3.Value.ToString("MM.dd.yyyy") + "'";
                 }
-                else if (filterOwnerCB.Text != "Any")
+                if (filterOwnerCB.Text != "Any")
                 {
                     filterDateQuery = "SELECT * FROM [Transaction] WHERE AccountName = '" + filterCategoryCB.Text + "' AND OwnerName = '" + filterOwnerCB.Text + "' AND PayerName = '" + comboBox2.Text + "' AND Date BETWEEN '" + dateTimePicker2.Value.ToString("MM.dd.yyyy") + "' AND '" + dateTimePicker3.Value.ToString("MM.dd.yyyy") + "'"; 
                     if (activeUser == "All")
