@@ -49,10 +49,8 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.labelAmount = new System.Windows.Forms.Label();
             this.labelCategory = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.labelPayer = new System.Windows.Forms.Label();
             this.labelOwner = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,12 +67,28 @@
             this.balanceLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.filterOwnerCB = new System.Windows.Forms.ComboBox();
+            this.filterButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.filterCategoryCB = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.filterDatesButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -115,7 +129,7 @@
             this.product,
             this.description,
             this.EventID});
-            this.dataGridView1.Location = new System.Drawing.Point(15, 87);
+            this.dataGridView1.Location = new System.Drawing.Point(15, 63);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -142,14 +156,14 @@
             // payerid
             // 
             this.payerid.FillWeight = 45.46315F;
-            this.payerid.HeaderText = "Payer";
+            this.payerid.HeaderText = "User Account";
             this.payerid.Name = "payerid";
             this.payerid.ReadOnly = true;
             // 
             // owner
             // 
             this.owner.FillWeight = 45.46315F;
-            this.owner.HeaderText = "Purchase Owner";
+            this.owner.HeaderText = "Owner";
             this.owner.Name = "owner";
             this.owner.ReadOnly = true;
             // 
@@ -163,7 +177,7 @@
             // receiver
             // 
             this.receiver.FillWeight = 45.46315F;
-            this.receiver.HeaderText = "Receiver/Payer";
+            this.receiver.HeaderText = "Receiver";
             this.receiver.Name = "receiver";
             this.receiver.ReadOnly = true;
             // 
@@ -191,11 +205,11 @@
             // 
             // fetchTransactions
             // 
-            this.fetchTransactions.Location = new System.Drawing.Point(714, 31);
+            this.fetchTransactions.Location = new System.Drawing.Point(142, 30);
             this.fetchTransactions.Name = "fetchTransactions";
-            this.fetchTransactions.Size = new System.Drawing.Size(183, 34);
+            this.fetchTransactions.Size = new System.Drawing.Size(127, 21);
             this.fetchTransactions.TabIndex = 2;
-            this.fetchTransactions.Text = "List my transactions";
+            this.fetchTransactions.Text = "List transactions";
             this.fetchTransactions.UseVisualStyleBackColor = true;
             this.fetchTransactions.Click += new System.EventHandler(this.fetchTransactions_Click);
             // 
@@ -211,28 +225,28 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(955, 178);
+            this.textBox1.Location = new System.Drawing.Point(903, 118);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(133, 20);
             this.textBox1.TabIndex = 6;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(955, 369);
+            this.textBox2.Location = new System.Drawing.Point(903, 309);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(133, 20);
             this.textBox2.TabIndex = 11;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(955, 407);
+            this.textBox3.Location = new System.Drawing.Point(903, 347);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(133, 20);
             this.textBox3.TabIndex = 12;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(955, 445);
+            this.textBox4.Location = new System.Drawing.Point(903, 385);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(133, 20);
             this.textBox4.TabIndex = 13;
@@ -240,23 +254,16 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(955, 216);
+            this.comboBox1.Location = new System.Drawing.Point(903, 156);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(133, 21);
             this.comboBox1.TabIndex = 14;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(955, 293);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(133, 20);
-            this.textBox6.TabIndex = 16;
-            // 
             // labelAmount
             // 
             this.labelAmount.AutoSize = true;
-            this.labelAmount.Location = new System.Drawing.Point(951, 161);
+            this.labelAmount.Location = new System.Drawing.Point(899, 101);
             this.labelAmount.Name = "labelAmount";
             this.labelAmount.Size = new System.Drawing.Size(43, 13);
             this.labelAmount.TabIndex = 17;
@@ -265,41 +272,34 @@
             // labelCategory
             // 
             this.labelCategory.AutoSize = true;
-            this.labelCategory.Location = new System.Drawing.Point(951, 199);
+            this.labelCategory.Location = new System.Drawing.Point(899, 139);
             this.labelCategory.Name = "labelCategory";
             this.labelCategory.Size = new System.Drawing.Size(49, 13);
             this.labelCategory.TabIndex = 18;
             this.labelCategory.Text = "Category";
             // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(955, 255);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(133, 20);
-            this.textBox7.TabIndex = 19;
-            // 
             // labelPayer
             // 
             this.labelPayer.AutoSize = true;
-            this.labelPayer.Location = new System.Drawing.Point(951, 238);
+            this.labelPayer.Location = new System.Drawing.Point(899, 178);
             this.labelPayer.Name = "labelPayer";
-            this.labelPayer.Size = new System.Drawing.Size(34, 13);
+            this.labelPayer.Size = new System.Drawing.Size(72, 13);
             this.labelPayer.TabIndex = 20;
-            this.labelPayer.Text = "Payer";
+            this.labelPayer.Text = "User Account";
             // 
             // labelOwner
             // 
             this.labelOwner.AutoSize = true;
-            this.labelOwner.Location = new System.Drawing.Point(951, 276);
+            this.labelOwner.Location = new System.Drawing.Point(899, 216);
             this.labelOwner.Name = "labelOwner";
-            this.labelOwner.Size = new System.Drawing.Size(86, 13);
+            this.labelOwner.Size = new System.Drawing.Size(38, 13);
             this.labelOwner.TabIndex = 21;
-            this.labelOwner.Text = "Purchase Owner";
+            this.labelOwner.Text = "Owner";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(951, 314);
+            this.label2.Location = new System.Drawing.Point(899, 254);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 22;
@@ -307,9 +307,9 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "dd.mm.yyyy";
+            this.dateTimePicker1.CustomFormat = "dd.MM.yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(955, 331);
+            this.dateTimePicker1.Location = new System.Drawing.Point(903, 271);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(133, 20);
             this.dateTimePicker1.TabIndex = 23;
@@ -318,16 +318,16 @@
             // labelReceiver
             // 
             this.labelReceiver.AutoSize = true;
-            this.labelReceiver.Location = new System.Drawing.Point(951, 352);
+            this.labelReceiver.Location = new System.Drawing.Point(899, 292);
             this.labelReceiver.Name = "labelReceiver";
-            this.labelReceiver.Size = new System.Drawing.Size(82, 13);
+            this.labelReceiver.Size = new System.Drawing.Size(161, 13);
             this.labelReceiver.TabIndex = 24;
-            this.labelReceiver.Text = "Receiver/Payer";
+            this.labelReceiver.Text = "Receiver (leave empty if income)";
             // 
             // labelProduct
             // 
             this.labelProduct.AutoSize = true;
-            this.labelProduct.Location = new System.Drawing.Point(951, 390);
+            this.labelProduct.Location = new System.Drawing.Point(899, 330);
             this.labelProduct.Name = "labelProduct";
             this.labelProduct.Size = new System.Drawing.Size(44, 13);
             this.labelProduct.TabIndex = 25;
@@ -336,7 +336,7 @@
             // labelDesc
             // 
             this.labelDesc.AutoSize = true;
-            this.labelDesc.Location = new System.Drawing.Point(951, 428);
+            this.labelDesc.Location = new System.Drawing.Point(899, 368);
             this.labelDesc.Name = "labelDesc";
             this.labelDesc.Size = new System.Drawing.Size(161, 13);
             this.labelDesc.TabIndex = 26;
@@ -344,7 +344,7 @@
             // 
             // buttonAddEvent
             // 
-            this.buttonAddEvent.Location = new System.Drawing.Point(955, 471);
+            this.buttonAddEvent.Location = new System.Drawing.Point(903, 411);
             this.buttonAddEvent.Name = "buttonAddEvent";
             this.buttonAddEvent.Size = new System.Drawing.Size(133, 30);
             this.buttonAddEvent.TabIndex = 27;
@@ -366,7 +366,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(951, 137);
+            this.label3.Location = new System.Drawing.Point(899, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(141, 16);
             this.label3.TabIndex = 28;
@@ -380,7 +380,7 @@
             // balanceTitle
             // 
             this.balanceTitle.AutoSize = true;
-            this.balanceTitle.Location = new System.Drawing.Point(12, 504);
+            this.balanceTitle.Location = new System.Drawing.Point(12, 480);
             this.balanceTitle.Name = "balanceTitle";
             this.balanceTitle.Size = new System.Drawing.Size(73, 13);
             this.balanceTitle.TabIndex = 29;
@@ -389,7 +389,7 @@
             // balanceLabel
             // 
             this.balanceLabel.AutoSize = true;
-            this.balanceLabel.Location = new System.Drawing.Point(91, 504);
+            this.balanceLabel.Location = new System.Drawing.Point(91, 480);
             this.balanceLabel.Name = "balanceLabel";
             this.balanceLabel.Size = new System.Drawing.Size(136, 13);
             this.balanceLabel.TabIndex = 30;
@@ -398,7 +398,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(955, 507);
+            this.deleteButton.Location = new System.Drawing.Point(903, 447);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(133, 30);
             this.deleteButton.TabIndex = 31;
@@ -409,16 +409,155 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(587, 38);
+            this.comboBox2.Location = new System.Drawing.Point(15, 30);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 32;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(903, 194);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(133, 21);
+            this.comboBox3.TabIndex = 33;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(902, 232);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(134, 21);
+            this.comboBox4.TabIndex = 34;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.filterOwnerCB);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.filterCategoryCB);
+            this.groupBox1.Controls.Add(this.filterButton);
+            this.groupBox1.Location = new System.Drawing.Point(15, 514);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(289, 68);
+            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filter";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(2, 18);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 43;
+            this.label7.Text = "Time";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(139, 36);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(10, 13);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "-";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.CustomFormat = "dd.MM.yyyy";
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker3.Location = new System.Drawing.Point(155, 34);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(125, 20);
+            this.dateTimePicker3.TabIndex = 41;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CustomFormat = "dd.MM.yyyy";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(6, 34);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(127, 20);
+            this.dateTimePicker2.TabIndex = 40;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(114, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 39;
+            this.label5.Text = "Owner";
+            // 
+            // filterOwnerCB
+            // 
+            this.filterOwnerCB.FormattingEnabled = true;
+            this.filterOwnerCB.Location = new System.Drawing.Point(117, 33);
+            this.filterOwnerCB.Name = "filterOwnerCB";
+            this.filterOwnerCB.Size = new System.Drawing.Size(95, 21);
+            this.filterOwnerCB.TabIndex = 36;
+            // 
+            // filterButton
+            // 
+            this.filterButton.Location = new System.Drawing.Point(225, 11);
+            this.filterButton.Name = "filterButton";
+            this.filterButton.Size = new System.Drawing.Size(58, 52);
+            this.filterButton.TabIndex = 38;
+            this.filterButton.Text = "Refresh";
+            this.filterButton.UseVisualStyleBackColor = true;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Category";
+            // 
+            // filterCategoryCB
+            // 
+            this.filterCategoryCB.FormattingEnabled = true;
+            this.filterCategoryCB.Location = new System.Drawing.Point(6, 33);
+            this.filterCategoryCB.Name = "filterCategoryCB";
+            this.filterCategoryCB.Size = new System.Drawing.Size(105, 21);
+            this.filterCategoryCB.TabIndex = 37;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.filterDatesButton);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.dateTimePicker3);
+            this.groupBox2.Controls.Add(this.dateTimePicker2);
+            this.groupBox2.Location = new System.Drawing.Point(310, 514);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(360, 68);
+            this.groupBox2.TabIndex = 44;
+            this.groupBox2.TabStop = false;
+            // 
+            // filterDatesButton
+            // 
+            this.filterDatesButton.Location = new System.Drawing.Point(296, 11);
+            this.filterDatesButton.Name = "filterDatesButton";
+            this.filterDatesButton.Size = new System.Drawing.Size(58, 52);
+            this.filterDatesButton.TabIndex = 40;
+            this.filterDatesButton.Text = "Refresh";
+            this.filterDatesButton.UseVisualStyleBackColor = true;
+            this.filterDatesButton.Click += new System.EventHandler(this.filterDatesButton_Click);
             // 
             // mainmenuParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 598);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.balanceLabel);
@@ -432,10 +571,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelOwner);
             this.Controls.Add(this.labelPayer);
-            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.labelCategory);
             this.Controls.Add(this.labelAmount);
-            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -454,6 +591,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,10 +613,8 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label labelAmount;
         private System.Windows.Forms.Label labelCategory;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label labelPayer;
         private System.Windows.Forms.Label labelOwner;
         private System.Windows.Forms.Label label2;
@@ -490,6 +629,8 @@
         private System.Windows.Forms.Label balanceTitle;
         private System.Windows.Forms.Label balanceLabel;
         private System.Windows.Forms.Button deleteButton;
+        public System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountid;
         private System.Windows.Forms.DataGridViewTextBoxColumn payerid;
@@ -499,7 +640,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn product;
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
         private System.Windows.Forms.DataGridViewTextBoxColumn EventID;
-        public System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox filterCategoryCB;
+        private System.Windows.Forms.Button filterButton;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox filterOwnerCB;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button filterDatesButton;
     }
 }
