@@ -16,7 +16,6 @@ namespace Budgeting_Application
         private Button button1;
         private Button exit;
         private Label label1;
-        private Button getUserList;
 
         const string admin = "admin";
         const string parent = "parent";
@@ -35,6 +34,7 @@ namespace Budgeting_Application
         Program()
         {
             InitializeComponent();
+            LoadUsers();
         }
 
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -46,7 +46,6 @@ namespace Budgeting_Application
         {
             Application.EnableVisualStyles();
             Application.Run(new Program());
-
         }
 
         private void InitializeComponent()
@@ -54,7 +53,6 @@ namespace Budgeting_Application
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.getUserList = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.exit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,20 +68,6 @@ namespace Budgeting_Application
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // getUserList
-            // 
-            this.getUserList.BackColor = System.Drawing.Color.Lavender;
-            this.getUserList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.getUserList.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getUserList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getUserList.Location = new System.Drawing.Point(100, 166);
-            this.getUserList.Name = "getUserList";
-            this.getUserList.Size = new System.Drawing.Size(160, 27);
-            this.getUserList.TabIndex = 1;
-            this.getUserList.Text = "List Users";
-            this.getUserList.UseVisualStyleBackColor = false;
-            this.getUserList.Click += new System.EventHandler(this.selectUser_Click);
             // 
             // button1
             // 
@@ -117,7 +101,7 @@ namespace Budgeting_Application
             this.label1.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(78, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(225, 17);
+            this.label1.Size = new System.Drawing.Size(200, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Select the user from the list:";
             // 
@@ -199,7 +183,6 @@ namespace Budgeting_Application
             this.Controls.Add(this.label1);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.getUserList);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Name = "Program";
@@ -214,10 +197,7 @@ namespace Budgeting_Application
 
         }
 
-
-        SqlDataReader dr;
-
-        private void selectUser_Click(object sender, EventArgs e)
+        private void LoadUsers()
         {
             DbConnection listUsersButton = new DbConnection();
             string listUsers = "SELECT UserID, UserName, UserLvl FROM [User]";
@@ -245,6 +225,8 @@ namespace Budgeting_Application
             }
         }
 
+
+        SqlDataReader dr;
         private void button1_Click(object sender, EventArgs e)
         {
             try

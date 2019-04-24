@@ -47,7 +47,7 @@ namespace Budgeting_Application
                 dr = listUsersButton.DataReader(listUsers);
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["UserName"].ToString(), dr["UserLvl"].ToString());
+                    dataGridView1.Rows.Add(dr["UserName"].ToString(), dr["UserLvl"].ToString(), dr["UserID"]);
                 }
 
             }
@@ -64,6 +64,57 @@ namespace Budgeting_Application
         private void addUserButton_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Add(addUserName.Text, userLvlSelect.Text);
+            string insertUser = "INSERT INTO [User] (UserName, UserLvl) VALUES ('" + addUserName.Text + "', '" + userLvlSelect.Text + "')";
+            DbConnection insertToUsers = new DbConnection();
+
+            try
+            {
+                insertToUsers.OpenConnection();
+                insertToUsers.ExcecuteQueries(insertUser);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                insertToUsers.CloseConnection();
+                LoadUsers();
+            }
+        }
+
+        private void deleteUserButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                int rowIdToDelete = Convert.ToInt32(row.Cells["UserID"].Value);
+                string removeSelected = "DELETE FROM [User] WHERE UserID = '" + rowIdToDelete + "'";
+
+                DbConnection deleteRow = new DbConnection();
+                try
+                {
+                    deleteRow.OpenConnection();
+                    deleteRow.ExcecuteQueries(removeSelected);
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    dataGridView1.Refresh();
+                    deleteRow.CloseConnection();                   
+                }
+            }
+
+            int rowIndex = dataGridView1.CurrentRow.Index;
+            dataGridView1.Rows.RemoveAt(rowIndex);
+        }
+
+        private void addAccountButton_Click(object sender, EventArgs e)
+        {
+            addAccount account = new addAccount();
+            account.ShowDialog();
         }
     }
 }

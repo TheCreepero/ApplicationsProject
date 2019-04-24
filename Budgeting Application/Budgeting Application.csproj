@@ -65,6 +65,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="addAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addAccount.Designer.cs">
+      <DependentUpon>addAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin.cs" />
     <Compile Include="Child.cs" />
     <Compile Include="DbConnection.cs" />
@@ -165,6 +171,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="addAccount.resx">
+      <DependentUpon>addAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mainmenuAdmin.resx">
       <DependentUpon>mainmenuAdmin.cs</DependentUpon>
     </EmbeddedResource>
