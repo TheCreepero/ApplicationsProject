@@ -404,7 +404,6 @@
             this.balanceLabel.Size = new System.Drawing.Size(136, 13);
             this.balanceLabel.TabIndex = 30;
             this.balanceLabel.Text = "Load your transactions first!";
-            this.balanceLabel.Click += new System.EventHandler(this.balanceLabel_Click);
             // 
             // deleteButton
             // 
@@ -515,7 +514,6 @@
             this.label6.Size = new System.Drawing.Size(10, 13);
             this.label6.TabIndex = 42;
             this.label6.Text = "-";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // dateTimePicker3
             // 
@@ -534,7 +532,6 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(127, 20);
             this.dateTimePicker2.TabIndex = 40;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // groupBox2
             // 

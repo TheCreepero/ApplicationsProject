@@ -74,6 +74,9 @@ namespace Budgeting_Application
             {
                 comboBoxUsers.CloseConnection();
             }
+
+            filterCategoryCB.Items.Add("Any");
+            filterOwnerCB.Items.Add("Any");
         }
 
         public void LoadAccountInfo()
@@ -220,11 +223,6 @@ namespace Budgeting_Application
             filterOwnerCB.SelectedText = "Any";
         }
 
-        private void balanceLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void deleteButton_Click(object sender, EventArgs e)
         {            
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
@@ -332,16 +330,6 @@ namespace Budgeting_Application
 
                 balanceLabel.Text = sum.ToString() + '€';
             }
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void filterDatesButton_Click(object sender, EventArgs e)

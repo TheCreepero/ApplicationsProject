@@ -268,7 +268,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(133, 21);
             this.comboBox1.TabIndex = 14;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // labelAmount
             // 
@@ -404,7 +403,6 @@
             this.balanceLabel.Size = new System.Drawing.Size(136, 13);
             this.balanceLabel.TabIndex = 30;
             this.balanceLabel.Text = "Load your transactions first!";
-            this.balanceLabel.Click += new System.EventHandler(this.balanceLabel_Click);
             // 
             // deleteButton
             // 

@@ -28,6 +28,7 @@ namespace Budgeting_Application
             label1.Text = welcomeLabel;
             BindData();
             LoadAccountData();
+            filterCategoryCB.SelectedText = "Any";
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -50,6 +51,7 @@ namespace Budgeting_Application
                 {
                     string text = dr["AccountName"].ToString();
                     this.comboBox1.Items.Add(text);
+                    this.filterCategoryCB.Items.Add(text);
                 }
 
                 //This "resets" the connection
@@ -71,6 +73,8 @@ namespace Budgeting_Application
             {
                 comboBoxUsers.CloseConnection();
             }
+
+            filterCategoryCB.Items.Add("Any");
         }
 
         private void LoadAccountData()
@@ -163,21 +167,6 @@ namespace Budgeting_Application
             this.Close();
         }
 
-        private void saveChanges_Click(object sender, EventArgs e) 
-        {
-
-        }
-
-        private void dataGridView1_RowsAdded(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void addEvent_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonAddEvent_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, Program.selectedUserName, comboBox2.Text, dateTimePicker1.Value, textBox2.Text, textBox3.Text, textBox4.Text);
@@ -197,12 +186,8 @@ namespace Budgeting_Application
             {
                 dataGridView1.Refresh();
                 insertToDb.CloseConnection();
+                LoadAccountData();
             }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void mainmenuChild_Load(object sender, EventArgs e)
@@ -215,11 +200,6 @@ namespace Budgeting_Application
             eventTable.Columns.Add("Receiver", typeof(string));
             eventTable.Columns.Add("Product Name", typeof(string));
             eventTable.Columns.Add("Description", typeof(string));
-        }
-
-        private void balanceLabel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -243,6 +223,7 @@ namespace Budgeting_Application
                 {
                     dataGridView1.Refresh();
                     deleteRow.CloseConnection();
+                    LoadAccountData();
                 }
             }
 
@@ -253,7 +234,7 @@ namespace Budgeting_Application
 
         private void ownedTransactionsButton_Click(object sender, EventArgs e)
         {
-            //Child users aren't allowed to see other users' accounts, except for those that are purchased FOR the child user. This achieves that.
+            //Child users aren't allowed to see other users' accounts, except for those that are purchased FOR the child user.
             string selectTransactions = "SELECT * FROM [Transaction] WHERE OwnerName = '" + Program.selectedUserName.ToString() + "'";
             DbConnection fetchOwnedTransactions = new DbConnection();
             dataGridView1.Rows.Clear();
@@ -277,6 +258,96 @@ namespace Budgeting_Application
             {
                 fetchOwnedTransactions.CloseConnection();
                 oldRowCount = dataGridView1.Rows.Count;
+            }
+        }
+
+        private void filterDatesButton_Click_1(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+
+            string activeUser = comboBox2.Text;
+            string filterDateQuery = "SELECT * FROM [Transaction] WHERE PayerName = '" + Program.selectedUserName + "' AND Date BETWEEN '" + dateTimePicker2.Value.ToString("MM.dd.yyyy") + "' AND '" + dateTimePicker3.Value.ToString("MM.dd.yyyy") + "'";           
+
+            if (filterCategoryCB.Text != "Any")
+            {
+                filterDateQuery = "SELECT * FROM [Transaction] WHERE AccountName = '" + filterCategoryCB.Text + "' AND PayerName = '" + Program.selectedUserName + "' AND Date BETWEEN '" + dateTimePicker2.Value.ToString("MM.dd.yyyy") + "' AND '" + dateTimePicker3.Value.ToString("MM.dd.yyyy") + "'";               
+            }
+
+            DbConnection filterDatesConn = new DbConnection();
+            try
+            {
+                filterDatesConn.OpenConnection();
+                dr = filterDatesConn.DataReader(filterDateQuery);
+                while (dr.Read())
+                {
+                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                filterDatesConn.CloseConnection();
+
+                double sum = 0;
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                }
+
+                balanceLabel.Text = sum.ToString() + '€';
+            }
+        }
+
+        private void filterButton_Click_1(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+
+            //This structure needs to be changed for the child user so that not choosing any filters doesn't show ALL transactions.
+            string filterQuery = "SELECT * FROM [Transaction]";
+
+            string activeUser = comboBox2.Text;
+
+            //This constructs a query based on the filter selections
+            if (filterCategoryCB.Text != "Any")
+            {
+                filterQuery = "SELECT * FROM [Transaction] WHERE AccountName = '" + filterCategoryCB.Text + "' AND PayerName = '" + Program.selectedUserName + "'";
+            }
+            else
+            {
+                filterQuery = "SELECT * FROM [Transaction] WHERE PayerName = '" + Program.selectedUserName + "'";
+
+            }
+
+            DbConnection filterConnection = new DbConnection();
+            try
+            {
+                filterConnection.OpenConnection();
+                dr = filterConnection.DataReader(filterQuery);
+
+                while (dr.Read())
+                {
+                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                filterConnection.CloseConnection();
+
+                double sum = 0;
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                }
+
+                balanceLabel.Text = sum.ToString() + '€';
             }
         }
     }

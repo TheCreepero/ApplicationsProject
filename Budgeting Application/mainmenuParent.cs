@@ -25,8 +25,7 @@ namespace Budgeting_Application
             BindData();
             LoadAccountInfo();
             comboBox2.Items.Add("All");
-            filterCategoryCB.Items.Add("Any");
-            filterOwnerCB.Items.Add("Any");
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -74,6 +73,9 @@ namespace Budgeting_Application
             {
                 comboBoxUsers.CloseConnection();
             }
+
+            filterCategoryCB.Items.Add("Any");
+            filterOwnerCB.Items.Add("Any");
         }
 
         public void LoadAccountInfo()
@@ -172,21 +174,6 @@ namespace Budgeting_Application
             this.Close();
         }
 
-        private void saveChanges_Click(object sender, EventArgs e) 
-        {
-
-        }
-
-        private void dataGridView1_RowsAdded(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void addEvent_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonAddEvent_Click(object sender, EventArgs e)
         {
             //The date function doesn't work!
@@ -219,11 +206,6 @@ namespace Budgeting_Application
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void mainmenuParent_Load(object sender, EventArgs e)
         {
             eventTable.Columns.Add("Amount", typeof(float));
@@ -236,11 +218,6 @@ namespace Budgeting_Application
             eventTable.Columns.Add("Description", typeof(string));
             filterCategoryCB.SelectedText = "Any";
             filterOwnerCB.SelectedText = "Any";
-        }
-
-        private void balanceLabel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
