@@ -1,0 +1,7 @@
+﻿Admin features: Modifying user data, modifying account data
+(If possible): Modify transaction data
+Graphical design
+Testing
+Cleaning up code
+Separating certain functions to their own methods
+Reports: Total value of ALL incomes and expenses, full report of ALL events on a specified time period.
