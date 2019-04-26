@@ -109,7 +109,6 @@
             this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome, parent!";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // mainDBDataSetBindingSource
             // 
@@ -513,7 +512,6 @@
             this.label6.Size = new System.Drawing.Size(10, 13);
             this.label6.TabIndex = 42;
             this.label6.Text = "-";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // dateTimePicker3
             // 

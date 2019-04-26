@@ -15,6 +15,7 @@ namespace Budgeting_Application
     {
         SqlDataReader dr;
         SqlDataReader dr2;
+        DataTable eventTable = new DataTable();
         int oldRowCount;
         string welcomeLabel = "Welcome, " + Convert.ToString(Program.selectedUserName) + "!";
 
@@ -27,14 +28,7 @@ namespace Budgeting_Application
             comboBox2.Items.Add("All");
             
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        DataTable eventTable = new DataTable();
-
+        
         public void BindData()
         {
             DbConnection comboBoxUsers = new DbConnection();
@@ -330,11 +324,6 @@ namespace Budgeting_Application
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
         {
 
         }

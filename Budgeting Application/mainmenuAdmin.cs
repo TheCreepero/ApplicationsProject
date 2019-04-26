@@ -29,11 +29,6 @@ namespace Budgeting_Application
             filterOwnerCB.Items.Add("Any");
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         DataTable eventTable = new DataTable();
 
         public void BindData()
