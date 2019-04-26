@@ -174,21 +174,6 @@ namespace Budgeting_Application
             this.Close();
         }
 
-        private void saveChanges_Click(object sender, EventArgs e) 
-        {
-
-        }
-
-        private void dataGridView1_RowsAdded(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void addEvent_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonAddEvent_Click(object sender, EventArgs e)
         {
             //The date function works only with American formatting (MM.dd.yyyy)
@@ -219,11 +204,6 @@ namespace Budgeting_Application
                 balanceLabel.Text = sum.ToString() + '€';
                 LoadAccountInfo();
             }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void mainmenuAdmin_Load(object sender, EventArgs e)

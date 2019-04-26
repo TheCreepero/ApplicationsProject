@@ -111,9 +111,7 @@ namespace Budgeting_Application
             finally
             {
                 loadBalance.CloseConnection();
-            }
-            
-            
+            }                       
         }
 
         private void fetchTransactions_Click(object sender, EventArgs e)

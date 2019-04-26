@@ -67,12 +67,22 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.ownedTransactionsButton = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.expenseLabel = new System.Windows.Forms.Label();
+            this.incomeLabel = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.userNameLabel = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.accBalLabel = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -399,11 +409,102 @@
             this.ownedTransactionsButton.UseVisualStyleBackColor = true;
             this.ownedTransactionsButton.Click += new System.EventHandler(this.ownedTransactionsButton_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.expenseLabel);
+            this.groupBox3.Controls.Add(this.incomeLabel);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.userNameLabel);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.accBalLabel);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(537, 479);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(360, 68);
+            this.groupBox3.TabIndex = 46;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Account Information";
+            // 
+            // expenseLabel
+            // 
+            this.expenseLabel.AutoSize = true;
+            this.expenseLabel.Location = new System.Drawing.Point(226, 36);
+            this.expenseLabel.Name = "expenseLabel";
+            this.expenseLabel.Size = new System.Drawing.Size(10, 13);
+            this.expenseLabel.TabIndex = 7;
+            this.expenseLabel.Text = "-";
+            // 
+            // incomeLabel
+            // 
+            this.incomeLabel.AutoSize = true;
+            this.incomeLabel.Location = new System.Drawing.Point(226, 16);
+            this.incomeLabel.Name = "incomeLabel";
+            this.incomeLabel.Size = new System.Drawing.Size(10, 13);
+            this.incomeLabel.TabIndex = 6;
+            this.incomeLabel.Text = "-";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(164, 36);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 13);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Expenses:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(164, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(50, 13);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Incomes:";
+            // 
+            // userNameLabel
+            // 
+            this.userNameLabel.AutoSize = true;
+            this.userNameLabel.Location = new System.Drawing.Point(87, 16);
+            this.userNameLabel.Name = "userNameLabel";
+            this.userNameLabel.Size = new System.Drawing.Size(10, 13);
+            this.userNameLabel.TabIndex = 3;
+            this.userNameLabel.Text = "-";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 16);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(75, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "User Account:";
+            // 
+            // accBalLabel
+            // 
+            this.accBalLabel.AutoSize = true;
+            this.accBalLabel.Location = new System.Drawing.Point(61, 36);
+            this.accBalLabel.Name = "accBalLabel";
+            this.accBalLabel.Size = new System.Drawing.Size(10, 13);
+            this.accBalLabel.TabIndex = 1;
+            this.accBalLabel.Text = "-";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 36);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Balance:";
+            // 
             // mainmenuChild
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1143, 580);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.ownedTransactionsButton);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.deleteButton);
@@ -437,6 +538,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,5 +585,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EventID;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button ownedTransactionsButton;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label expenseLabel;
+        private System.Windows.Forms.Label incomeLabel;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label userNameLabel;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label accBalLabel;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -27,6 +27,7 @@ namespace Budgeting_Application
             InitializeComponent();
             label1.Text = welcomeLabel;
             BindData();
+            LoadAccountData();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -69,6 +70,44 @@ namespace Budgeting_Application
             finally
             {
                 comboBoxUsers.CloseConnection();
+            }
+        }
+
+        private void LoadAccountData()
+        {
+            userNameLabel.Text = Program.selectedUserName.ToString();
+            string balanceQuery = "SELECT Amount from [Transaction] WHERE PayerName = '" + Program.selectedUserName.ToString() + "'";
+            DbConnection loadBalance = new DbConnection();
+            double sum = 0;
+            double incomeSum = 0;
+            double expenseSum = 0;
+            try
+            {
+                loadBalance.OpenConnection();
+                dr = loadBalance.DataReader(balanceQuery);
+                while (dr.Read())
+                {
+                    sum += Convert.ToDouble(dr["Amount"]);
+                    if (Convert.ToDouble(dr["Amount"]) > 0)
+                    {
+                        incomeSum += Convert.ToDouble(dr["Amount"]);
+                    }
+                    else if (Convert.ToDouble(dr["Amount"]) < 0)
+                    {
+                        expenseSum += Convert.ToDouble(dr["Amount"]);
+                    }
+                }
+                accBalLabel.Text = sum.ToString() + "€";
+                incomeLabel.Text = incomeSum.ToString() + "€";
+                expenseLabel.Text = expenseSum.ToString() + "€";
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                loadBalance.CloseConnection();
             }
         }
 
