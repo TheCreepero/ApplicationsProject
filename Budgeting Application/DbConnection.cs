@@ -15,9 +15,11 @@ namespace Budgeting_Application
     public class DbConnection
     {
         static string debugPath = Environment.CurrentDirectory;
-        static string path = Directory.GetParent(debugPath).Parent.FullName;
+        //static string path = Directory.GetParent(debugPath).Parent.FullName;
+        static string path = Application.StartupPath;
         SqlConnection cn;
-        public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + path + @"\ApplicationData\MainDB.mdf;Integrated Security = True; Connect Timeout = 30";
+        //string connectionString = ConfigurationManager.ConnectionStrings["Budgeting_Application.Properties.Settings.MainDBConnectionString"].ConnectionString;
+        public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + path + @"\ApplicationData\MainDB.mdf;Integrated Security = False; Connect Timeout = 30";
 
         public void OpenConnection()
         {
