@@ -1,4 +1,5 @@
 ﻿(If possible): Modify transaction data
+Modifying user and account data: info from selected row is transferred to their respective text/combo boxes to make editing easier
 Graphical design
 Testing
 Cleaning up code
