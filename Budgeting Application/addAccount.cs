@@ -29,7 +29,7 @@ namespace Budgeting_Application
         private void LoadAccounts()
         {
             DbConnection listAccountsButton = new DbConnection();
-            string listUsers = "SELECT AccountName, AccountType FROM [Account]";
+            string listUsers = "SELECT AccountName, AccountType, AccountID FROM [Account]";
 
             try
             {
@@ -40,7 +40,7 @@ namespace Budgeting_Application
                 dr = listAccountsButton.DataReader(listUsers);
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["AccountName"].ToString(), dr["AccountType"].ToString());
+                    dataGridView1.Rows.Add(dr["AccountName"].ToString(), dr["AccountType"].ToString(), dr["AccountID"].ToString());
                 }
 
             }
@@ -63,7 +63,7 @@ namespace Budgeting_Application
         private void addCategoryButton_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Add(accNameText.Text, accTypeBox.Text);
-            string insertUser = "INSERT INTO [Account] VALUES ('" + accNameText.Text + "', '" + accTypeBox.Text + "')";
+            string insertUser = "INSERT INTO [Account] (AccountName, AccountType) VALUES ('" + accNameText.Text + "', '" + accTypeBox.Text + "')";
             DbConnection insertToAccounts = new DbConnection();
 
             try
@@ -79,6 +79,31 @@ namespace Budgeting_Application
             {
                 insertToAccounts.CloseConnection();
                 LoadAccounts();
+            }
+        }
+
+        private void updateAccountButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                int rowIdToUpdate = Convert.ToInt32(row.Cells["AccountID"].Value);
+                string updateSelected = "UPDATE [Account] SET AccountName = '" + accNameText.Text + "', AccountType = '" + accTypeBox.Text + "' WHERE AccountID = " + rowIdToUpdate;
+                DbConnection updateUser = new DbConnection();
+
+                try
+                {
+                    updateUser.OpenConnection();
+                    updateUser.ExcecuteQueries(updateSelected);
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    updateUser.CloseConnection();
+                    LoadAccounts();
+                }
             }
         }
     }

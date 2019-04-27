@@ -128,7 +128,7 @@
             this.addAccountButton.Name = "addAccountButton";
             this.addAccountButton.Size = new System.Drawing.Size(207, 29);
             this.addAccountButton.TabIndex = 5;
-            this.addAccountButton.Text = "Add new category";
+            this.addAccountButton.Text = "Edit Categories";
             this.addAccountButton.UseVisualStyleBackColor = true;
             this.addAccountButton.Click += new System.EventHandler(this.addAccountButton_Click);
             // 
@@ -138,7 +138,7 @@
             this.updateUserButton.Name = "updateUserButton";
             this.updateUserButton.Size = new System.Drawing.Size(97, 21);
             this.updateUserButton.TabIndex = 6;
-            this.updateUserButton.Text = "Update user";
+            this.updateUserButton.Text = "Update selected";
             this.updateUserButton.UseVisualStyleBackColor = true;
             this.updateUserButton.Click += new System.EventHandler(this.updateUserButton_Click);
             // 

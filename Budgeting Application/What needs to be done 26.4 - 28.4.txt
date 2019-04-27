@@ -1,4 +1,4 @@
-﻿Admin features: Modifying user data, modifying account data
+﻿Admin features: modifying account data
 (If possible): Modify transaction data
 Graphical design
 Testing
