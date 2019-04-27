@@ -104,9 +104,6 @@
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             // 
             // label1
             // 
@@ -313,7 +310,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "dd.mm.yyyy";
+            this.dateTimePicker1.CustomFormat = "dd.MM.yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(981, 253);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -720,6 +717,9 @@
             this.Controls.Add(this.fetchTransactions);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "mainmenuChild";
             this.Text = "Budgeting Application - Child User";
             this.Load += new System.EventHandler(this.mainmenuChild_Load);
