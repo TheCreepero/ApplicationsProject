@@ -222,8 +222,7 @@ namespace Budgeting_Application
                 dr = fetchTransactions.DataReader(selectTransactions);
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());
-                    
+                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());                
                 }
             }
             catch (SqlException ex)
@@ -482,6 +481,68 @@ namespace Budgeting_Application
         private void generateReportOfAllButton_Click(object sender, EventArgs e)
         {
             GenerateCompleteReport();
+        }
+
+        private void myTransactionsButton_Click(object sender, EventArgs e)
+        {
+            //This clears any existing records from the DataGrid before new data is loaded in
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+
+            //This takes the transaction data from the DB and displays it in dataGridView1
+            DbConnection fetchTransactions = new DbConnection();
+            string selectTransactions = "SELECT * FROM [Transaction] WHERE PayerName = '" + Program.selectedUserName + "'";            
+
+            //Transactions are loaded
+            try
+            {
+                fetchTransactions.OpenConnection();
+                dr = fetchTransactions.DataReader(selectTransactions);
+                while (dr.Read())
+                {
+                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, errorTitle);
+            }
+            finally
+            {
+                fetchTransactions.CloseConnection();
+                oldRowCount = dataGridView1.Rows.Count;
+            }
+        }
+
+        private void allTransactionsButton_Click(object sender, EventArgs e)
+        {
+            //This clears any existing records from the DataGrid before new data is loaded in
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+
+            //This takes the transaction data from the DB and displays it in dataGridView1
+            DbConnection fetchTransactions = new DbConnection();
+            string selectTransactions = "SELECT * FROM [Transaction]";
+
+            //Transactions are loaded
+            try
+            {
+                fetchTransactions.OpenConnection();
+                dr = fetchTransactions.DataReader(selectTransactions);
+                while (dr.Read())
+                {
+                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, errorTitle);
+            }
+            finally
+            {
+                fetchTransactions.CloseConnection();
+                oldRowCount = dataGridView1.Rows.Count;
+            }
         }
     }
 }

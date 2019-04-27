@@ -100,6 +100,8 @@
             this.generateReportButton = new System.Windows.Forms.Button();
             this.generateReportOfAllButton = new System.Windows.Forms.Button();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
+            this.myTransactionsButton = new System.Windows.Forms.Button();
+            this.allTransactionsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -746,11 +748,33 @@
             this.generateReportOfAllButton.UseVisualStyleBackColor = true;
             this.generateReportOfAllButton.Click += new System.EventHandler(this.generateReportOfAllButton_Click);
             // 
+            // myTransactionsButton
+            // 
+            this.myTransactionsButton.Location = new System.Drawing.Point(275, 30);
+            this.myTransactionsButton.Name = "myTransactionsButton";
+            this.myTransactionsButton.Size = new System.Drawing.Size(23, 21);
+            this.myTransactionsButton.TabIndex = 54;
+            this.myTransactionsButton.Text = "M";
+            this.myTransactionsButton.UseVisualStyleBackColor = true;
+            this.myTransactionsButton.Click += new System.EventHandler(this.myTransactionsButton_Click);
+            // 
+            // allTransactionsButton
+            // 
+            this.allTransactionsButton.Location = new System.Drawing.Point(304, 30);
+            this.allTransactionsButton.Name = "allTransactionsButton";
+            this.allTransactionsButton.Size = new System.Drawing.Size(23, 21);
+            this.allTransactionsButton.TabIndex = 55;
+            this.allTransactionsButton.Text = "A";
+            this.allTransactionsButton.UseVisualStyleBackColor = true;
+            this.allTransactionsButton.Click += new System.EventHandler(this.allTransactionsButton_Click);
+            // 
             // mainmenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 589);
+            this.Controls.Add(this.allTransactionsButton);
+            this.Controls.Add(this.myTransactionsButton);
             this.Controls.Add(this.generateReportOfAllButton);
             this.Controls.Add(this.generateReportButton);
             this.Controls.Add(this.groupBox4);
@@ -877,5 +901,7 @@
         private System.Windows.Forms.Button generateReportOfAllButton;
         private System.Windows.Forms.Label reportResultText;
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
+        private System.Windows.Forms.Button myTransactionsButton;
+        private System.Windows.Forms.Button allTransactionsButton;
     }
 }

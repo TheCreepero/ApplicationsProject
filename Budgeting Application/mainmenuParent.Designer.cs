@@ -98,6 +98,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.myTransactionsButton = new System.Windows.Forms.Button();
+            this.allTransactionsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -734,11 +736,33 @@
             this.label14.TabIndex = 8;
             this.label14.Text = "Incomes:";
             // 
+            // myTransactionsButton
+            // 
+            this.myTransactionsButton.Location = new System.Drawing.Point(275, 30);
+            this.myTransactionsButton.Name = "myTransactionsButton";
+            this.myTransactionsButton.Size = new System.Drawing.Size(23, 21);
+            this.myTransactionsButton.TabIndex = 53;
+            this.myTransactionsButton.Text = "M";
+            this.myTransactionsButton.UseVisualStyleBackColor = true;
+            this.myTransactionsButton.Click += new System.EventHandler(this.myTransactionsButton_Click);
+            // 
+            // allTransactionsButton
+            // 
+            this.allTransactionsButton.Location = new System.Drawing.Point(304, 30);
+            this.allTransactionsButton.Name = "allTransactionsButton";
+            this.allTransactionsButton.Size = new System.Drawing.Size(23, 21);
+            this.allTransactionsButton.TabIndex = 54;
+            this.allTransactionsButton.Text = "A";
+            this.allTransactionsButton.UseVisualStyleBackColor = true;
+            this.allTransactionsButton.Click += new System.EventHandler(this.allTransactionsButton_Click);
+            // 
             // mainmenuParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 589);
+            this.Controls.Add(this.allTransactionsButton);
+            this.Controls.Add(this.myTransactionsButton);
             this.Controls.Add(this.generateReportOfAllButton);
             this.Controls.Add(this.generateReportButton);
             this.Controls.Add(this.groupBox4);
@@ -862,5 +886,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button myTransactionsButton;
+        private System.Windows.Forms.Button allTransactionsButton;
     }
 }
