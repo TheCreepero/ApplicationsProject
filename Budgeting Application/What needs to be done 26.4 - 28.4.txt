@@ -1,5 +1,4 @@
-﻿Admin features: modifying account data
-(If possible): Modify transaction data
+﻿(If possible): Modify transaction data
 Graphical design
 Testing
 Cleaning up code

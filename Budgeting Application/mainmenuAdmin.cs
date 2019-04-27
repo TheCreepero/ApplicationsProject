@@ -109,9 +109,94 @@ namespace Budgeting_Application
             finally
             {
                 loadBalance.CloseConnection();
+            }                        
+        }
+
+        public void GenerateReport()
+        {            
+            double sum = 0;
+            double incomeSum = 0;
+            double expenseSum = 0;
+
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                if (Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value) > 0)
+                {
+                    incomeSum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                }
+                else if (Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value) < 0)
+                {
+                    expenseSum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                }
             }
             
-            
+            balanceLabel.Text = sum.ToString() + '€';
+            reportExpLabel.Text = expenseSum.ToString() + "€";
+            reportIncomeLabel.Text = incomeSum.ToString() + "€";
+            if (sum > 0)
+            {
+                reportResultText.Text = "All good!";
+                reportResultText.ForeColor = Color.Green;
+                reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
+            }
+            else if (sum < 0)
+            {
+                reportResultText.Text = "Reduce expenses!";
+                reportResultText.ForeColor = Color.Red;
+                reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
+            }
+        }
+
+        public void GenerateCompleteReport()
+        {
+            string reportString = "SELECT Amount FROM [Transaction]";
+            DbConnection loadTransactions = new DbConnection();
+
+            double sum = 0;
+            double incomeSum = 0;
+            double expenseSum = 0;
+
+            try
+            {
+                loadTransactions.OpenConnection();
+                dr = loadTransactions.DataReader(reportString);
+                while (dr.Read())
+                {
+                    sum += Convert.ToDouble(dr["Amount"]);
+                    if (Convert.ToDouble(dr["Amount"]) < 0)
+                    {
+                        expenseSum += Convert.ToDouble(dr["Amount"]);
+                    }
+                    else if (Convert.ToDouble(dr["Amount"]) > 0)
+                    {
+                        incomeSum += Convert.ToDouble(dr["Amount"]);
+                    }
+                }
+                balanceLabel.Text = sum.ToString() + '€';
+                reportExpLabel.Text = expenseSum.ToString() + "€";
+                reportIncomeLabel.Text = incomeSum.ToString() + "€";
+                if (sum > 0)
+                {
+                    reportResultText.Text = "All good!";
+                    reportResultText.ForeColor = Color.Green;
+                    reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
+                }
+                else if (sum < 0)
+                {
+                    reportResultText.Text = "Reduce expenses!";
+                    reportResultText.ForeColor = Color.Red;
+                    reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                loadTransactions.CloseConnection();
+            }
         }
 
         private void fetchTransactions_Click(object sender, EventArgs e)
@@ -138,8 +223,7 @@ namespace Budgeting_Application
                 dr = fetchTransactions.DataReader(selectTransactions);
                 while (dr.Read())
                 {
-                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());
-                    
+                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());                    
                 }
             }
             catch (SqlException ex)
@@ -150,16 +234,7 @@ namespace Budgeting_Application
             {
                 fetchTransactions.CloseConnection();
                 oldRowCount = dataGridView1.Rows.Count;
-            }
-
-            //This counts the sum of all transactions and shows it in a label below the DataGrid
-            double sum = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
-            }
-         
-            balanceLabel.Text = sum.ToString() + '€';
+            }                    
         }
 
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -198,8 +273,6 @@ namespace Budgeting_Application
                 {
                     sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
                 }
-
-                balanceLabel.Text = sum.ToString() + '€';
                 LoadAccountInfo();
             }
         }
@@ -396,6 +469,16 @@ namespace Budgeting_Application
         {
             Options options = new Options();
             options.ShowDialog();
+        }
+
+        private void generateReportButton_Click(object sender, EventArgs e)
+        {
+            GenerateReport();
+        }
+
+        private void generateReportOfAllButton_Click(object sender, EventArgs e)
+        {
+            GenerateCompleteReport();
         }
     }
 }
