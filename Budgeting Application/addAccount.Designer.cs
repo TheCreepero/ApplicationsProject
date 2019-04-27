@@ -31,13 +31,13 @@ namespace Budgeting_Application
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.accName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AccountID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accNameText = new System.Windows.Forms.TextBox();
             this.accTypeBox = new System.Windows.Forms.ComboBox();
             this.addCategoryButton = new System.Windows.Forms.Button();
             this.updateAccountButton = new System.Windows.Forms.Button();
-            this.accName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AccountID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,14 +60,36 @@ namespace Budgeting_Application
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(276, 162);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgv_RowPrePaint);
+            // 
+            // accName
+            // 
+            this.accName.FillWeight = 138.5787F;
+            this.accName.HeaderText = "Name";
+            this.accName.Name = "accName";
+            this.accName.ReadOnly = true;
+            // 
+            // accType
+            // 
+            this.accType.FillWeight = 138.5787F;
+            this.accType.HeaderText = "Type";
+            this.accType.Name = "accType";
+            this.accType.ReadOnly = true;
+            // 
+            // AccountID
+            // 
+            this.AccountID.FillWeight = 22.84264F;
+            this.AccountID.HeaderText = "ID";
+            this.AccountID.Name = "AccountID";
+            this.AccountID.ReadOnly = true;
             // 
             // accNameText
             // 
             this.accNameText.Location = new System.Drawing.Point(12, 180);
             this.accNameText.MinimumSize = new System.Drawing.Size(134, 21);
             this.accNameText.Name = "accNameText";
-            this.accNameText.Size = new System.Drawing.Size(134, 21);
+            this.accNameText.Size = new System.Drawing.Size(134, 20);
             this.accNameText.TabIndex = 1;
             // 
             // accTypeBox
@@ -97,27 +119,6 @@ namespace Budgeting_Application
             this.updateAccountButton.Text = "Update selected";
             this.updateAccountButton.UseVisualStyleBackColor = true;
             this.updateAccountButton.Click += new System.EventHandler(this.updateAccountButton_Click);
-            // 
-            // accName
-            // 
-            this.accName.FillWeight = 138.5787F;
-            this.accName.HeaderText = "Name";
-            this.accName.Name = "accName";
-            this.accName.ReadOnly = true;
-            // 
-            // accType
-            // 
-            this.accType.FillWeight = 138.5787F;
-            this.accType.HeaderText = "Type";
-            this.accType.Name = "accType";
-            this.accType.ReadOnly = true;
-            // 
-            // AccountID
-            // 
-            this.AccountID.FillWeight = 22.84264F;
-            this.AccountID.HeaderText = "ID";
-            this.AccountID.Name = "AccountID";
-            this.AccountID.ReadOnly = true;
             // 
             // addAccount
             // 

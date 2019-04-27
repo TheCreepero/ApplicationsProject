@@ -63,6 +63,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(207, 269);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
             // 
             // Username
@@ -88,7 +89,7 @@
             // 
             // addUserButton
             // 
-            this.addUserButton.Location = new System.Drawing.Point(123, 313);
+            this.addUserButton.Location = new System.Drawing.Point(123, 310);
             this.addUserButton.Name = "addUserButton";
             this.addUserButton.Size = new System.Drawing.Size(97, 21);
             this.addUserButton.TabIndex = 1;
@@ -106,7 +107,7 @@
             // 
             // addUserName
             // 
-            this.addUserName.Location = new System.Drawing.Point(13, 313);
+            this.addUserName.Location = new System.Drawing.Point(13, 310);
             this.addUserName.MinimumSize = new System.Drawing.Size(97, 21);
             this.addUserName.Name = "addUserName";
             this.addUserName.Size = new System.Drawing.Size(97, 21);
@@ -145,7 +146,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 297);
+            this.label1.Location = new System.Drawing.Point(9, 293);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 7;
@@ -154,7 +155,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 337);
+            this.label2.Location = new System.Drawing.Point(9, 336);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 8;

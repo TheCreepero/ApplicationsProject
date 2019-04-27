@@ -20,6 +20,8 @@ namespace Budgeting_Application
             BindData();
         }
 
+        SqlDataReader dr;
+
         private void BindData()
         {
             userLvlSelect.Items.Add("admin");
@@ -31,8 +33,7 @@ namespace Budgeting_Application
         {
             e.PaintParts &= ~DataGridViewPaintParts.Focus;
         }
-
-        SqlDataReader dr;
+       
         private void LoadUsers()
         {
             DbConnection listUsersButton = new DbConnection();
@@ -145,6 +146,13 @@ namespace Budgeting_Application
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = dataGridView1.Rows[e.RowIndex].Index;
+            addUserName.Text = dataGridView1.Rows[rowIndex].Cells[0].Value.ToString();
+            userLvlSelect.Text = dataGridView1.Rows[rowIndex].Cells[1].Value.ToString();           
         }
     }
 }
