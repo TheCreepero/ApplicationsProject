@@ -3,4 +3,4 @@ Graphical design
 Testing
 Cleaning up code
 Separating certain functions to their own methods
-Reports: Total value of ALL incomes and expenses, full report of ALL events on a specified time period.
+Report system could still be improved
