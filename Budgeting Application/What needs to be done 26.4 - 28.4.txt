@@ -2,6 +2,7 @@
 Modifying user and account data: info from selected row is transferred to their respective text/combo boxes to make editing easier
 Graphical design
 Testing
-Cleaning up code
+Cleaning up code (mostly done)
 Separating certain functions to their own methods (mostly done)
 Report system could still be improved
+Monthly budgets system (if there's time)
