@@ -115,6 +115,42 @@ namespace Budgeting_Application
             }
         }
 
+        public void GenerateReport()
+        {
+            double sum = 0;
+            double incomeSum = 0;
+            double expenseSum = 0;
+
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                if (Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value) > 0)
+                {
+                    incomeSum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                }
+                else if (Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value) < 0)
+                {
+                    expenseSum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                }
+            }
+
+            balanceLabel.Text = sum.ToString() + '€';
+            reportExpLabel.Text = expenseSum.ToString() + "€";
+            reportIncomeLabel.Text = incomeSum.ToString() + "€";
+            if (sum > 0)
+            {
+                reportResultText.Text = "All good!";
+                reportResultText.ForeColor = Color.Green;
+                reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
+            }
+            else if (sum < 0)
+            {
+                reportResultText.Text = "Reduce expenses!";
+                reportResultText.ForeColor = Color.Red;
+                reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
+            }
+        }
+
         private void fetchTransactions_Click(object sender, EventArgs e)
         {
             //This clears any existing records from the DataGrid before new data is loaded in
@@ -144,17 +180,8 @@ namespace Budgeting_Application
             {
                 fetchTransactions.CloseConnection();
                 oldRowCount = dataGridView1.Rows.Count;
+                GenerateReport();
             }
-
-            //This counts the sum of all transactions and shows it in a label below the DataGrid
-            //THIS NEEDS TO BE REPLACED WITH A BETTER SYSTEM
-            int sum = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
-            }
-         
-            balanceLabel.Text = sum.ToString() + '€';
         }
 
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -349,6 +376,11 @@ namespace Budgeting_Application
 
                 balanceLabel.Text = sum.ToString() + '€';
             }
+        }
+
+        private void generateReportButton_Click(object sender, EventArgs e)
+        {
+            GenerateReport();
         }
     }
 }
