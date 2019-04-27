@@ -1,12 +1,6 @@
 ﻿(If possible): Modify transaction data
-Modifying user and account data: info from selected row is transferred to their respective text/combo boxes to make editing easier
 Graphical design
 Testing
-Cleaning up code (mostly done)
-Separating certain functions to their own methods (mostly done)
-Report system could still be improved
 Monthly budgets system (if there's time)
 Making the app crash-proof (try-catch, error messages, etc...) IMPLEMENTED FOR CHILD USER
 Deleting a user should also delete transactions made on the user account (or ask the admin if they should be deleted)
-
-OWNER FILTER DOESN'T QUITE WORK
