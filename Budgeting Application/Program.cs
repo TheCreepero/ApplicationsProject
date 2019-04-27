@@ -148,7 +148,7 @@ namespace Budgeting_Application
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(229, 121);
             this.dataGridView1.TabIndex = 5;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
             // 
             // userNameColumn
@@ -228,14 +228,12 @@ namespace Budgeting_Application
             }
         }
 
-
         SqlDataReader dr;
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
-            {
-                
-
+            {                
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
                     if (row.Cells[1].Value.ToString() == admin)
@@ -246,14 +244,12 @@ namespace Budgeting_Application
                         mainmenuAdmin mainmenuAdmin = new mainmenuAdmin();
                         mainmenuAdmin.ShowDialog(); 
                     }
-
                     if (row.Cells[1].Value.ToString() == parent)
                     {
                         selectedUserName = row.Cells[0].Value;
                         mainmenuParent mainmenuParent = new mainmenuParent();
                         mainmenuParent.ShowDialog();                       
                     }
-
                     if (row.Cells[1].Value.ToString() == child)
                     {
                         selectedUserName = row.Cells[0].Value;
@@ -265,10 +261,7 @@ namespace Budgeting_Application
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-            }           
+            }          
         }
 
         private void exit_Click(object sender, EventArgs e)
@@ -281,17 +274,7 @@ namespace Budgeting_Application
 
         }
 
-        private void userLvlList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
