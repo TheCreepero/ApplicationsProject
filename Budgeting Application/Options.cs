@@ -116,5 +116,35 @@ namespace Budgeting_Application
             addAccount account = new addAccount();
             account.ShowDialog();
         }
+
+        private void updateUserButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                int rowIdToDelete = Convert.ToInt32(row.Cells["UserID"].Value);
+                string updateSelected = "UPDATE [User] SET UserName = '" + addUserName.Text + "', UserLvl = '" + userLvlSelect.Text + "' WHERE UserID = " + rowIdToDelete;
+                DbConnection updateUser = new DbConnection();
+
+                try
+                {
+                    updateUser.OpenConnection();
+                    updateUser.ExcecuteQueries(updateSelected);
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    updateUser.CloseConnection();
+                    LoadUsers();
+                }
+            }
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
