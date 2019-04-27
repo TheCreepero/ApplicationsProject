@@ -30,6 +30,7 @@ namespace Budgeting_Application
             BindData();
             LoadAccountData();
             filterCategoryCB.SelectedText = "Any";
+            LoadTransactions();
         }
 
         DataTable eventTable = new DataTable();
@@ -107,6 +108,32 @@ namespace Budgeting_Application
             finally
             {
                 loadBalance.CloseConnection();
+            }
+        }
+
+        private void LoadTransactions()
+        {
+            DbConnection fetchTransactions = new DbConnection();
+            string selectTransactions = "SELECT * FROM [Transaction] WHERE PayerName = '" + Program.selectedUserName.ToString() + "'";
+            try
+            {
+                fetchTransactions.OpenConnection();
+                dr = fetchTransactions.DataReader(selectTransactions);
+
+                while (dr.Read())
+                {
+                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, errorTitle);
+            }
+            finally
+            {
+                fetchTransactions.CloseConnection();
+                oldRowCount = dataGridView1.Rows.Count;
+                GenerateReport();
             }
         }
 

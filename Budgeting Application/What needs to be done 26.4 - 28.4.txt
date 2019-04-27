@@ -7,3 +7,4 @@ Separating certain functions to their own methods (mostly done)
 Report system could still be improved
 Monthly budgets system (if there's time)
 Making the app crash-proof (try-catch, error messages, etc...) IMPLEMENTED FOR CHILD USER
+Deleting a user should also delete transactions made on the user account (or ask the admin if they should be deleted)
