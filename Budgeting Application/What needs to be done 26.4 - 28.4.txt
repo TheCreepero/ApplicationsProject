@@ -3,5 +3,5 @@ Modifying user and account data: info from selected row is transferred to their 
 Graphical design
 Testing
 Cleaning up code
-Separating certain functions to their own methods
+Separating certain functions to their own methods (mostly done)
 Report system could still be improved
