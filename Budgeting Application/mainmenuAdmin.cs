@@ -27,7 +27,8 @@ namespace Budgeting_Application
             LoadAccountInfo();
             comboBox2.Items.Add("All");
             filterCategoryCB.Items.Add("Any");
-            filterOwnerCB.Items.Add("Any");
+            filterOwnerCB.Items.Add("Any");            
+            LoadTransactions();
         }
 
         DataTable eventTable = new DataTable();
@@ -113,6 +114,33 @@ namespace Budgeting_Application
             }                        
         }
 
+        public void LoadTransactions()
+        {
+            //This takes the transaction data from the DB and displays it in dataGridView1
+            DbConnection fetchTransactions = new DbConnection();
+            string selectTransactions = "SELECT * FROM [Transaction] WHERE PayerName = '" + Program.selectedUserName + "'";
+            //Transactions are loaded
+            try
+            {
+                fetchTransactions.OpenConnection();
+                dr = fetchTransactions.DataReader(selectTransactions);
+                while (dr.Read())
+                {
+                    dataGridView1.Rows.Add(dr["Amount"].ToString(), dr["AccountName"].ToString(), dr["PayerName"].ToString(), dr["OwnerName"].ToString(), dr["Date"].ToString(), dr["Receiver"].ToString(), dr["ProductName"].ToString(), dr["Description"].ToString(), dr["EventID"].ToString());
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                fetchTransactions.CloseConnection();
+                oldRowCount = dataGridView1.Rows.Count;
+                GenerateReport();
+            }
+        }
+
         public void GenerateReport()
         {            
             double sum = 0;
@@ -145,6 +173,12 @@ namespace Budgeting_Application
             {
                 reportResultText.Text = "Reduce expenses!";
                 reportResultText.ForeColor = Color.Red;
+                reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
+            }
+            else if (sum == 0)
+            {
+                reportResultText.Text = "Perfectly balanced!";
+                reportResultText.ForeColor = Color.Yellow;
                 reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
             }
         }
@@ -189,6 +223,12 @@ namespace Budgeting_Application
                     reportResultText.ForeColor = Color.Red;
                     reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
                 }
+                else if (sum == 0)
+                {
+                    reportResultText.Text = "Perfectly balanced!";
+                    reportResultText.ForeColor = Color.Yellow;
+                    reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
+                }
             }
             catch (SqlException ex)
             {
@@ -208,11 +248,10 @@ namespace Budgeting_Application
 
             //This takes the transaction data from the DB and displays it in dataGridView1
             DbConnection fetchTransactions = new DbConnection();
-            string selectTransactions = "SELECT * FROM [Transaction] WHERE PayerName = '" + comboBox2.SelectedItem.ToString() + "'";
+            string selectTransactions = "SELECT * FROM [Transaction] WHERE PayerName = '" + comboBox2.SelectedItem + "'";
 
-            //This "if" structure is needed for the selection of all transactions
-            string userSelection = comboBox2.SelectedItem.ToString();            
-            if (userSelection == "All")
+            //This "if" structure is needed for the selection of all transactions           
+            if (comboBox2.Text == "All")
             {
                 selectTransactions = "SELECT * FROM [Transaction]";
             }
@@ -235,6 +274,7 @@ namespace Budgeting_Application
             {
                 fetchTransactions.CloseConnection();
                 oldRowCount = dataGridView1.Rows.Count;
+                GenerateReport();
             }                    
         }
 
@@ -297,6 +337,7 @@ namespace Budgeting_Application
             eventTable.Columns.Add("Description", typeof(string));
             filterCategoryCB.SelectedText = "Any";
             filterOwnerCB.SelectedText = "Any";
+            comboBox2.SelectedText = Program.selectedUserName.ToString();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -319,13 +360,13 @@ namespace Budgeting_Application
                 finally
                 {
                     dataGridView1.Refresh();
-                    deleteRow.CloseConnection();                    
+                    deleteRow.CloseConnection();
                 }
             }
 
             int rowIndex = dataGridView1.CurrentRow.Index;
             dataGridView1.Rows.RemoveAt(rowIndex);
-            
+            GenerateReport();
         }
 
         private void filterButton_Click(object sender, EventArgs e)
@@ -389,14 +430,7 @@ namespace Budgeting_Application
             finally
             {
                 filterConnection.CloseConnection();
-
-                double sum = 0;
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
-                }
-
-                balanceLabel.Text = sum.ToString() + '€';
+                GenerateReport();
             }
         }
 
@@ -454,14 +488,7 @@ namespace Budgeting_Application
             finally
             {
                 filterDatesConn.CloseConnection();
-
-                double sum = 0;
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
-                }
-
-                balanceLabel.Text = sum.ToString() + '€';
+                GenerateReport();
             }
         }
 
@@ -509,6 +536,7 @@ namespace Budgeting_Application
             {
                 fetchTransactions.CloseConnection();
                 oldRowCount = dataGridView1.Rows.Count;
+                GenerateReport();
             }
         }
 
@@ -540,6 +568,7 @@ namespace Budgeting_Application
             {
                 fetchTransactions.CloseConnection();
                 oldRowCount = dataGridView1.Rows.Count;
+                GenerateReport();
             }
         }
     }
