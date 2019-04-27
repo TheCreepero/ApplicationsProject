@@ -65,15 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
     <Compile Include="addAccount.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="addAccount.Designer.cs">
       <DependentUpon>addAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin.cs" />
-    <Compile Include="Child.cs" />
     <Compile Include="DbConnection.cs" />
     <Compile Include="ApplicationData\MainDBDataSet.Designer.cs" />
     <Compile Include="ApplicationData\MainDBDataSet1.Designer.cs">
@@ -105,7 +102,6 @@
     <Compile Include="Options.Designer.cs">
       <DependentUpon>Options.cs</DependentUpon>
     </Compile>
-    <Compile Include="Parent.cs" />
     <Compile Include="Program.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,9 +116,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Report.cs" />
-    <Compile Include="Transaction.cs" />
-    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
