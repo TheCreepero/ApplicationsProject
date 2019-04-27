@@ -6,4 +6,4 @@ Cleaning up code (mostly done)
 Separating certain functions to their own methods (mostly done)
 Report system could still be improved
 Monthly budgets system (if there's time)
-Making the app crash-proof (try-catch, error messages, etc...)
+Making the app crash-proof (try-catch, error messages, etc...) IMPLEMENTED FOR CHILD USER
