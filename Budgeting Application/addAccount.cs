@@ -109,9 +109,20 @@ namespace Budgeting_Application
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int rowIndex = dataGridView1.Rows[e.RowIndex].Index;
-            accNameText.Text = dataGridView1.Rows[rowIndex].Cells[0].Value.ToString();
-            accTypeBox.Text = dataGridView1.Rows[rowIndex].Cells[1].Value.ToString();
+            try
+            {
+                int rowIndex = dataGridView1.Rows[e.RowIndex].Index;
+                accNameText.Text = dataGridView1.Rows[rowIndex].Cells[0].Value.ToString();
+                accTypeBox.Text = dataGridView1.Rows[rowIndex].Cells[1].Value.ToString();
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                
+            } 
+            catch (Exception exe)
+            {
+                MessageBox.Show(exe.Message);
+            }
         }
     }
 }

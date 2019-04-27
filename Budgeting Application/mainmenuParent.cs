@@ -18,6 +18,7 @@ namespace Budgeting_Application
         DataTable eventTable = new DataTable();
         int oldRowCount;
         string welcomeLabel = "Welcome, " + Convert.ToString(Program.selectedUserName) + "!";
+        string errorTitle = "An exception has occured!";
 
         public mainmenuParent()
         {
@@ -248,33 +249,40 @@ namespace Budgeting_Application
 
         private void buttonAddEvent_Click(object sender, EventArgs e)
         {
-            //The date function doesn't work!
-            dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, comboBox3.Text, comboBox4.Text, dateTimePicker1.Value.ToString("MM.dd.yyyy"), textBox2.Text, textBox3.Text, textBox4.Text);
-            string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + comboBox3.Text + "', '" + comboBox4.Text + "', '" + dateTimePicker1.Value.ToString("MM.dd.yyyy") + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
-            DbConnection insertToDb = new DbConnection();
-
-            try
+            if (textBox1 == null || string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                insertToDb.OpenConnection();
-                insertToDb.ExcecuteQueries(insertChanges);
+                MessageBox.Show("Incorrect input!", errorTitle);
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                dataGridView1.Refresh();
-                insertToDb.CloseConnection();
+                //The date function doesn't work!
+                dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, comboBox3.Text, comboBox4.Text, dateTimePicker1.Value.ToString("MM.dd.yyyy"), textBox2.Text, textBox3.Text, textBox4.Text);
+                string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + comboBox3.Text + "', '" + comboBox4.Text + "', '" + dateTimePicker1.Value.ToString("MM.dd.yyyy") + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
+                DbConnection insertToDb = new DbConnection();
 
-                double sum = 0;
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                try
                 {
-                    sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                    insertToDb.OpenConnection();
+                    insertToDb.ExcecuteQueries(insertChanges);
                 }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message, errorTitle);
+                }
+                finally
+                {
+                    dataGridView1.Refresh();
+                    insertToDb.CloseConnection();
 
-                balanceLabel.Text = sum.ToString() + '€';
-                LoadAccountInfo();
+                    double sum = 0;
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                    }
+
+                    balanceLabel.Text = sum.ToString() + '€';
+                    LoadAccountInfo();
+                }
             }
         }
 

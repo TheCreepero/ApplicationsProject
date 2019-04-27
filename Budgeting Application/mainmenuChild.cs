@@ -21,6 +21,7 @@ namespace Budgeting_Application
         string welcomeLabel = "Welcome, " + Convert.ToString(Program.selectedUserName) + "!";
         string listAccounts = "SELECT AccountName FROM [Account]";
         string listUsers = "SELECT UserName FROM [User]";
+        string errorTitle = "An exception has occured!";
 
         public mainmenuChild()
         {
@@ -196,24 +197,31 @@ namespace Budgeting_Application
 
         private void buttonAddEvent_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, Program.selectedUserName, comboBox2.Text, dateTimePicker1.Value, textBox2.Text, textBox3.Text, textBox4.Text);
-            string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + Program.selectedUserName + "', '" + comboBox2.Text + "', '" + dateTimePicker1.Value + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
-            DbConnection insertToDb = new DbConnection();
+            if (textBox1 == null || string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                MessageBox.Show("Incorrect input!", errorTitle);
+            }
+            else
+            {
+                dataGridView1.Rows.Add(textBox1.Text, comboBox1.Text, Program.selectedUserName, comboBox2.Text, dateTimePicker1.Value, textBox2.Text, textBox3.Text, textBox4.Text);
+                string insertChanges = "INSERT INTO [Transaction] VALUES ('" + textBox1.Text + "', '" + comboBox1.Text + "', '" + Program.selectedUserName + "', '" + comboBox2.Text + "', '" + dateTimePicker1.Value + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "')";
+                DbConnection insertToDb = new DbConnection();
 
-            try
-            {
-                insertToDb.OpenConnection();
-                insertToDb.ExcecuteQueries(insertChanges);
-            }
-            catch (System.Data.SqlClient.SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                dataGridView1.Refresh();
-                insertToDb.CloseConnection();
-                LoadAccountData();
+                try
+                {
+                    insertToDb.OpenConnection();
+                    insertToDb.ExcecuteQueries(insertChanges);
+                }
+                catch (System.Data.SqlClient.SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    dataGridView1.Refresh();
+                    insertToDb.CloseConnection();
+                    LoadAccountData();
+                }
             }
         }
 

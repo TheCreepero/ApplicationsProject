@@ -92,14 +92,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.optionsButton = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.reportResultText = new System.Windows.Forms.Label();
+            this.reportExpLabel = new System.Windows.Forms.Label();
+            this.reportIncomeLabel = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.reportIncomeLabel = new System.Windows.Forms.Label();
-            this.reportExpLabel = new System.Windows.Forms.Label();
             this.generateReportButton = new System.Windows.Forms.Button();
             this.generateReportOfAllButton = new System.Windows.Forms.Button();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
-            this.reportResultText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -465,7 +465,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(114, 17);
+            this.label5.Location = new System.Drawing.Point(114, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 39;
@@ -509,7 +509,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(2, 18);
+            this.label7.Location = new System.Drawing.Point(2, 17);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 13);
             this.label7.TabIndex = 43;
@@ -681,6 +681,33 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Report";
             // 
+            // reportResultText
+            // 
+            this.reportResultText.AutoSize = true;
+            this.reportResultText.Location = new System.Drawing.Point(9, 93);
+            this.reportResultText.Name = "reportResultText";
+            this.reportResultText.Size = new System.Drawing.Size(10, 13);
+            this.reportResultText.TabIndex = 33;
+            this.reportResultText.Text = "-";
+            // 
+            // reportExpLabel
+            // 
+            this.reportExpLabel.AutoSize = true;
+            this.reportExpLabel.Location = new System.Drawing.Point(61, 69);
+            this.reportExpLabel.Name = "reportExpLabel";
+            this.reportExpLabel.Size = new System.Drawing.Size(10, 13);
+            this.reportExpLabel.TabIndex = 32;
+            this.reportExpLabel.Text = "-";
+            // 
+            // reportIncomeLabel
+            // 
+            this.reportIncomeLabel.AutoSize = true;
+            this.reportIncomeLabel.Location = new System.Drawing.Point(61, 49);
+            this.reportIncomeLabel.Name = "reportIncomeLabel";
+            this.reportIncomeLabel.Size = new System.Drawing.Size(10, 13);
+            this.reportIncomeLabel.TabIndex = 31;
+            this.reportIncomeLabel.Text = "-";
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -698,24 +725,6 @@
             this.label13.Size = new System.Drawing.Size(50, 13);
             this.label13.TabIndex = 8;
             this.label13.Text = "Incomes:";
-            // 
-            // reportIncomeLabel
-            // 
-            this.reportIncomeLabel.AutoSize = true;
-            this.reportIncomeLabel.Location = new System.Drawing.Point(61, 49);
-            this.reportIncomeLabel.Name = "reportIncomeLabel";
-            this.reportIncomeLabel.Size = new System.Drawing.Size(10, 13);
-            this.reportIncomeLabel.TabIndex = 31;
-            this.reportIncomeLabel.Text = "-";
-            // 
-            // reportExpLabel
-            // 
-            this.reportExpLabel.AutoSize = true;
-            this.reportExpLabel.Location = new System.Drawing.Point(61, 69);
-            this.reportExpLabel.Name = "reportExpLabel";
-            this.reportExpLabel.Size = new System.Drawing.Size(10, 13);
-            this.reportExpLabel.TabIndex = 32;
-            this.reportExpLabel.Text = "-";
             // 
             // generateReportButton
             // 
@@ -736,15 +745,6 @@
             this.generateReportOfAllButton.Text = "Generate report of ALL events";
             this.generateReportOfAllButton.UseVisualStyleBackColor = true;
             this.generateReportOfAllButton.Click += new System.EventHandler(this.generateReportOfAllButton_Click);
-            // 
-            // reportResultText
-            // 
-            this.reportResultText.AutoSize = true;
-            this.reportResultText.Location = new System.Drawing.Point(9, 93);
-            this.reportResultText.Name = "reportResultText";
-            this.reportResultText.Size = new System.Drawing.Size(10, 13);
-            this.reportResultText.TabIndex = 33;
-            this.reportResultText.Text = "-";
             // 
             // mainmenuAdmin
             // 
