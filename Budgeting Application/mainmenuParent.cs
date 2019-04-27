@@ -110,6 +110,93 @@ namespace Budgeting_Application
             }                       
         }
 
+        public void GenerateReport()
+        {
+            double sum = 0;
+            double incomeSum = 0;
+            double expenseSum = 0;
+
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                if (Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value) > 0)
+                {
+                    incomeSum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                }
+                else if (Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value) < 0)
+                {
+                    expenseSum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+                }
+            }
+
+            balanceLabel.Text = sum.ToString() + '€';
+            reportExpLabel.Text = expenseSum.ToString() + "€";
+            reportIncomeLabel.Text = incomeSum.ToString() + "€";
+            if (sum > 0)
+            {
+                reportResultText.Text = "All good!";
+                reportResultText.ForeColor = Color.Green;
+                reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
+            }
+            else if (sum < 0)
+            {
+                reportResultText.Text = "Reduce expenses!";
+                reportResultText.ForeColor = Color.Red;
+                reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
+            }
+        }
+
+        public void GenerateCompleteReport()
+        {
+            string reportString = "SELECT Amount FROM [Transaction]";
+            DbConnection loadTransactions = new DbConnection();
+
+            double sum = 0;
+            double incomeSum = 0;
+            double expenseSum = 0;
+
+            try
+            {
+                loadTransactions.OpenConnection();
+                dr = loadTransactions.DataReader(reportString);
+                while (dr.Read())
+                {
+                    sum += Convert.ToDouble(dr["Amount"]);
+                    if (Convert.ToDouble(dr["Amount"]) < 0)
+                    {
+                        expenseSum += Convert.ToDouble(dr["Amount"]);
+                    }
+                    else if (Convert.ToDouble(dr["Amount"]) > 0)
+                    {
+                        incomeSum += Convert.ToDouble(dr["Amount"]);
+                    }
+                }
+                balanceLabel.Text = sum.ToString() + '€';
+                reportExpLabel.Text = expenseSum.ToString() + "€";
+                reportIncomeLabel.Text = incomeSum.ToString() + "€";
+                if (sum > 0)
+                {
+                    reportResultText.Text = "All good!";
+                    reportResultText.ForeColor = Color.Green;
+                    reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
+                }
+                else if (sum < 0)
+                {
+                    reportResultText.Text = "Reduce expenses!";
+                    reportResultText.ForeColor = Color.Red;
+                    reportResultText.Font = new Font(reportResultText.Font, FontStyle.Bold);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                loadTransactions.CloseConnection();
+            }
+        }
+
         private void fetchTransactions_Click(object sender, EventArgs e)
         {
             //This clears any existing records from the DataGrid before new data is loaded in
@@ -147,15 +234,6 @@ namespace Budgeting_Application
                 fetchTransactions.CloseConnection();
                 oldRowCount = dataGridView1.Rows.Count;
             }
-
-            //This counts the sum of all transactions and shows it in a label below the DataGrid
-            double sum = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                sum += Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
-            }
-         
-            balanceLabel.Text = sum.ToString() + '€';
         }
 
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -323,11 +401,6 @@ namespace Budgeting_Application
             }
         }
 
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void filterDatesButton_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
@@ -391,6 +464,16 @@ namespace Budgeting_Application
 
                 balanceLabel.Text = sum.ToString() + '€';
             }
+        }
+
+        private void generateReportButton_Click(object sender, EventArgs e)
+        {
+            GenerateReport();
+        }
+
+        private void generateReportOfAllButton_Click(object sender, EventArgs e)
+        {
+            GenerateCompleteReport();
         }
     }
 }
