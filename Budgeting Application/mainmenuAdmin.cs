@@ -81,6 +81,7 @@ namespace Budgeting_Application
 
         public void LoadAccountInfo()
         {
+            //This gets info about the user currently using the program and outputs it to the account info box in the bottom right of the program
             userNameLabel.Text = Program.selectedUserName.ToString();
             string balanceQuery = "SELECT Amount from [Transaction] WHERE PayerName = '" + Program.selectedUserName.ToString() + "'";
             DbConnection loadBalance = new DbConnection();
@@ -188,6 +189,7 @@ namespace Budgeting_Application
 
         public void GenerateCompleteReport()
         {
+            //Report generation of ALL data in the database. This is only available for admin and parent
             string reportString = "SELECT Amount FROM [Transaction]";
             DbConnection loadTransactions = new DbConnection();
 
@@ -245,7 +247,7 @@ namespace Budgeting_Application
 
         private void fetchTransactions_Click(object sender, EventArgs e)
         {
-            //This clears any existing records from the DataGrid before new data is loaded in
+            //This clears any existing records from the DataGrid before new data is loaded in (avoids duplicates)
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
 
@@ -442,6 +444,7 @@ namespace Budgeting_Application
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
 
+            //This series of if-statements constructs a query string based on the selected filters
             string activeUser = comboBox2.Text;
             string filterDateQuery = "SELECT * FROM [Transaction] WHERE PayerName = '" + comboBox2.Text + "' AND Date BETWEEN '" + dateTimePicker2.Value.ToString("MM.dd.yyyy") + "' AND '" + dateTimePicker3.Value.ToString("MM.dd.yyyy") + "'";
             if (comboBox2.Text == "All")

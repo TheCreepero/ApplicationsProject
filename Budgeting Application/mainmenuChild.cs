@@ -80,6 +80,7 @@ namespace Budgeting_Application
 
         private void LoadAccountData()
         {
+            //This gets info about the user currently using the program and outputs it to the account info box in the bottom right of the program
             userNameLabel.Text = Program.selectedUserName.ToString();
             string balanceQuery = "SELECT Amount from [Transaction] WHERE PayerName = '" + Program.selectedUserName.ToString() + "'";
             DbConnection loadBalance = new DbConnection();
