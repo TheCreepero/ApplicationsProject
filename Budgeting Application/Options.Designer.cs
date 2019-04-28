@@ -36,16 +36,15 @@
             this.userLvlSelect = new System.Windows.Forms.ComboBox();
             this.addUserName = new System.Windows.Forms.TextBox();
             this.deleteUserButton = new System.Windows.Forms.Button();
-            this.addAccountButton = new System.Windows.Forms.Button();
             this.updateUserButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
+            this.showUserButton = new System.Windows.Forms.Button();
+            this.showAccountButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             // 
             // dataGridView1
             // 
@@ -64,7 +63,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(207, 269);
+            this.dataGridView1.Size = new System.Drawing.Size(247, 269);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
@@ -92,9 +91,9 @@
             // 
             // addUserButton
             // 
-            this.addUserButton.Location = new System.Drawing.Point(123, 310);
+            this.addUserButton.Location = new System.Drawing.Point(145, 331);
             this.addUserButton.Name = "addUserButton";
-            this.addUserButton.Size = new System.Drawing.Size(97, 21);
+            this.addUserButton.Size = new System.Drawing.Size(114, 21);
             this.addUserButton.TabIndex = 1;
             this.addUserButton.Text = "Add user";
             this.addUserButton.UseVisualStyleBackColor = true;
@@ -103,44 +102,34 @@
             // userLvlSelect
             // 
             this.userLvlSelect.FormattingEnabled = true;
-            this.userLvlSelect.Location = new System.Drawing.Point(13, 353);
+            this.userLvlSelect.Location = new System.Drawing.Point(13, 374);
             this.userLvlSelect.Name = "userLvlSelect";
-            this.userLvlSelect.Size = new System.Drawing.Size(97, 21);
+            this.userLvlSelect.Size = new System.Drawing.Size(126, 21);
             this.userLvlSelect.TabIndex = 2;
             // 
             // addUserName
             // 
-            this.addUserName.Location = new System.Drawing.Point(13, 310);
+            this.addUserName.Location = new System.Drawing.Point(13, 331);
             this.addUserName.MinimumSize = new System.Drawing.Size(97, 21);
             this.addUserName.Name = "addUserName";
-            this.addUserName.Size = new System.Drawing.Size(97, 21);
+            this.addUserName.Size = new System.Drawing.Size(126, 21);
             this.addUserName.TabIndex = 3;
             // 
             // deleteUserButton
             // 
-            this.deleteUserButton.Location = new System.Drawing.Point(13, 380);
+            this.deleteUserButton.Location = new System.Drawing.Point(13, 401);
             this.deleteUserButton.Name = "deleteUserButton";
-            this.deleteUserButton.Size = new System.Drawing.Size(207, 29);
+            this.deleteUserButton.Size = new System.Drawing.Size(246, 29);
             this.deleteUserButton.TabIndex = 4;
             this.deleteUserButton.Text = "Delete user";
             this.deleteUserButton.UseVisualStyleBackColor = true;
             this.deleteUserButton.Click += new System.EventHandler(this.deleteUserButton_Click);
             // 
-            // addAccountButton
-            // 
-            this.addAccountButton.Location = new System.Drawing.Point(13, 415);
-            this.addAccountButton.Name = "addAccountButton";
-            this.addAccountButton.Size = new System.Drawing.Size(207, 29);
-            this.addAccountButton.TabIndex = 5;
-            this.addAccountButton.Text = "Edit Categories";
-            this.addAccountButton.UseVisualStyleBackColor = true;
-            this.addAccountButton.Click += new System.EventHandler(this.addAccountButton_Click);
-            // 
             // updateUserButton
             // 
-            this.updateUserButton.Location = new System.Drawing.Point(123, 353);
+            this.updateUserButton.Location = new System.Drawing.Point(145, 374);
             this.updateUserButton.Name = "updateUserButton";
-            this.updateUserButton.Size = new System.Drawing.Size(97, 21);
+            this.updateUserButton.Size = new System.Drawing.Size(114, 21);
             this.updateUserButton.TabIndex = 6;
             this.updateUserButton.Text = "Update selected";
             this.updateUserButton.UseVisualStyleBackColor = true;
@@ -149,7 +138,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 293);
+            this.label1.Location = new System.Drawing.Point(9, 314);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 7;
@@ -158,7 +147,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 336);
+            this.label2.Location = new System.Drawing.Point(9, 357);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 8;
@@ -166,7 +155,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(168, 472);
+            this.exitButton.Location = new System.Drawing.Point(207, 472);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(52, 23);
             this.exitButton.TabIndex = 9;
@@ -174,21 +163,56 @@
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
+            // showUserButton
+            // 
+            this.showUserButton.Location = new System.Drawing.Point(13, 287);
+            this.showUserButton.Name = "showUserButton";
+            this.showUserButton.Size = new System.Drawing.Size(75, 23);
+            this.showUserButton.TabIndex = 10;
+            this.showUserButton.Text = "Users";
+            this.showUserButton.UseVisualStyleBackColor = true;
+            this.showUserButton.Click += new System.EventHandler(this.showUserButton_Click);
+            // 
+            // showAccountButton
+            // 
+            this.showAccountButton.Location = new System.Drawing.Point(184, 287);
+            this.showAccountButton.Name = "showAccountButton";
+            this.showAccountButton.Size = new System.Drawing.Size(75, 23);
+            this.showAccountButton.TabIndex = 11;
+            this.showAccountButton.Text = "Accounts";
+            this.showAccountButton.UseVisualStyleBackColor = true;
+            this.showAccountButton.Click += new System.EventHandler(this.showAccountButton_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(110, 291);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 14);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "<----->";
+            // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(232, 507);
+            this.ClientSize = new System.Drawing.Size(271, 507);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.showAccountButton);
+            this.Controls.Add(this.showUserButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.updateUserButton);
-            this.Controls.Add(this.addAccountButton);
             this.Controls.Add(this.deleteUserButton);
             this.Controls.Add(this.addUserName);
             this.Controls.Add(this.userLvlSelect);
             this.Controls.Add(this.addUserButton);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Options";
             this.Text = "Options";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -207,10 +231,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AccessLevel;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
         private System.Windows.Forms.Button deleteUserButton;
-        private System.Windows.Forms.Button addAccountButton;
         private System.Windows.Forms.Button updateUserButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button showUserButton;
+        private System.Windows.Forms.Button showAccountButton;
+        private System.Windows.Forms.Label label3;
     }
 }

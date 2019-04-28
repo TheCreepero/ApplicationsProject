@@ -11,6 +11,11 @@ using System.Data.SqlClient;
 
 namespace Budgeting_Application
 {
+    /*NOTE TO TEACHERS
+    The changes made while debugging in Visual Studio aren't actually saved. This is because the changes are made to the database in
+    the debug folder, and every time the program is rerun it gets overwritten. This is not a bug, and the compiled release version works as intended.
+    It just means that you can't make any permanent changes to the application data through visual studio.
+    */
     public partial class Options : Form
     {
         public Options()
@@ -21,6 +26,9 @@ namespace Budgeting_Application
         }
 
         SqlDataReader dr;
+
+        //This is for the if statement that defines which insertion query is used
+        string selectedData = "user";
 
         private void BindData()
         {
@@ -62,16 +70,49 @@ namespace Budgeting_Application
             }
         }
 
+        private void LoadAccounts()
+        {
+            DbConnection listAccountsButton = new DbConnection();
+            string listUsers = "SELECT AccountName, AccountType, AccountID FROM [Account]";
+            try
+            {
+                dataGridView1.Rows.Clear();
+                dataGridView1.Refresh();
+
+                listAccountsButton.OpenConnection();
+                dr = listAccountsButton.DataReader(listUsers);
+                while (dr.Read())
+                {
+                    dataGridView1.Rows.Add(dr["AccountName"].ToString(), dr["AccountType"].ToString(), dr["AccountID"].ToString());
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                listAccountsButton.CloseConnection();
+            }
+        }
+
         private void addUserButton_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Add(addUserName.Text, userLvlSelect.Text);
-            string insertUser = "INSERT INTO [User] (UserName, UserLvl) VALUES ('" + addUserName.Text + "', '" + userLvlSelect.Text + "')";
+            string insertData = null;
+            if (selectedData == "user")
+            {
+                insertData = "INSERT INTO [User] (UserName, UserLvl) VALUES ('" + addUserName.Text + "', '" + userLvlSelect.Text + "')";
+            }
+            else if (selectedData == "account")
+            {
+                insertData = "INSERT INTO [Account] (AccountName, AccountType) VALUES ('" + addUserName.Text + "', '" + userLvlSelect.Text + "')";
+            }
             DbConnection insertToUsers = new DbConnection();
-
             try
             {
                 insertToUsers.OpenConnection();
-                insertToUsers.ExcecuteQueries(insertUser);
+                insertToUsers.ExcecuteQueries(insertData);
             }
             catch (SqlException ex)
             {
@@ -80,7 +121,14 @@ namespace Budgeting_Application
             finally
             {
                 insertToUsers.CloseConnection();
+            }
+            if (selectedData == "user")
+            {
                 LoadUsers();
+            }
+            else if (selectedData == "account")
+            {
+                LoadAccounts();
             }
         }
 
@@ -164,6 +212,46 @@ namespace Budgeting_Application
             {
                 MessageBox.Show(exe.Message);
             }
+        }
+
+        private void showUserButton_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Columns[0].HeaderText = "Username";
+            dataGridView1.Columns[1].HeaderText = "User Level";
+            label1.Text = "Username";
+            label2.Text = "User Level";
+            addUserButton.Text = "Add user";
+            deleteUserButton.Text = "Delete user";
+            userLvlSelect.Items.Clear();
+            userLvlSelect.Items.Add("admin");
+            userLvlSelect.Items.Add("parent");
+            userLvlSelect.Items.Add("child");
+
+            //This is for the if statement that defines which insertion query is used
+            selectedData = "user";
+
+            //Loads user data from database
+            LoadUsers();
+        }
+
+        private void showAccountButton_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Columns[0].HeaderText = "Account Name";
+            dataGridView1.Columns[1].HeaderText = "Account Type";
+            label1.Text = "Account Name";
+            label2.Text = "Account Type";
+            addUserButton.Text = "Add account";
+            deleteUserButton.Text = "Delete account";
+
+            userLvlSelect.Items.Clear();
+            userLvlSelect.Items.Add("Expenses");
+            userLvlSelect.Items.Add("Income");
+
+            //This is for the if statement that defines which insertion query is used
+            selectedData = "account";
+
+            //Loads account data from database
+            LoadAccounts();
         }
     }
 }

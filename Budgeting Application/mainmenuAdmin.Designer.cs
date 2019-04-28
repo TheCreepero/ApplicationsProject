@@ -707,9 +707,9 @@
             this.optionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.optionsButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optionsButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.optionsButton.Location = new System.Drawing.Point(1018, 504);
+            this.optionsButton.Location = new System.Drawing.Point(1018, 510);
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(155, 34);
+            this.optionsButton.Size = new System.Drawing.Size(155, 32);
             this.optionsButton.TabIndex = 46;
             this.optionsButton.Text = "Options";
             this.optionsButton.UseVisualStyleBackColor = false;

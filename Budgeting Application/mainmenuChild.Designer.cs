@@ -237,7 +237,7 @@
             this.exitbutton.BackColor = System.Drawing.Color.Lavender;
             this.exitbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitbutton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitbutton.Location = new System.Drawing.Point(981, 535);
+            this.exitbutton.Location = new System.Drawing.Point(981, 534);
             this.exitbutton.Name = "exitbutton";
             this.exitbutton.Size = new System.Drawing.Size(150, 32);
             this.exitbutton.TabIndex = 3;

@@ -11,6 +11,11 @@ using System.Data.SqlClient;
 
 namespace Budgeting_Application
 {
+    /*NOTE TO TEACHERS
+    The changes made while debugging in Visual Studio aren't actually saved. This is because the changes are made to the database in
+    the debug folder, and every time the program is rerun it gets overwritten. This is not a bug, and the compiled release version works as intended.
+    It just means that you can't make any permanent changes to the application data through visual studio.
+    */
     public partial class mainmenuAdmin : Form
     {
         SqlDataReader dr;
@@ -24,10 +29,7 @@ namespace Budgeting_Application
             InitializeComponent();
             label1.Text = welcomeLabel;
             BindData();
-            LoadAccountInfo();
-            comboBox2.Items.Add("All");
-            filterCategoryCB.Items.Add("Any");
-            filterOwnerCB.Items.Add("Any");            
+            LoadAccountInfo();        
             LoadTransactions();
         }
 
@@ -74,6 +76,7 @@ namespace Budgeting_Application
 
             filterCategoryCB.Items.Add("Any");
             filterOwnerCB.Items.Add("Any");
+            comboBox2.Items.Add("All");
         }
 
         public void LoadAccountInfo()
