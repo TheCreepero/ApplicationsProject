@@ -134,30 +134,86 @@ namespace Budgeting_Application
 
         private void deleteUserButton_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            DialogResult dialogResult = MessageBox.Show("Do you want to remove the users transactions as well?", "Transactions", MessageBoxButtons.YesNoCancel);
+
+            if (dialogResult == DialogResult.Yes)
             {
-                int rowIdToDelete = Convert.ToInt32(row.Cells["UserID"].Value);
-                string removeSelected = "DELETE FROM [User] WHERE UserID = '" + rowIdToDelete + "'";
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    int rowIdToDelete = Convert.ToInt32(row.Cells["UserID"].Value);
+                    
+                    string removeSelected = "DELETE FROM [User] WHERE UserID = '" + rowIdToDelete + "'";
+                    DbConnection deleteRow = new DbConnection();
+                    try
+                    {
+                        deleteRow.OpenConnection();
+                        deleteRow.ExcecuteQueries(removeSelected);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        dataGridView1.Refresh();
+                        deleteRow.CloseConnection();
+                    }  
+                    string userToDelete = row.Cells["Username"].Value.ToString();
+                    string removeTransactions = "DELETE FROM [Transaction] WHERE PayerName = '" + userToDelete + "'";
 
-                DbConnection deleteRow = new DbConnection();
-                try
-                {
-                    deleteRow.OpenConnection();
-                    deleteRow.ExcecuteQueries(removeSelected);
+                    DbConnection deleteData = new DbConnection();
+                    try
+                    {
+                        deleteData.OpenConnection();
+                        deleteData.ExcecuteQueries(removeTransactions);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        deleteData.CloseConnection();
+                    }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    dataGridView1.Refresh();
-                    deleteRow.CloseConnection();                   
-                }
+                int rowIndex = dataGridView1.CurrentRow.Index;
+                dataGridView1.Rows.RemoveAt(rowIndex);
+
+                
             }
+            else if (dialogResult == DialogResult.No)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    int rowIdToDelete = Convert.ToInt32(row.Cells["UserID"].Value);
+                    string removeSelected = "DELETE FROM [User] WHERE UserID = '" + rowIdToDelete + "'";
+                    DbConnection deleteRow = new DbConnection();
+                    try
+                    {
+                        deleteRow.OpenConnection();
+                        deleteRow.ExcecuteQueries(removeSelected);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        dataGridView1.Refresh();
+                        deleteRow.CloseConnection();                   
+                    }
+                }
+                int rowIndex = dataGridView1.CurrentRow.Index;
+                dataGridView1.Rows.RemoveAt(rowIndex);
+            }
+            else if (dialogResult == DialogResult.Cancel)
+            {
+                MessageBox.Show("Nothing was deleted.");
+            }
+            
 
-            int rowIndex = dataGridView1.CurrentRow.Index;
-            dataGridView1.Rows.RemoveAt(rowIndex);
+            
+
         }
 
         private void addAccountButton_Click(object sender, EventArgs e)
@@ -216,6 +272,9 @@ namespace Budgeting_Application
 
         private void showUserButton_Click(object sender, EventArgs e)
         {
+            //Changes the texts in the menu
+            showUserButton.ForeColor = Color.Green;
+            showAccountButton.ForeColor = Color.DarkRed;
             dataGridView1.Columns[0].HeaderText = "Username";
             dataGridView1.Columns[1].HeaderText = "User Level";
             label1.Text = "Username";
@@ -236,6 +295,9 @@ namespace Budgeting_Application
 
         private void showAccountButton_Click(object sender, EventArgs e)
         {
+            //Changes the texts in the menu
+            showUserButton.ForeColor = Color.DarkRed;
+            showAccountButton.ForeColor = Color.Green;
             dataGridView1.Columns[0].HeaderText = "Account Name";
             dataGridView1.Columns[1].HeaderText = "Account Type";
             label1.Text = "Account Name";

@@ -116,14 +116,15 @@
             this.addUserName.Location = new System.Drawing.Point(13, 331);
             this.addUserName.MinimumSize = new System.Drawing.Size(97, 21);
             this.addUserName.Name = "addUserName";
-            this.addUserName.Size = new System.Drawing.Size(126, 21);
+            this.addUserName.Size = new System.Drawing.Size(126, 20);
             this.addUserName.TabIndex = 3;
             // 
             // deleteUserButton
             // 
             this.deleteUserButton.BackColor = System.Drawing.Color.Lavender;
             this.deleteUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteUserButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteUserButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteUserButton.ForeColor = System.Drawing.Color.DarkRed;
             this.deleteUserButton.Location = new System.Drawing.Point(13, 401);
             this.deleteUserButton.Name = "deleteUserButton";
             this.deleteUserButton.Size = new System.Drawing.Size(246, 29);
@@ -183,6 +184,7 @@
             this.showUserButton.BackColor = System.Drawing.Color.Lavender;
             this.showUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showUserButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showUserButton.ForeColor = System.Drawing.Color.Green;
             this.showUserButton.Location = new System.Drawing.Point(13, 287);
             this.showUserButton.Name = "showUserButton";
             this.showUserButton.Size = new System.Drawing.Size(75, 23);
@@ -196,6 +198,7 @@
             this.showAccountButton.BackColor = System.Drawing.Color.Lavender;
             this.showAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showAccountButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showAccountButton.ForeColor = System.Drawing.Color.DarkRed;
             this.showAccountButton.Location = new System.Drawing.Point(184, 287);
             this.showAccountButton.Name = "showAccountButton";
             this.showAccountButton.Size = new System.Drawing.Size(75, 23);

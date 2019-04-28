@@ -377,10 +377,7 @@ namespace Budgeting_Application
         private void filterButton_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-
-            //This structure needs to be changed for the child user so that not choosing any filters doesn't show ALL transactions.
-            string filterQuery = "SELECT * FROM [Transaction]";
-            
+            string filterQuery = "SELECT * FROM [Transaction]";            
             string activeUser = comboBox2.Text;
 
             //This constructs a query based on the filter selections

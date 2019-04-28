@@ -1,6 +1,5 @@
-﻿(If possible): Modify transaction data
-Graphical design
-Testing
-Monthly budgets system (if there's time)
-Making the app crash-proof (try-catch, error messages, etc...) IMPLEMENTED FOR CHILD USER
+﻿(If possible): Ability to modify transaction data (this feature is in place for users and accounts in the options menu, that can be used as an example)
+Graphical design (mostly done)
+Testing (mostly done)
+Making the app crash-proof (try-catch, error messages, etc...) MOSTLY IMPLEMENTED
 Deleting a user should also delete transactions made on the user account (or ask the admin if they should be deleted)
