@@ -100,6 +100,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.myTransactionsButton = new System.Windows.Forms.Button();
             this.allTransactionsButton = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -115,10 +116,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(333, 28);
+            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(333, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 24);
+            this.label1.Size = new System.Drawing.Size(188, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome, parent!";
             // 
@@ -151,13 +152,13 @@
             this.product,
             this.description,
             this.EventID});
-            this.dataGridView1.Location = new System.Drawing.Point(15, 63);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 39);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(855, 414);
+            this.dataGridView1.Size = new System.Drawing.Size(856, 438);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
             // 
@@ -230,7 +231,7 @@
             this.fetchTransactions.BackColor = System.Drawing.Color.Lavender;
             this.fetchTransactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fetchTransactions.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fetchTransactions.Location = new System.Drawing.Point(142, 30);
+            this.fetchTransactions.Location = new System.Drawing.Point(142, 12);
             this.fetchTransactions.Name = "fetchTransactions";
             this.fetchTransactions.Size = new System.Drawing.Size(127, 21);
             this.fetchTransactions.TabIndex = 2;
@@ -243,9 +244,9 @@
             this.exitbutton.BackColor = System.Drawing.Color.Lavender;
             this.exitbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitbutton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitbutton.Location = new System.Drawing.Point(1094, 559);
+            this.exitbutton.Location = new System.Drawing.Point(1017, 549);
             this.exitbutton.Name = "exitbutton";
-            this.exitbutton.Size = new System.Drawing.Size(75, 23);
+            this.exitbutton.Size = new System.Drawing.Size(150, 33);
             this.exitbutton.TabIndex = 3;
             this.exitbutton.Text = "Exit";
             this.exitbutton.UseVisualStyleBackColor = false;
@@ -255,28 +256,28 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(1018, 104);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 20);
+            this.textBox1.Size = new System.Drawing.Size(150, 20);
             this.textBox1.TabIndex = 6;
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(1018, 295);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(133, 20);
+            this.textBox2.Size = new System.Drawing.Size(150, 20);
             this.textBox2.TabIndex = 11;
             // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(1018, 333);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(133, 20);
+            this.textBox3.Size = new System.Drawing.Size(150, 20);
             this.textBox3.TabIndex = 12;
             // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(1018, 371);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(133, 20);
+            this.textBox4.Size = new System.Drawing.Size(150, 20);
             this.textBox4.TabIndex = 13;
             // 
             // comboBox1
@@ -284,7 +285,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(1018, 142);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(133, 21);
+            this.comboBox1.Size = new System.Drawing.Size(150, 21);
             this.comboBox1.TabIndex = 14;
             // 
             // labelAmount
@@ -338,7 +339,7 @@
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(1018, 257);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(133, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(150, 20);
             this.dateTimePicker1.TabIndex = 23;
             this.dateTimePicker1.Value = new System.DateTime(2019, 4, 1, 0, 0, 0, 0);
             // 
@@ -376,7 +377,7 @@
             this.buttonAddEvent.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddEvent.Location = new System.Drawing.Point(1018, 397);
             this.buttonAddEvent.Name = "buttonAddEvent";
-            this.buttonAddEvent.Size = new System.Drawing.Size(133, 30);
+            this.buttonAddEvent.Size = new System.Drawing.Size(150, 30);
             this.buttonAddEvent.TabIndex = 27;
             this.buttonAddEvent.Text = "Add new event";
             this.buttonAddEvent.UseVisualStyleBackColor = false;
@@ -395,10 +396,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(1014, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 16);
+            this.label3.Size = new System.Drawing.Size(154, 16);
             this.label3.TabIndex = 28;
             this.label3.Text = "Add a new transaction:";
             // 
@@ -424,7 +425,7 @@
             this.deleteButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteButton.Location = new System.Drawing.Point(1018, 433);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(133, 30);
+            this.deleteButton.Size = new System.Drawing.Size(150, 30);
             this.deleteButton.TabIndex = 31;
             this.deleteButton.Text = "Delete selected";
             this.deleteButton.UseVisualStyleBackColor = false;
@@ -433,7 +434,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(15, 30);
+            this.comboBox2.Location = new System.Drawing.Point(15, 12);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 32;
@@ -443,7 +444,7 @@
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(1018, 180);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(133, 21);
+            this.comboBox3.Size = new System.Drawing.Size(150, 21);
             this.comboBox3.TabIndex = 33;
             // 
             // comboBox4
@@ -451,7 +452,7 @@
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(1017, 218);
             this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(134, 21);
+            this.comboBox4.Size = new System.Drawing.Size(151, 21);
             this.comboBox4.TabIndex = 34;
             // 
             // groupBox1
@@ -462,17 +463,16 @@
             this.groupBox1.Controls.Add(this.filterCategoryCB);
             this.groupBox1.Controls.Add(this.filterButton);
             this.groupBox1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(15, 483);
+            this.groupBox1.Location = new System.Drawing.Point(15, 503);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(289, 99);
+            this.groupBox1.Size = new System.Drawing.Size(289, 79);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filter";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(121, 38);
+            this.label5.Location = new System.Drawing.Point(121, 28);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 14);
             this.label5.TabIndex = 39;
@@ -481,7 +481,7 @@
             // filterOwnerCB
             // 
             this.filterOwnerCB.FormattingEnabled = true;
-            this.filterOwnerCB.Location = new System.Drawing.Point(124, 56);
+            this.filterOwnerCB.Location = new System.Drawing.Point(124, 46);
             this.filterOwnerCB.Name = "filterOwnerCB";
             this.filterOwnerCB.Size = new System.Drawing.Size(95, 22);
             this.filterOwnerCB.TabIndex = 36;
@@ -489,7 +489,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 38);
+            this.label4.Location = new System.Drawing.Point(10, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 14);
             this.label4.TabIndex = 36;
@@ -498,7 +498,7 @@
             // filterCategoryCB
             // 
             this.filterCategoryCB.FormattingEnabled = true;
-            this.filterCategoryCB.Location = new System.Drawing.Point(13, 56);
+            this.filterCategoryCB.Location = new System.Drawing.Point(13, 46);
             this.filterCategoryCB.Name = "filterCategoryCB";
             this.filterCategoryCB.Size = new System.Drawing.Size(105, 22);
             this.filterCategoryCB.TabIndex = 37;
@@ -508,7 +508,7 @@
             this.filterButton.BackColor = System.Drawing.Color.Lavender;
             this.filterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.filterButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filterButton.Location = new System.Drawing.Point(225, 26);
+            this.filterButton.Location = new System.Drawing.Point(225, 16);
             this.filterButton.Name = "filterButton";
             this.filterButton.Size = new System.Drawing.Size(58, 52);
             this.filterButton.TabIndex = 38;
@@ -519,16 +519,16 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(2, 42);
+            this.label7.Location = new System.Drawing.Point(3, 30);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 14);
+            this.label7.Size = new System.Drawing.Size(53, 14);
             this.label7.TabIndex = 43;
-            this.label7.Text = "Time";
+            this.label7.Text = "Date filter";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(139, 60);
+            this.label6.Location = new System.Drawing.Point(139, 50);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(11, 14);
             this.label6.TabIndex = 42;
@@ -538,7 +538,7 @@
             // 
             this.dateTimePicker3.CustomFormat = "dd.MM.yyyy";
             this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker3.Location = new System.Drawing.Point(155, 58);
+            this.dateTimePicker3.Location = new System.Drawing.Point(155, 48);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(125, 20);
             this.dateTimePicker3.TabIndex = 41;
@@ -547,7 +547,7 @@
             // 
             this.dateTimePicker2.CustomFormat = "dd.MM.yyyy";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(6, 58);
+            this.dateTimePicker2.Location = new System.Drawing.Point(6, 48);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(127, 20);
             this.dateTimePicker2.TabIndex = 40;
@@ -560,9 +560,9 @@
             this.groupBox2.Controls.Add(this.dateTimePicker3);
             this.groupBox2.Controls.Add(this.dateTimePicker2);
             this.groupBox2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(310, 483);
+            this.groupBox2.Location = new System.Drawing.Point(310, 503);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(360, 99);
+            this.groupBox2.Size = new System.Drawing.Size(360, 79);
             this.groupBox2.TabIndex = 44;
             this.groupBox2.TabStop = false;
             // 
@@ -571,7 +571,7 @@
             this.filterDatesButton.BackColor = System.Drawing.Color.Lavender;
             this.filterDatesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.filterDatesButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filterDatesButton.Location = new System.Drawing.Point(302, 27);
+            this.filterDatesButton.Location = new System.Drawing.Point(296, 17);
             this.filterDatesButton.Name = "filterDatesButton";
             this.filterDatesButton.Size = new System.Drawing.Size(58, 52);
             this.filterDatesButton.TabIndex = 40;
@@ -590,9 +590,9 @@
             this.groupBox3.Controls.Add(this.accBalLabel);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(676, 483);
+            this.groupBox3.Location = new System.Drawing.Point(676, 503);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(360, 99);
+            this.groupBox3.Size = new System.Drawing.Size(332, 79);
             this.groupBox3.TabIndex = 45;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Account Information";
@@ -601,7 +601,7 @@
             // 
             this.expenseLabel.AutoSize = true;
             this.expenseLabel.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expenseLabel.Location = new System.Drawing.Point(230, 64);
+            this.expenseLabel.Location = new System.Drawing.Point(232, 50);
             this.expenseLabel.Name = "expenseLabel";
             this.expenseLabel.Size = new System.Drawing.Size(11, 16);
             this.expenseLabel.TabIndex = 7;
@@ -611,7 +611,7 @@
             // 
             this.incomeLabel.AutoSize = true;
             this.incomeLabel.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.incomeLabel.Location = new System.Drawing.Point(230, 27);
+            this.incomeLabel.Location = new System.Drawing.Point(231, 27);
             this.incomeLabel.Name = "incomeLabel";
             this.incomeLabel.Size = new System.Drawing.Size(11, 16);
             this.incomeLabel.TabIndex = 6;
@@ -620,18 +620,20 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(164, 64);
+            this.label11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(164, 50);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 15);
+            this.label11.Size = new System.Drawing.Size(70, 16);
             this.label11.TabIndex = 5;
             this.label11.Text = "Expenses:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(164, 27);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 15);
+            this.label9.Size = new System.Drawing.Size(61, 16);
             this.label9.TabIndex = 4;
             this.label9.Text = "Incomes:";
             // 
@@ -639,7 +641,7 @@
             // 
             this.userNameLabel.AutoSize = true;
             this.userNameLabel.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameLabel.Location = new System.Drawing.Point(91, 27);
+            this.userNameLabel.Location = new System.Drawing.Point(94, 27);
             this.userNameLabel.Name = "userNameLabel";
             this.userNameLabel.Size = new System.Drawing.Size(11, 16);
             this.userNameLabel.TabIndex = 3;
@@ -648,9 +650,10 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(6, 27);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 15);
+            this.label10.Size = new System.Drawing.Size(90, 16);
             this.label10.TabIndex = 2;
             this.label10.Text = "User Account:";
             // 
@@ -658,7 +661,7 @@
             // 
             this.accBalLabel.AutoSize = true;
             this.accBalLabel.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accBalLabel.Location = new System.Drawing.Point(65, 64);
+            this.accBalLabel.Location = new System.Drawing.Point(63, 50);
             this.accBalLabel.Name = "accBalLabel";
             this.accBalLabel.Size = new System.Drawing.Size(11, 16);
             this.accBalLabel.TabIndex = 1;
@@ -667,9 +670,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 64);
+            this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 50);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 15);
+            this.label8.Size = new System.Drawing.Size(59, 16);
             this.label8.TabIndex = 0;
             this.label8.Text = "Balance:";
             // 
@@ -677,7 +681,7 @@
             // 
             this.generateReportOfAllButton.BackColor = System.Drawing.Color.Lavender;
             this.generateReportOfAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.generateReportOfAllButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generateReportOfAllButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.generateReportOfAllButton.Location = new System.Drawing.Point(877, 234);
             this.generateReportOfAllButton.Name = "generateReportOfAllButton";
             this.generateReportOfAllButton.Size = new System.Drawing.Size(131, 46);
@@ -690,7 +694,7 @@
             // 
             this.generateReportButton.BackColor = System.Drawing.Color.Lavender;
             this.generateReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.generateReportButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generateReportButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.generateReportButton.Location = new System.Drawing.Point(877, 183);
             this.generateReportButton.Name = "generateReportButton";
             this.generateReportButton.Size = new System.Drawing.Size(131, 46);
@@ -777,7 +781,7 @@
             this.myTransactionsButton.BackColor = System.Drawing.Color.Lavender;
             this.myTransactionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.myTransactionsButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.myTransactionsButton.Location = new System.Drawing.Point(275, 30);
+            this.myTransactionsButton.Location = new System.Drawing.Point(275, 12);
             this.myTransactionsButton.Name = "myTransactionsButton";
             this.myTransactionsButton.Size = new System.Drawing.Size(23, 21);
             this.myTransactionsButton.TabIndex = 53;
@@ -790,7 +794,7 @@
             this.allTransactionsButton.BackColor = System.Drawing.Color.Lavender;
             this.allTransactionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.allTransactionsButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.allTransactionsButton.Location = new System.Drawing.Point(304, 30);
+            this.allTransactionsButton.Location = new System.Drawing.Point(304, 12);
             this.allTransactionsButton.Name = "allTransactionsButton";
             this.allTransactionsButton.Size = new System.Drawing.Size(23, 21);
             this.allTransactionsButton.TabIndex = 54;
@@ -798,12 +802,23 @@
             this.allTransactionsButton.UseVisualStyleBackColor = false;
             this.allTransactionsButton.Click += new System.EventHandler(this.allTransactionsButton_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(10, 481);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(142, 24);
+            this.label15.TabIndex = 55;
+            this.label15.Text = "Filter options";
+            // 
             // mainmenuParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1181, 589);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.allTransactionsButton);
             this.Controls.Add(this.myTransactionsButton);
             this.Controls.Add(this.generateReportOfAllButton);
@@ -934,5 +949,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button myTransactionsButton;
         private System.Windows.Forms.Button allTransactionsButton;
+        private System.Windows.Forms.Label label15;
     }
 }
