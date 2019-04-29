@@ -134,15 +134,91 @@ namespace Budgeting_Application
 
         private void deleteUserButton_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Do you want to remove the users transactions as well?", "Transactions", MessageBoxButtons.YesNoCancel);
+            if (selectedData == "user")
+            {
+                DialogResult dialogResult = MessageBox.Show("Do you want to remove the users transactions as well?", "Transactions", MessageBoxButtons.YesNoCancel);
 
-            if (dialogResult == DialogResult.Yes)
+                if (dialogResult == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                    {
+                        int rowIdToDelete = Convert.ToInt32(row.Cells["UserID"].Value);
+
+                        string removeSelected = "DELETE FROM [User] WHERE UserID = '" + rowIdToDelete + "'";
+                        DbConnection deleteRow = new DbConnection();
+                        try
+                        {
+                            deleteRow.OpenConnection();
+                            deleteRow.ExcecuteQueries(removeSelected);
+                        }
+                        catch (SqlException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        finally
+                        {
+                            dataGridView1.Refresh();
+                            deleteRow.CloseConnection();
+                        }
+                        string userToDelete = row.Cells["Username"].Value.ToString();
+                        string removeTransactions = "DELETE FROM [Transaction] WHERE PayerName = '" + userToDelete + "'";
+
+                        DbConnection deleteData = new DbConnection();
+                        try
+                        {
+                            deleteData.OpenConnection();
+                            deleteData.ExcecuteQueries(removeTransactions);
+                        }
+                        catch (SqlException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        finally
+                        {
+                            deleteData.CloseConnection();
+                        }
+                    }
+                    int rowIndex = dataGridView1.CurrentRow.Index;
+                    dataGridView1.Rows.RemoveAt(rowIndex);
+
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                    {
+                        int rowIdToDelete = Convert.ToInt32(row.Cells["UserID"].Value);
+                        string removeSelected = "DELETE FROM [User] WHERE UserID = '" + rowIdToDelete + "'";
+                        DbConnection deleteRow = new DbConnection();
+                        try
+                        {
+                            deleteRow.OpenConnection();
+                            deleteRow.ExcecuteQueries(removeSelected);
+                        }
+                        catch (SqlException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        finally
+                        {
+                            dataGridView1.Refresh();
+                            deleteRow.CloseConnection();
+                        }
+                    }
+                    int rowIndex = dataGridView1.CurrentRow.Index;
+                    dataGridView1.Rows.RemoveAt(rowIndex);
+                }
+                else if (dialogResult == DialogResult.Cancel)
+                {
+                    MessageBox.Show("Nothing was deleted.");
+                }
+            }
+            else if (selectedData == "account")
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
                     int rowIdToDelete = Convert.ToInt32(row.Cells["UserID"].Value);
-                    
-                    string removeSelected = "DELETE FROM [User] WHERE UserID = '" + rowIdToDelete + "'";
+                    string removeSelected = "DELETE FROM [Account] WHERE AccountID = '" + rowIdToDelete + "'";
                     DbConnection deleteRow = new DbConnection();
                     try
                     {
@@ -157,61 +233,11 @@ namespace Budgeting_Application
                     {
                         dataGridView1.Refresh();
                         deleteRow.CloseConnection();
-                    }  
-                    string userToDelete = row.Cells["Username"].Value.ToString();
-                    string removeTransactions = "DELETE FROM [Transaction] WHERE PayerName = '" + userToDelete + "'";
-
-                    DbConnection deleteData = new DbConnection();
-                    try
-                    {
-                        deleteData.OpenConnection();
-                        deleteData.ExcecuteQueries(removeTransactions);
-                    }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        deleteData.CloseConnection();
-                    }
-                }
-                int rowIndex = dataGridView1.CurrentRow.Index;
-                dataGridView1.Rows.RemoveAt(rowIndex);
-
-                
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                {
-                    int rowIdToDelete = Convert.ToInt32(row.Cells["UserID"].Value);
-                    string removeSelected = "DELETE FROM [User] WHERE UserID = '" + rowIdToDelete + "'";
-                    DbConnection deleteRow = new DbConnection();
-                    try
-                    {
-                        deleteRow.OpenConnection();
-                        deleteRow.ExcecuteQueries(removeSelected);
-                    }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        dataGridView1.Refresh();
-                        deleteRow.CloseConnection();                   
                     }
                 }
                 int rowIndex = dataGridView1.CurrentRow.Index;
                 dataGridView1.Rows.RemoveAt(rowIndex);
             }
-            else if (dialogResult == DialogResult.Cancel)
-            {
-                MessageBox.Show("Nothing was deleted.");
-            }
-            
-
             
 
         }
@@ -223,27 +249,51 @@ namespace Budgeting_Application
         }
 
         private void updateUserButton_Click(object sender, EventArgs e)
-        {
+        {            
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
                 int rowIdToDelete = Convert.ToInt32(row.Cells["UserID"].Value);
-                string updateSelected = "UPDATE [User] SET UserName = '" + addUserName.Text + "', UserLvl = '" + userLvlSelect.Text + "' WHERE UserID = " + rowIdToDelete;
-                DbConnection updateUser = new DbConnection();
+                string updateSelected = null;
+                if (selectedData == "user")
+                {
+                    updateSelected = "UPDATE [User] SET UserName = '" + addUserName.Text + "', UserLvl = '" + userLvlSelect.Text + "' WHERE UserID = " + rowIdToDelete;
+                    DbConnection updateUser = new DbConnection();
+                    try
+                    {
+                        updateUser.OpenConnection();
+                        updateUser.ExcecuteQueries(updateSelected);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        updateUser.CloseConnection();
+                        LoadUsers();
+                    }
+                }
+                else if (selectedData == "account")
+                {
+                    updateSelected = "UPDATE [Account] SET AccountName = '" + addUserName.Text + "', AccountType = '" + userLvlSelect.Text + "' WHERE AccountID = " + rowIdToDelete;
+                    DbConnection updateUser = new DbConnection();
+                    try
+                    {
+                        updateUser.OpenConnection();
+                        updateUser.ExcecuteQueries(updateSelected);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        updateUser.CloseConnection();
+                        LoadAccounts();
+                    }
+                }
 
-                try
-                {
-                    updateUser.OpenConnection();
-                    updateUser.ExcecuteQueries(updateSelected);
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    updateUser.CloseConnection();
-                    LoadUsers();
-                }
+                
             }
         }
 
